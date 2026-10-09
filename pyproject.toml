@@ -1,0 +1,19 @@
+[project]
+name = "goalcast"
+version = "1.0.0"
+description = "Open football prediction model and website"
+requires-python = ">=3.11"
+dependencies = [
+    "xgboost>=3.0",
+    "scikit-learn>=1.6",
+    "scipy>=1.14",
+    "pandas>=2.2",
+    "numpy>=2.0",
+    "requests>=2.32",
+    "tzdata",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+]
+
+[tool.setuptools.packages.find]
+include = ["ml*", "api*"]

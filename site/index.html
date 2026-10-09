@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GoalCast — open football predictions, graded in public</title>
+<meta name="description" content="Free football predictions from an open XGBoost model: 1X2, double chance, over/under, BTTS and correct score, with every result — wins and losses — published.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230c1512'/%3E%3Cpath d='M7 22l6-7 4 4 8-10' fill='none' stroke='%23b8f04a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#/" aria-label="GoalCast home">
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M7 22l6-7 4 4 8-10" fill="none" stroke="var(--on-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>GoalCast</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#/" data-route="">Matches</a>
+      <a href="#/safe" data-route="safe">Safe tips</a>
+      <a href="#/value" data-route="value">Value</a>
+      <a href="#/results" data-route="results">Results</a>
+      <a href="#/model" data-route="model">Model</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn" data-action="theme" aria-label="Switch colour theme" title="Switch theme">◐</button>
+      <button class="btn slip-btn" data-action="toggle-slip">Slip <span class="count" id="slip-count">0</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="app" aria-live="polite"><p class="loading">Loading predictions…</p></main>
+
+<aside class="slip" id="slip" aria-label="Accumulator slip" hidden></aside>
+<dialog class="detail" id="detail" aria-label="Match analysis"></dialog>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Probabilities, not promises.</strong> GoalCast is a statistics project. Nothing here is betting advice, and no model beats the bookmakers reliably — ours is measured against them on the Model page. If you bet, only stake what you can afford to lose. 18+. Help: <a href="https://www.begambleaware.org" rel="noopener">BeGambleAware.org</a>.</p>
+    <p class="muted">Match data and odds: football-data.co.uk. Schedules: openfootball (public domain). <span id="foot-meta"></span></p>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

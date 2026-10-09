@@ -1,0 +1,43 @@
+name: Refresh predictions and deploy
+
+on:
+  schedule:
+    - cron: "15 5,13 * * *" # twice daily, UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["ml/**", "site/**", "requirements.txt", ".github/workflows/refresh.yml"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Download data, train a new model version, export site data
+        run: python -m ml.pipeline
+      - name: Commit refreshed predictions and ledger
+        run: |
+          git config user.name "goalcast-bot"
+          git config user.email "goalcast-bot@users.noreply.github.com"
+          git add site/data data/ledger.json
+          git diff --cached --quiet || git commit -m "Refresh predictions $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4
