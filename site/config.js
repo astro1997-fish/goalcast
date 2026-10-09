@@ -14,8 +14,8 @@ window.GOALCAST_CONFIG = {
      whatsapp:        support phone number with country code, digits only, e.g. '2348012345678'
      telegramSupport: the Telegram account that answers support messages, e.g. 'goalcast_help' */
 window.GOALCAST_LINKS = {
-  x: '',
-  telegramChannel: '',
-  whatsapp: '',
-  telegramSupport: '',
+  x: 'ferry5689',
+  telegramChannel: 'https://t.me/+8mYGBw3OhN5hZGY0',
+  whatsapp: '19715162270',
+  telegramSupport: 'Goal_castpredict',
 };
