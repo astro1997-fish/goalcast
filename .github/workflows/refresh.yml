@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["ml/**", "site/**", "requirements.txt", ".github/workflows/refresh.yml"]
+    paths: ["ml/**", "site/**", "content/**", "tools/**", "requirements.txt", ".github/workflows/refresh.yml"]
 
 permissions:
   contents: write
@@ -29,6 +29,8 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Download data, train a new model version, export site data
         run: python -m ml.pipeline
+      - name: Build blog and sponsor data
+        run: python -m tools.build_content
       - name: Commit refreshed predictions and ledger
         run: |
           git config user.name "goalcast-bot"

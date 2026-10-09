@@ -17,6 +17,8 @@ every result, wins and losses alike.
 | `ml/export_site.py` | Scores fixtures, maintains the public ledger, writes `site/data/*.json` |
 | `ml/models/` | Versioned artifacts (gitignored) — see its README |
 | `api/main.py` | FastAPI: `GET /model/performance`, `/predictions`, `/results`, and the site |
+| `content/` | Blog posts (Markdown) and sponsor adverts — see `content/README.md` |
+| `tools/build_content.py` | Turns `content/` into `site/data/blog.json` and `sponsors.json` |
 | `site/` | The website: plain HTML, CSS and JavaScript, no build step |
 | `data/ledger.json` | Predictions logged before kick-off, settled afterwards, never revised |
 

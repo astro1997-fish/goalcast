@@ -1,0 +1,20 @@
+{
+  "advertise": {
+    "email": "",
+    "text": "Reach football fans every day. Sponsor GoalCast."
+  },
+  "sponsors": [
+    {
+      "name": "Example Sponsor",
+      "active": false,
+      "url": "https://example.com/?utm_source=goalcast",
+      "headline": "Example Sponsor: your headline here",
+      "text": "One short line describing the offer.",
+      "cta": "Learn more",
+      "image": "",
+      "placements": ["banner", "feed", "article"],
+      "start": "2026-10-09",
+      "end": "2026-11-09"
+    }
+  ]
+}

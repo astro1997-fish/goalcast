@@ -5,7 +5,7 @@
   const $ = (sel, root = document) => root.querySelector(sel);
   const app = $('#app'), slipEl = $('#slip'), detailEl = $('#detail');
   const state = {
-    pred: null, res: null, model: null, leagues: null,
+    pred: null, res: null, model: null, leagues: null, blog: null, sponsors: null,
     day: 'all', league: 'all', q: '', sort: 'time',
     resTab: 'backtest', resMarket: '1X2', resOutcome: 'all',
     slip: [],
@@ -95,9 +95,9 @@
     let body;
     if (!all.length) body = `<p class="empty">No fixtures scheduled in the next ten days. Predictions appear here as soon as the schedule feed lists them — meanwhile, see how the last rounds went on the <a href="#/results">Results</a> page.</p>`;
     else if (!list.length) body = `<p class="empty">No matches match these filters.</p>`;
-    else if (state.sort === 'conf') body = `<div class="grid">${list.map(card).join('')}</div>`;
-    else body = [...new Set(list.map((m) => dayKey(m.kickoff)))].map((d) => `<h3 class="day-label">${fmtDay(d)} · ${list.filter((m) => dayKey(m.kickoff) === d).length} matches</h3>
-        <div class="grid">${list.filter((m) => dayKey(m.kickoff) === d).map(card).join('')}</div>`).join('');
+    else if (state.sort === 'conf') body = `<div class="grid">${feed(list, true)}</div>`;
+    else body = [...new Set(list.map((m) => dayKey(m.kickoff)))].map((d, i) => `<h3 class="day-label">${fmtDay(d)} · ${list.filter((m) => dayKey(m.kickoff) === d).length} matches</h3>
+        <div class="grid">${feed(list.filter((m) => dayKey(m.kickoff) === d), i === 0)}</div>`).join('');
 
     return `<section class="hero">
       <div>
@@ -129,6 +129,7 @@
       <input class="field" type="search" placeholder="Search team…" value="${esc(state.q)}" data-input="q" aria-label="Search team">
     </div>
     <div id="match-list">${body}</div>
+    ${posts().length ? `<div class="section-head"><h2>From the blog</h2><a class="btn small" href="#/blog">All articles</a></div><div class="post-grid">${posts().slice(0, 3).map(postCard).join('')}</div>` : ''}
     <div class="section-head"><h2>How it works</h2></div>
     <div class="steps">
       <div class="panel"><h3>One distribution per match</h3><p>Three models estimate the result and each side's expected goals. They are merged into a single grid of scoreline probabilities, so 1X2, totals, BTTS and correct score never contradict each other.</p></div>
@@ -316,6 +317,59 @@
     if (!same) slipEl.hidden = false;
   }
 
+  /* ---------- blog & sponsors ---------- */
+  const todayKey = () => dayKey(new Date());
+  const posts = () => (state.blog?.posts || []).filter((p) => p.date <= todayKey());
+  const longDate = (iso) => new Date(iso + 'T12:00:00').toLocaleDateString([], { day: 'numeric', month: 'long', year: 'numeric' });
+  let adTurn = 0;
+
+  /* One advert for a placement ("banner", "feed" or "article"), or nothing if none is booked. */
+  function adSlot(place) {
+    const data = state.sponsors;
+    if (!data) return '';
+    const t = todayKey();
+    const pool = data.sponsors.filter((s) => s.placements.includes(place) && (!s.start || s.start <= t) && (!s.end || s.end >= t));
+    if (!pool.length) {
+      const a = data.advertise;
+      return a?.email ? `<a class="ad ad-${place} house" href="mailto:${esc(a.email)}?subject=Advertising%20on%20GoalCast"><span class="ad-label">Advertise here</span>
+        <span class="ad-copy"><strong>${esc(a.text || 'Sponsor GoalCast')}</strong></span><span class="btn small">Get in touch</span></a>` : '';
+    }
+    const s = pool[adTurn % pool.length];
+    return `<a class="ad ad-${place}" href="${esc(s.url)}" target="_blank" rel="sponsored noopener"><span class="ad-label">Sponsored</span>
+      ${s.image ? `<img src="${esc(s.image)}" alt="${esc(s.name)}" loading="lazy">` : ''}
+      <span class="ad-copy"><strong>${esc(s.headline)}</strong>${s.text ? `<span>${esc(s.text)}</span>` : ''}</span><span class="btn small primary">${esc(s.cta)}</span></a>`;
+  }
+  const feed = (list, withAd) => {
+    const cards = list.map(card);
+    const ad = withAd ? adSlot('feed') : '';
+    if (ad) cards.splice(Math.min(6, cards.length), 0, ad);
+    return cards.join('');
+  };
+
+  const postCard = (p) => `<a class="post-card" href="#/blog/${p.slug}">
+      ${p.image ? `<img src="${esc(p.image)}" alt="" loading="lazy">` : ''}
+      <span class="muted num">${longDate(p.date)} · ${p.minutes} min read</span><h3>${esc(p.title)}</h3>
+      ${p.summary ? `<p>${esc(p.summary)}</p>` : ''}<span class="tags">${p.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</span></a>`;
+
+  function viewBlog(slug) {
+    const all = posts();
+    const p = slug && all.find((x) => x.slug === decodeURIComponent(slug));
+    if (!p) {
+      return `<div class="page-head"><h1>Blog</h1><p>Guides, previews and notes on how the model works.</p></div>
+        ${all.length ? `<div class="post-grid">${all.map(postCard).join('')}</div>` : '<p class="empty">No articles published yet.</p>'}`;
+    }
+    const more = all.filter((x) => x.slug !== p.slug).slice(0, 3);
+    return `<article class="post">
+        <a class="muted" href="#/blog">← All articles</a>
+        <h1>${esc(p.title)}</h1>
+        <p class="muted">${esc(p.author)} · ${longDate(p.date)} · ${p.minutes} min read</p>
+        ${p.image ? `<img class="cover" src="${esc(p.image)}" alt="">` : ''}
+        <div class="prose">${p.html}</div>
+        ${adSlot('article')}
+      </article>
+      ${more.length ? `<div class="section-head"><h2>More articles</h2></div><div class="post-grid">${more.map(postCard).join('')}</div>` : ''}`;
+  }
+
   /* ---------- markets, leagues, premium ---------- */
   const line = (sel) => (m) => ({ sel, p: m.sels[sel] });
   const MARKETS = [
@@ -433,6 +487,7 @@
       ${dd('Leagues', 'league', `<div class="menu-cols">${Object.keys(byCountry).sort().map((c) => `<div><h4>${esc(c)}</h4>${byCountry[c].map((l) => `<a href="#/league/${l.div}">${esc(l.league)}</a>`).join('')}</div>`).join('')}</div><hr><a href="#/leagues">All leagues</a>`)}
       <a href="#/results" data-route="results">Results</a>
       <a href="#/model" data-route="model">Model</a>
+      <a href="#/blog" data-route="blog">Blog</a>
       <a href="#/premium" data-route="premium" class="premium">★ Premium</a>`;
   }
   const closeMenus = (except) => document.querySelectorAll('details.dd[open]').forEach((d) => { if (d !== except) d.open = false; });
@@ -533,12 +588,13 @@
 
   /* ---------- routing & events ---------- */
   const routes = { '': viewMatches, safe: viewSafe, value: viewValue, results: viewResults, model: viewModel,
-    market: viewMarket, leagues: viewLeagues, premium: viewPremium, day: viewMatches, league: viewLeague };
+    market: viewMarket, leagues: viewLeagues, premium: viewPremium, day: viewMatches, league: viewLeague, blog: viewBlog };
   const GROUPS = { market: 'market', safe: 'market', value: 'market', day: 'day', league: 'league', leagues: 'league' };
   function render(keepScroll) {
     let [route, arg] = location.hash.replace(/^#\/?/, '').split('/');
     if (!routes[route]) route = '';
     if (!keepScroll) {
+      adTurn += 1; // booked sponsors take turns, one step per page view
       // a fresh navigation sets the matches filters from the address
       if (route === 'day') { state.day = arg; state.league = 'all'; }
       else if (route === '') { state.day = 'all'; state.league = 'all'; }
@@ -546,7 +602,7 @@
     document.querySelectorAll('#nav > a').forEach((a) => a.classList.toggle('on', a.dataset.route === route));
     document.querySelectorAll('#nav details').forEach((d) => d.classList.toggle('on', d.dataset.group === GROUPS[route]));
     const y = scrollY;
-    app.innerHTML = routes[route](arg);
+    app.innerHTML = adSlot('banner') + routes[route](arg);
     scrollTo(0, keepScroll ? y : 0);
     if (detailEl.open) openDetail(detailEl.dataset.id);
   }
@@ -614,8 +670,8 @@
   /* ---------- boot ---------- */
   document.documentElement.dataset.theme = store.get('gc-theme', matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   const load = (name) => fetch(`data/${name}.json`, { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error(`${name}: ${r.status}`); return r.json(); });
-  Promise.all([...['predictions', 'results', 'model'].map(load), load('leagues').catch(() => null)]).then(([pred, res, model, leagues]) => {
-    Object.assign(state, { pred, res, model, leagues });
+  Promise.all([...['predictions', 'results', 'model'].map(load), ...['leagues', 'blog', 'sponsors'].map((n) => load(n).catch(() => null))]).then(([pred, res, model, leagues, blog, sponsors]) => {
+    Object.assign(state, { pred, res, model, leagues, blog, sponsors });
     const live = new Set(pred.matches.map((m) => m.id));
     state.slip = store.get('gc-slip', []).filter((x) => live.has(x.id));
     $('#foot-meta').textContent = `Updated ${new Date(pred.generated).toLocaleString()} · model ${pred.version}`;

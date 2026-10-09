@@ -10,10 +10,11 @@ dependencies = [
     "pandas>=2.2",
     "numpy>=2.0",
     "requests>=2.32",
+    "markdown>=3.6",
     "tzdata",
     "fastapi>=0.115",
     "uvicorn>=0.30",
 ]
 
 [tool.setuptools.packages.find]
-include = ["ml*", "api*"]
+include = ["ml*", "api*", "tools*"]
