@@ -53,6 +53,23 @@ beat the market, and its "value" disagreements with bookmakers lost money in
 the backtest (−13.2% per bet). The site says so. Current numbers are always on
 the site's Model and Results pages.
 
+## Accounts and Premium
+
+Sign-up, sign-in and password reset use [Supabase Auth](https://supabase.com)
+(free tier), called straight from the browser. To switch accounts on:
+
+1. Create a Supabase project.
+2. In **Authentication → URL Configuration**, set the Site URL to the site's
+   address and add it to the redirect URLs.
+3. Copy the project URL and the `anon` public key from **Project Settings →
+   API** into `site/config.js`.
+
+Until then the Sign in button explains that accounts are not switched on. The
+Premium page (banker of the day, ready-made accumulators) unlocks for signed-in
+members. Note that this is an interface-level lock: the prediction data itself
+is public JSON, so anything that must be truly private needs to be served from
+a database with access rules rather than from `site/data`.
+
 ## Deployment
 
 `.github/workflows/refresh.yml` runs twice a day: it retrains, exports,

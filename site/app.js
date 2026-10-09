@@ -310,20 +310,214 @@
     if (!m) return;
     const same = inSlip(id, sel);
     state.slip = state.slip.filter((x) => x.id !== id); // one leg per match
-    if (!same) state.slip.push({ id, sel, label: label(sel, m), match: `${m.home} v ${m.away}`, p: m.sels[sel] });
+    if (!same) state.slip.push({ id, sel, label: label(sel, m), match: `${m.home} v ${m.away}`, p: m.sels[sel] ?? m.scores.find((x) => x.s === sel)?.p ?? m.tips.CS.p });
     store.set('gc-slip', state.slip);
     renderSlip();
     if (!same) slipEl.hidden = false;
   }
 
+  /* ---------- markets, leagues, premium ---------- */
+  const line = (sel) => (m) => ({ sel, p: m.sels[sel] });
+  const MARKETS = [
+    { slug: '1x2', name: '1X2', title: 'Match result predictions', stat: '1X2', get: (m) => m.tips['1X2'] },
+    { slug: 'double-chance', name: 'Double chance', title: 'Double chance predictions', stat: 'DC', get: (m) => m.tips.DC },
+    { slug: 'over-1-5', name: 'Over 1.5 goals', title: 'Over 1.5 goals predictions', get: line('O1.5') },
+    { slug: 'over-2-5', name: 'Over 2.5 goals', title: 'Over 2.5 goals predictions', get: line('O2.5') },
+    { slug: 'under-3-5', name: 'Under 3.5 goals', title: 'Under 3.5 goals predictions', get: line('U3.5') },
+    { slug: 'btts', name: 'Both teams to score', title: 'Both teams to score predictions', stat: 'BTTS', get: (m) => m.tips.BTTS },
+    { slug: 'correct-score', name: 'Correct score', title: 'Correct score predictions', stat: 'CS', get: (m) => m.tips.CS },
+  ];
+  const marketChips = (active) => `<div class="chips" style="margin:16px 0">${MARKETS.map((k) => `<a class="chip ${k.slug === active ? 'on' : ''}" href="#/market/${k.slug}">${k.name}</a>`).join('')}
+    <a class="chip" href="#/safe">Safe tips</a><a class="chip" href="#/value">Model vs market</a></div>`;
+
+  function viewMarket(slug) {
+    const k = MARKETS.find((x) => x.slug === slug) || MARKETS[0];
+    const s = k.stat && marketStat(k.stat);
+    const rows = upcoming().map((m) => ({ m, t: k.get(m) })).sort((a, b) => b.t.p - a.t.p);
+    return `<div class="page-head"><h1>${k.title}</h1><p>Every upcoming match, most likely first. Probabilities come from the same scoreline distribution as every other market on the site.</p></div>
+      ${marketChips(k.slug)}
+      ${s ? `<div class="note"><strong>${pct(s.rate, 1)} landed</strong> on the holdout year — ${int(s.hits)} of ${int(s.n)} picks in this market (the model expected ${pct(s.avg_p, 1)}).</div>` : ''}
+      ${rows.length ? `<div class="table-wrap"><table><thead><tr><th>Match</th><th>Kick-off</th><th>Prediction</th><th class="r">Probability</th><th class="r">Fair odds</th><th></th></tr></thead><tbody>
+        ${rows.map(({ m, t }) => `<tr class="click" data-action="open" data-id="${m.id}"><td>${matchCell(m)}</td><td>${whenCell(m)}</td><td><strong>${esc(label(t.sel, m))}</strong></td>
+          <td class="r num">${pct(t.p, 1)}</td><td class="r num">${fair(t.p)}</td><td class="r">${addBtn(m, t.sel)}</td></tr>`).join('')}</tbody></table></div>`
+        : '<p class="empty">No upcoming fixtures in the feed right now.</p>'}`;
+  }
+
+  function viewLeagues() {
+    const counts = {};
+    upcoming().forEach((m) => { counts[m.div] = (counts[m.div] || 0) + 1; });
+    const leagues = state.res.backtest.by_league.slice().sort((a, b) => a.country.localeCompare(b.country) || a.league.localeCompare(b.league));
+    return `<div class="page-head"><h1>Leagues</h1><p>${leagues.length} leagues are modelled. Accuracy is the share of match-result picks that were right on the holdout year.</p></div>
+      <div class="tiles" style="margin-top:18px">${leagues.map((l) => `<a class="tile link" href="#/league/${l.div}"><h3>${esc(l.country)}</h3><b style="font-size:19px">${esc(l.league)}</b>
+        <p>${counts[l.div] ? `${counts[l.div]} upcoming` : 'No fixtures listed yet'} · ${pct(l.rate, 1)} accuracy on ${int(l.n)}</p><div class="meter"><i style="width:${l.rate * 100}%"></i></div></a>`).join('')}</div>`;
+  }
+
+  /* Ready-made accumulators: add the safest legs until the fair price reaches the target. */
+  const accaPool = () => upcoming().filter((m) => m.tips.SAFE && new Date(m.kickoff) - Date.now() < 72 * 36e5).sort((a, b) => b.tips.SAFE.p - a.tips.SAFE.p);
+  function buildAcca(pool, target) {
+    const legs = [];
+    let p = 1;
+    for (const m of pool) {
+      if (1 / p >= target) break;
+      legs.push(m);
+      p *= m.tips.SAFE.p;
+    }
+    return 1 / p >= target ? { legs, p } : null;
+  }
+
+  function viewPremium() {
+    const pool = accaPool();
+    const banker = pool[0];
+    const accas = [2, 3, 5].map((target) => ({ target, acca: buildAcca(pool, target) })).filter((x) => x.acca);
+    const head = `<div class="page-head"><span class="eyebrow">★ Members</span><h1>Premium</h1><p>The model's banker of the day and ready-made accumulators, built from its safest selections in the next three days.</p></div>`;
+    if (!auth.user) {
+      return `${head}<div class="lock">
+        <div class="lock-preview" aria-hidden="true"><div class="panel"><h3>Banker of the day</h3><p>•••••••• v •••••••• — ••% ••••• ••• •••••</p></div>
+          <div class="panel"><h3>2 odds accumulator</h3><p>• legs · ••% chance all land</p></div><div class="panel"><h3>5 odds accumulator</h3><p>• legs · ••% chance all land</p></div></div>
+        <div class="lock-card"><h2>Free for members</h2><p class="muted">Create an account to unlock Premium. It takes a minute and there is nothing to pay.</p>
+          <div class="hero-cta" style="justify-content:center"><button class="btn primary" data-action="auth-open" data-v="signup">Create free account</button><button class="btn" data-action="auth-open" data-v="signin">Sign in</button></div></div>
+      </div>`;
+    }
+    const s = marketStat('SAFE');
+    return `${head}
+      <div class="note">Signed in as <strong>${esc(displayName())}</strong>. Legs are safe tips, which landed ${pct(s.rate, 1)} of the time on the holdout year. Combined chances assume the matches are independent.</div>
+      ${banker ? `<div class="totd" data-action="open" data-id="${banker.id}" tabindex="0" style="margin-bottom:14px">
+        <span class="tag" style="background:none;padding:0">★ BANKER OF THE DAY · ${fmtDay(dayKey(banker.kickoff)).toUpperCase()} ${fmtTime(banker.kickoff)}</span>
+        <div class="teams">${esc(banker.home)} v ${esc(banker.away)}</div><div class="muted">${esc(banker.league)} · ${countdown(banker.kickoff)}</div>
+        <div class="big"><b>${pct(banker.tips.SAFE.p)}</b><span><strong>${esc(label(banker.tips.SAFE.sel, banker))}</strong><br><span class="muted">fair odds ${fair(banker.tips.SAFE.p)}</span></span></div></div>` : '<p class="empty">No selection clears the 80% bar in the next three days.</p>'}
+      <div class="tiles" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">${accas.map(({ target, acca }) => `<div class="panel"><h3>${target} odds accumulator</h3>
+        <p>${acca.legs.length} legs · ${pct(acca.p, 1)} chance all land · fair odds ${fair(acca.p)}</p>
+        <ul class="list">${acca.legs.map((m) => `<li><span><strong>${esc(label(m.tips.SAFE.sel, m))}</strong><br><span class="muted">${esc(m.home)} v ${esc(m.away)}</span></span><span class="num">${pct(m.tips.SAFE.p)}</span></li>`).join('')}</ul>
+        <button class="btn small" style="margin-top:12px" data-action="acca-load" data-v="${target}">Load into slip</button></div>`).join('')}</div>`;
+  }
+
+  /* ---------- navigation ---------- */
+  function renderNav() {
+    const days = [...new Set(upcoming().map((m) => dayKey(m.kickoff)))].slice(0, 8);
+    const byCountry = {};
+    state.res.backtest.by_league.forEach((l) => { (byCountry[l.country] ||= []).push(l); });
+    const dd = (name, key, body) => `<details class="dd" data-group="${key}"><summary>${name}</summary><div class="menu">${body}</div></details>`;
+    $('#nav').innerHTML = `<a href="#/" data-route="">Predictions</a>
+      ${dd('Markets', 'market', `${MARKETS.map((k) => `<a href="#/market/${k.slug}">${k.name}</a>`).join('')}<hr><a href="#/safe">Safe tips</a><a href="#/value">Model vs market</a>`)}
+      ${dd('By day', 'day', days.length ? days.map((d) => `<a href="#/day/${d}">${fmtDay(d)}</a>`).join('') : '<span class="muted">No fixtures listed</span>')}
+      ${dd('Leagues', 'league', `<div class="menu-cols">${Object.keys(byCountry).sort().map((c) => `<div><h4>${esc(c)}</h4>${byCountry[c].map((l) => `<a href="#/league/${l.div}">${esc(l.league)}</a>`).join('')}</div>`).join('')}</div><hr><a href="#/leagues">All leagues</a>`)}
+      <a href="#/results" data-route="results">Results</a>
+      <a href="#/model" data-route="model">Model</a>
+      <a href="#/premium" data-route="premium" class="premium">★ Premium</a>`;
+  }
+  const closeMenus = (except) => document.querySelectorAll('details.dd[open]').forEach((d) => { if (d !== except) d.open = false; });
+
+  /* ---------- accounts (Supabase Auth) ---------- */
+  const SUPABASE_CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js';
+  const cfg = window.GOALCAST_CONFIG || {};
+  const auth = { client: null, user: null, mode: 'signin', msg: null, busy: false };
+  const authEl = $('#auth');
+  const displayName = () => auth.user?.user_metadata?.display_name || auth.user?.email?.split('@')[0] || 'Member';
+  const redirectTo = () => location.origin + location.pathname;
+
+  function renderAccount() {
+    $('#account').innerHTML = auth.user
+      ? `<details class="dd right"><summary class="avatar" aria-label="Account menu">${esc(displayName()[0].toUpperCase())}</summary><div class="menu">
+          <span class="muted" style="padding:6px 10px;display:block">${esc(auth.user.email)}</span><hr><a href="#/premium">★ Premium</a><button data-action="sign-out">Sign out</button></div></details>`
+      : `<button class="btn primary" data-action="auth-open" data-v="signin">Sign in</button>`;
+  }
+
+  function openAuth(mode, keep = {}) {
+    auth.mode = mode || 'signin';
+    const m = auth.mode;
+    const titles = { signin: 'Sign in', signup: 'Create your account', reset: 'Reset your password', newpass: 'Choose a new password' };
+    const actions = { signin: 'Sign in', signup: 'Create account', reset: 'Email me a reset link', newpass: 'Save new password' };
+    const field = (name, lbl, type, extra = '') => `<label>${lbl}<input class="field" name="${name}" type="${type}" required ${extra}></label>`;
+    authEl.innerHTML = `<form id="auth-form" novalidate>
+      <div class="d-head" style="position:static;border:0;padding:0 0 4px;background:none"><h2>${titles[m]}</h2><button type="button" class="x" data-action="auth-close" aria-label="Close">×</button></div>
+      ${m === 'signin' || m === 'signup' ? `<div class="tabs" style="margin-bottom:6px"><button type="button" data-action="auth-open" data-v="signin" class="${m === 'signin' ? 'on' : ''}">Sign in</button><button type="button" data-action="auth-open" data-v="signup" class="${m === 'signup' ? 'on' : ''}">Create account</button></div>` : ''}
+      ${m === 'signup' ? field('name', 'Name', 'text', 'autocomplete="name" maxlength="60"') : ''}
+      ${m !== 'newpass' ? field('email', 'Email', 'email', 'autocomplete="email"') : ''}
+      ${m !== 'reset' ? field('password', m === 'newpass' ? 'New password' : 'Password', 'password', `autocomplete="${m === 'signin' ? 'current-password' : 'new-password'}"`) : ''}
+      ${m === 'signup' || m === 'newpass' ? '<p class="muted" style="font-size:12.5px;margin:0">At least 8 characters.</p>' : ''}
+      ${auth.msg ? `<p class="auth-msg ${auth.msg.ok ? 'ok' : 'err'}" role="alert">${esc(auth.msg.text)}</p>` : ''}
+      <button class="btn primary" type="submit" ${auth.busy ? 'disabled' : ''}>${auth.busy ? 'Please wait…' : actions[m]}</button>
+      ${m === 'signin' ? '<button type="button" class="linkish" data-action="auth-open" data-v="reset">Forgot your password?</button>' : ''}
+      ${m === 'reset' ? '<button type="button" class="linkish" data-action="auth-open" data-v="signin">Back to sign in</button>' : ''}
+      ${m === 'signup' ? '<p class="muted" style="font-size:12px;margin:0">18+ only. We store your email to sign you in and nothing else.</p>' : ''}
+    </form>`;
+    for (const name of ['name', 'email']) { const box = authEl.querySelector(`[name=${name}]`); if (box && keep[name]) box.value = keep[name]; }
+    if (!authEl.open) authEl.showModal();
+    authEl.querySelector('input')?.focus();
+  }
+
+  async function submitAuth(form) {
+    const v = Object.fromEntries(new FormData(form));
+    const valid = form.checkValidity();
+    const say = (text, ok = false) => { auth.msg = { text, ok }; auth.busy = false; openAuth(auth.mode, v); };
+    if (!auth.client) return say('Accounts are not switched on yet. The site owner needs to add the sign-in settings in config.js.');
+    if ((auth.mode === 'signup' || auth.mode === 'newpass') && v.password.length < 8) return say('Passwords need at least 8 characters.');
+    if (!valid) return say('Please fill in every field with a valid value.');
+    auth.busy = true; auth.msg = null; openAuth(auth.mode, v);
+    const a = auth.client.auth;
+    try {
+      if (auth.mode === 'signup') {
+        const { data, error } = await a.signUp({ email: v.email, password: v.password, options: { data: { display_name: v.name.trim() }, emailRedirectTo: redirectTo() } });
+        if (error) throw error;
+        if (!data.session) return say('Almost there: we sent a confirmation link to your email. Open it to finish creating your account.', true);
+      } else if (auth.mode === 'signin') {
+        const { error } = await a.signInWithPassword({ email: v.email, password: v.password });
+        if (error) throw error;
+      } else if (auth.mode === 'reset') {
+        const { error } = await a.resetPasswordForEmail(v.email, { redirectTo: redirectTo() });
+        if (error) throw error;
+        return say('If that email has an account, a reset link is on its way.', true);
+      } else {
+        const { error } = await a.updateUser({ password: v.password });
+        if (error) throw error;
+      }
+      auth.busy = false; auth.msg = null;
+      authEl.close();
+    } catch (err) {
+      say(err.message || 'Something went wrong. Please try again.');
+    }
+  }
+
+  async function initAuth() {
+    renderAccount();
+    if (!cfg.supabaseUrl || !cfg.supabaseAnonKey) return;
+    try {
+      if (!window.supabase) {
+        await new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = SUPABASE_CDN; s.onload = resolve; s.onerror = () => reject(new Error('could not load the sign-in library'));
+          document.head.append(s);
+        });
+      }
+      auth.client = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
+      auth.client.auth.onAuthStateChange((event, session) => {
+        auth.user = session?.user ?? null;
+        renderAccount();
+        if (state.pred) render(true);
+        if (event === 'PASSWORD_RECOVERY') { auth.msg = null; openAuth('newpass'); }
+      });
+    } catch (err) {
+      console.error('GoalCast accounts unavailable:', err);
+    }
+  }
+
   /* ---------- routing & events ---------- */
-  const routes = { '': viewMatches, safe: viewSafe, value: viewValue, results: viewResults, model: viewModel };
+  const routes = { '': viewMatches, safe: viewSafe, value: viewValue, results: viewResults, model: viewModel,
+    market: viewMarket, leagues: viewLeagues, premium: viewPremium, day: viewMatches, league: viewMatches };
+  const GROUPS = { market: 'market', safe: 'market', value: 'market', day: 'day', league: 'league', leagues: 'league' };
   function render(keepScroll) {
-    const route = location.hash.replace(/^#\/?/, '');
-    const view = routes[route] || viewMatches;
-    document.querySelectorAll('.nav a').forEach((a) => a.classList.toggle('on', a.dataset.route === (routes[route] ? route : '')));
+    let [route, arg] = location.hash.replace(/^#\/?/, '').split('/');
+    if (!routes[route]) route = '';
+    if (!keepScroll) {
+      // a fresh navigation sets the matches filters from the address
+      if (route === 'day') { state.day = arg; state.league = 'all'; }
+      else if (route === 'league') { state.league = arg; state.day = 'all'; }
+      else if (route === '') { state.day = 'all'; state.league = 'all'; }
+    }
+    document.querySelectorAll('#nav > a').forEach((a) => a.classList.toggle('on', a.dataset.route === route));
+    document.querySelectorAll('#nav details').forEach((d) => d.classList.toggle('on', d.dataset.group === GROUPS[route]));
     const y = scrollY;
-    app.innerHTML = view();
+    app.innerHTML = routes[route](arg);
     scrollTo(0, keepScroll ? y : 0);
     if (detailEl.open) openDetail(detailEl.dataset.id);
   }
@@ -331,6 +525,9 @@
   document.addEventListener('click', (e) => {
     const el = e.target.closest('[data-action]');
     if (e.target === detailEl) return detailEl.close();
+    if (e.target === authEl) return authEl.close();
+    closeMenus(e.target.closest('details.dd'));
+    if (e.target.closest('.menu a, #nav > a')) { closeMenus(); document.body.classList.remove('nav-open'); }
     if (!el) return;
     const { action, id, sel, v } = el.dataset;
     const rerender = () => render(true);
@@ -340,6 +537,16 @@
       case 'slip-clear': state.slip = []; store.set('gc-slip', []); renderSlip(); rerender(); break;
       case 'toggle-slip': slipEl.hidden = !slipEl.hidden; break;
       case 'open': openDetail(id); break;
+      case 'burger': document.body.classList.toggle('nav-open'); break;
+      case 'auth-open': auth.msg = null; openAuth(v); break;
+      case 'auth-close': authEl.close(); break;
+      case 'sign-out': auth.client?.auth.signOut(); break;
+      case 'acca-load': {
+        const acca = buildAcca(accaPool(), Number(v));
+        if (!acca) break;
+        state.slip = acca.legs.map((m) => ({ id: m.id, sel: m.tips.SAFE.sel, label: label(m.tips.SAFE.sel, m), match: `${m.home} v ${m.away}`, p: m.tips.SAFE.p }));
+        store.set('gc-slip', state.slip); renderSlip(); slipEl.hidden = false; rerender(); break;
+      }
       case 'to-matches': $('#matches').scrollIntoView(); break;
       case 'close-detail': detailEl.close(); break;
       case 'day': state.day = v; rerender(); break;
@@ -354,6 +561,11 @@
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && e.target.matches('[data-action="open"]')) openDetail(e.target.dataset.id);
+  });
+  document.addEventListener('submit', (e) => {
+    if (e.target.id !== 'auth-form') return;
+    e.preventDefault();
+    submitAuth(e.target);
   });
   document.addEventListener('change', (e) => {
     const key = e.target.dataset.change;
@@ -377,7 +589,9 @@
     state.slip = store.get('gc-slip', []).filter((x) => live.has(x.id));
     $('#foot-meta').textContent = `Updated ${new Date(pred.generated).toLocaleString()} · model ${pred.version}`;
     renderSlip();
+    renderNav();
     render(false);
+    initAuth();
     setInterval(() => { if (!detailEl.open && !document.activeElement?.matches('input, select')) render(true); }, 60000);
   }).catch((err) => {
     app.innerHTML = `<p class="empty">Could not load prediction data (${esc(err.message)}). Run <code>python -m ml.pipeline</code> and serve the <code>site</code> folder.</p>`;

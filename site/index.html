@@ -15,16 +15,12 @@
       <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M7 22l6-7 4 4 8-10" fill="none" stroke="var(--on-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>GoalCast</span>
     </a>
-    <nav class="nav" aria-label="Main">
-      <a href="#/" data-route="">Matches</a>
-      <a href="#/safe" data-route="safe">Safe tips</a>
-      <a href="#/value" data-route="value">Value</a>
-      <a href="#/results" data-route="results">Results</a>
-      <a href="#/model" data-route="model">Model</a>
-    </nav>
+    <nav class="nav" id="nav" aria-label="Main"></nav>
     <div class="top-actions">
       <button class="icon-btn" data-action="theme" aria-label="Switch colour theme" title="Switch theme">◐</button>
       <button class="btn slip-btn" data-action="toggle-slip">Slip <span class="count" id="slip-count">0</span></button>
+      <span id="account"></span>
+      <button class="icon-btn burger" data-action="burger" aria-label="Open menu">☰</button>
     </div>
   </div>
 </header>
@@ -33,6 +29,7 @@
 
 <aside class="slip" id="slip" aria-label="Accumulator slip" hidden></aside>
 <dialog class="detail" id="detail" aria-label="Match analysis"></dialog>
+<dialog class="auth" id="auth" aria-label="Account"></dialog>
 
 <footer class="foot">
   <div class="wrap">
@@ -40,6 +37,7 @@
     <p class="muted">Match data and odds: football-data.co.uk. Schedules: openfootball (public domain). <span id="foot-meta"></span></p>
   </div>
 </footer>
+<script src="config.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
