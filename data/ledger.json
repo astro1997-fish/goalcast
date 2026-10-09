@@ -13809,5 +13809,83 @@
    }
   },
   "score": null
+ },
+ "20261019-monza-cagliari": {
+  "id": "20261019-monza-cagliari",
+  "published": "2026-10-09T18:54:54Z",
+  "version": "20261009T185300Z",
+  "kickoff": "2026-10-19T16:30:00Z",
+  "date": "2026-10-19",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Monza",
+  "away": "Cagliari",
+  "probs": [
+   0.3906,
+   0.2965,
+   0.3128
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.3906
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6872
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5196
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5434
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.141
+   }
+  },
+  "score": null
+ },
+ "20261019-parma-torino": {
+  "id": "20261019-parma-torino",
+  "published": "2026-10-09T18:54:54Z",
+  "version": "20261009T185300Z",
+  "kickoff": "2026-10-19T18:45:00Z",
+  "date": "2026-10-19",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Parma",
+  "away": "Torino",
+  "probs": [
+   0.3396,
+   0.3122,
+   0.3482
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.3482
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6604
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5684
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5095
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.148
+   }
+  },
+  "score": null
  }
 }
