@@ -10,6 +10,7 @@ every result, wins and losses alike.
 | Path | What it does |
 | --- | --- |
 | `ml/data/` | Downloads results, shots and odds (football-data.co.uk) and season schedules (openfootball) |
+| `ml/data/players.py` | Top scorers and assists per league (ESPN public stats feed) |
 | `ml/features/build.py` | 46 pre-match features: Elo, rolling form, home/away splits, shots, rest, head-to-head |
 | `ml/training/train_match_result.py` | Trains and registers the models; out-of-time holdout evaluation |
 | `ml/markets.py` | One scoreline distribution per match; every market is read from it |

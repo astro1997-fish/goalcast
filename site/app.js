@@ -5,7 +5,7 @@
   const $ = (sel, root = document) => root.querySelector(sel);
   const app = $('#app'), slipEl = $('#slip'), detailEl = $('#detail');
   const state = {
-    pred: null, res: null, model: null,
+    pred: null, res: null, model: null, leagues: null,
     day: 'all', league: 'all', q: '', sort: 'time',
     resTab: 'backtest', resMarket: '1X2', resOutcome: 'all',
     slip: [],
@@ -343,13 +343,43 @@
         : '<p class="empty">No upcoming fixtures in the feed right now.</p>'}`;
   }
 
+  const leaderLine = (div) => { const t = state.leagues?.leagues?.[div]?.table?.[0]; return t ? `Leaders: <strong>${esc(t.team)}</strong> · ${t.pts} pts` : 'Season not started'; };
   function viewLeagues() {
     const counts = {};
     upcoming().forEach((m) => { counts[m.div] = (counts[m.div] || 0) + 1; });
     const leagues = state.res.backtest.by_league.slice().sort((a, b) => a.country.localeCompare(b.country) || a.league.localeCompare(b.league));
-    return `<div class="page-head"><h1>Leagues</h1><p>${leagues.length} leagues are modelled. Accuracy is the share of match-result picks that were right on the holdout year.</p></div>
+    return `<div class="page-head"><h1>Leagues</h1><p>Pick a league for its standings, top scorers, top assists and upcoming predictions. ${leagues.length} leagues are covered.</p></div>
       <div class="tiles" style="margin-top:18px">${leagues.map((l) => `<a class="tile link" href="#/league/${l.div}"><h3>${esc(l.country)}</h3><b style="font-size:19px">${esc(l.league)}</b>
-        <p>${counts[l.div] ? `${counts[l.div]} upcoming` : 'No fixtures listed yet'} · ${pct(l.rate, 1)} accuracy on ${int(l.n)}</p><div class="meter"><i style="width:${l.rate * 100}%"></i></div></a>`).join('')}</div>`;
+        <p>${leaderLine(l.div)}</p><p>${counts[l.div] ? `${counts[l.div]} upcoming` : 'No fixtures listed yet'} · ${pct(l.rate, 1)} model accuracy</p><div class="meter"><i style="width:${l.rate * 100}%"></i></div></a>`).join('')}</div>`;
+  }
+
+  function viewLeague(div) {
+    const all = state.leagues?.leagues || {};
+    const L = all[div];
+    if (!L) return viewLeagues();
+    const fixtures = upcoming().filter((m) => m.div === div);
+    const acc = state.res.backtest.by_league.find((l) => l.div === div);
+    const options = Object.entries(all).sort((a, b) => a[1].country.localeCompare(b[1].country) || a[1].tier - b[1].tier)
+      .map(([k, v]) => `<option value="${k}" ${k === div ? 'selected' : ''}>${esc(v.country)} · ${esc(v.league)}</option>`).join('');
+    const players = (rows, key, other, title, hint) => `<div class="panel"><h3>${title}</h3><p>${hint}</p>
+      ${rows.length ? `<div class="table-wrap flat"><table class="players"><thead><tr><th>#</th><th>Player</th><th class="r" title="Matches played">MP</th><th class="r">${key === 'goals' ? 'Goals' : 'Assists'}</th><th class="r">${other === 'goals' ? 'Goals' : 'Assists'}</th></tr></thead><tbody>
+        ${rows.map((p, i) => `<tr><td class="num muted">${i + 1}</td><td><strong>${esc(p.player)}</strong><br><span class="muted">${esc(p.team)}</span></td><td class="r num">${p.apps}</td><td class="r num"><strong>${p[key]}</strong></td><td class="r num muted">${p[other]}</td></tr>`).join('')}
+        </tbody></table></div>` : '<p class="muted">No player statistics available for this league yet.</p>'}</div>`;
+    return `<div class="page-head"><span class="eyebrow">${esc(L.country)} · ${esc(L.season)}</span><h1>${esc(L.league)}</h1>
+        <p>${L.table.length} clubs · ${fixtures.length ? `${fixtures.length} upcoming predictions` : 'no fixtures listed yet'}${acc ? ` · model picked the right result in ${pct(acc.rate, 1)} of ${int(acc.n)} holdout matches here` : ''}.</p></div>
+      <div class="filters" style="margin-top:16px"><select class="field" data-change-league aria-label="Switch league">${options}</select>
+        <div class="chips"><button class="chip" data-action="jump" data-v="league-table">Standings</button><button class="chip" data-action="jump" data-v="league-scorers">Top scorers</button><button class="chip" data-action="jump" data-v="league-assists">Top assists</button>${fixtures.length ? '<button class="chip" data-action="jump" data-v="league-fixtures">Fixtures</button>' : ''}</div></div>
+      <div class="section-head" id="league-table"><h2>Standings</h2></div>
+      ${L.table.length ? `<div class="table-wrap"><table class="standings"><thead><tr><th>#</th><th>Club</th><th class="r" title="Played">P</th><th class="r" title="Won">W</th><th class="r" title="Drawn">D</th><th class="r" title="Lost">L</th><th class="r" title="Goals for">GF</th><th class="r" title="Goals against">GA</th><th class="r" title="Goal difference">GD</th><th class="r">Pts</th><th>Form</th></tr></thead><tbody>
+        ${L.table.map((t) => `<tr><td class="num muted">${t.pos}</td><td><strong>${esc(t.team)}</strong></td><td class="r num">${t.p}</td><td class="r num">${t.w}</td><td class="r num">${t.d}</td><td class="r num">${t.l}</td><td class="r num">${t.gf}</td><td class="r num">${t.ga}</td><td class="r num">${t.gd > 0 ? '+' : ''}${t.gd}</td><td class="r num"><strong>${t.pts}</strong></td><td>${formDots(t.form)}</td></tr>`).join('')}
+        </tbody></table></div><p class="muted" style="font-size:13px">Calculated from match results: points, then goal difference, then goals scored. Points deductions and league-specific tie-breakers are not applied.</p>`
+        : '<p class="empty">No matches played yet this season.</p>'}
+      <div class="two" style="margin-top:8px">
+        <div id="league-scorers">${players(L.scorers, 'goals', 'assists', 'Top scorers', 'League goals this season.')}</div>
+        <div id="league-assists">${players(L.assists, 'assists', 'goals', 'Top assists', 'League assists this season.')}</div>
+      </div>
+      ${L.players_updated ? `<p class="muted" style="font-size:13px">Player statistics: ESPN, updated ${new Date(L.players_updated).toLocaleDateString()}.</p>` : ''}
+      ${fixtures.length ? `<div class="section-head" id="league-fixtures"><h2>Upcoming fixtures</h2></div><div class="grid">${fixtures.map(card).join('')}</div>` : ''}`;
   }
 
   /* Ready-made accumulators: add the safest legs until the fair price reaches the target. */
@@ -503,7 +533,7 @@
 
   /* ---------- routing & events ---------- */
   const routes = { '': viewMatches, safe: viewSafe, value: viewValue, results: viewResults, model: viewModel,
-    market: viewMarket, leagues: viewLeagues, premium: viewPremium, day: viewMatches, league: viewMatches };
+    market: viewMarket, leagues: viewLeagues, premium: viewPremium, day: viewMatches, league: viewLeague };
   const GROUPS = { market: 'market', safe: 'market', value: 'market', day: 'day', league: 'league', leagues: 'league' };
   function render(keepScroll) {
     let [route, arg] = location.hash.replace(/^#\/?/, '').split('/');
@@ -511,7 +541,6 @@
     if (!keepScroll) {
       // a fresh navigation sets the matches filters from the address
       if (route === 'day') { state.day = arg; state.league = 'all'; }
-      else if (route === 'league') { state.league = arg; state.day = 'all'; }
       else if (route === '') { state.day = 'all'; state.league = 'all'; }
     }
     document.querySelectorAll('#nav > a').forEach((a) => a.classList.toggle('on', a.dataset.route === route));
@@ -547,6 +576,7 @@
         state.slip = acca.legs.map((m) => ({ id: m.id, sel: m.tips.SAFE.sel, label: label(m.tips.SAFE.sel, m), match: `${m.home} v ${m.away}`, p: m.tips.SAFE.p }));
         store.set('gc-slip', state.slip); renderSlip(); slipEl.hidden = false; rerender(); break;
       }
+      case 'jump': document.getElementById(v)?.scrollIntoView(); break;
       case 'to-matches': $('#matches').scrollIntoView(); break;
       case 'close-detail': detailEl.close(); break;
       case 'day': state.day = v; rerender(); break;
@@ -568,6 +598,7 @@
     submitAuth(e.target);
   });
   document.addEventListener('change', (e) => {
+    if ('changeLeague' in e.target.dataset) { location.hash = `#/league/${e.target.value}`; return; }
     const key = e.target.dataset.change;
     if (key) { state[key] = e.target.value; render(true); }
   });
@@ -583,8 +614,8 @@
   /* ---------- boot ---------- */
   document.documentElement.dataset.theme = store.get('gc-theme', matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   const load = (name) => fetch(`data/${name}.json`, { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error(`${name}: ${r.status}`); return r.json(); });
-  Promise.all(['predictions', 'results', 'model'].map(load)).then(([pred, res, model]) => {
-    Object.assign(state, { pred, res, model });
+  Promise.all([...['predictions', 'results', 'model'].map(load), load('leagues').catch(() => null)]).then(([pred, res, model, leagues]) => {
+    Object.assign(state, { pred, res, model, leagues });
     const live = new Set(pred.matches.map((m) => m.id));
     state.slip = store.get('gc-slip', []).filter((x) => live.has(x.id));
     $('#foot-meta').textContent = `Updated ${new Date(pred.generated).toLocaleString()} · model ${pred.version}`;

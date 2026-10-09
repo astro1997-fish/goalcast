@@ -15,8 +15,9 @@ import numpy as np
 import pandas as pd
 
 from ml import markets, registry
-from ml.config import BACKTEST_PATH, LEAGUES, LEDGER_PATH, SITE_DATA_DIR
+from ml.config import BACKTEST_PATH, LEAGUES, LEDGER_PATH, SITE_DATA_DIR, current_season_start
 from ml.data.download import load_matches
+from ml.data.players import fetch_leaders
 from ml.features.build import build_features
 from ml.predict import Predictor
 
@@ -187,6 +188,44 @@ def export_model(version: str, matches: pd.DataFrame) -> dict:
                          "from": f"{played['date'].min():%Y-%m-%d}", "through": f"{played['date'].max():%Y-%m-%d}"}}
 
 
+def standings(played: pd.DataFrame) -> list[dict]:
+    """League table from results: points, then goal difference, then goals scored."""
+    table: dict[str, dict] = {}
+    for m in played.sort_values("date").itertuples(index=False):
+        hg, ag = int(m.fthg), int(m.ftag)
+        for team, gf, ga in ((m.home, hg, ag), (m.away, ag, hg)):
+            row = table.setdefault(team, {"team": team, "p": 0, "w": 0, "d": 0, "l": 0, "gf": 0, "ga": 0, "pts": 0, "form": []})
+            res = "W" if gf > ga else "D" if gf == ga else "L"
+            row["p"] += 1
+            row[res.lower()] += 1
+            row["gf"] += gf
+            row["ga"] += ga
+            row["pts"] += {"W": 3, "D": 1, "L": 0}[res]
+            row["form"] = (row["form"] + [res])[-5:]
+    rows = sorted(table.values(), key=lambda r: (-r["pts"], -(r["gf"] - r["ga"]), -r["gf"], r["team"]))
+    return [{"pos": i + 1, **r, "gd": r["gf"] - r["ga"]} for i, r in enumerate(rows)]
+
+
+def export_leagues(matches: pd.DataFrame, generated: str) -> dict:
+    """Standings (from our results) and top scorers / assists (from ESPN) per league."""
+    path = SITE_DATA_DIR / "leagues.json"
+    previous = json.loads(path.read_text(encoding="utf-8")).get("leagues", {}) if path.exists() else {}
+    season = current_season_start()
+    played = matches[matches["played"] & (matches["season"] == season)]
+    out = {}
+    for div, (league, country, tier) in LEAGUES.items():
+        leaders = fetch_leaders(div)
+        old = previous.get(div, {})
+        out[div] = {
+            "league": league, "country": country, "tier": tier, "season": f"{season}/{(season + 1) % 100:02d}",
+            "table": standings(played[played["div"] == div]),
+            "scorers": leaders["scorers"] if leaders else old.get("scorers", []),
+            "assists": leaders["assists"] if leaders else old.get("assists", []),
+            "players_updated": generated if leaders else old.get("players_updated"),
+        }
+    return out
+
+
 def export() -> None:
     SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
     pred = Predictor()
@@ -199,6 +238,7 @@ def export() -> None:
         "predictions": {"generated": generated, "version": pred.version, "labels": markets.LABELS, "matches": predictions},
         "results": {"generated": generated, **export_results(ledger)},
         "model": {"generated": generated, **export_model(pred.version, matches)},
+        "leagues": {"generated": generated, "leagues": export_leagues(matches, generated)},
     }
     for name, payload in payloads.items():
         (SITE_DATA_DIR / f"{name}.json").write_text(json.dumps(payload, separators=(",", ":")), encoding="utf-8")

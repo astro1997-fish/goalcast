@@ -252,3 +252,12 @@ dialog.auth::backdrop { background: rgba(0, 0, 0, .6); }
   .nav a.premium { margin: 8px 0 0; text-align: center; }
   .slip-btn { padding: 8px 10px; }
 }
+
+/* league pages */
+.standings td, .standings th, .players td, .players th { padding: 9px 12px; }
+.standings td:nth-child(2), .players td:nth-child(2) { white-space: normal; min-width: 150px; }
+.table-wrap.flat { border: 0; border-radius: 0; background: none; }
+.players td:first-child, .players th:first-child { padding-left: 0; }
+.players td:last-child, .players th:last-child { padding-right: 0; }
+.section-head[id], #league-scorers, #league-assists { scroll-margin-top: 76px; }
+.tile.link p + p { margin-top: 0; }
