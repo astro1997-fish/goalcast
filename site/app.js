@@ -619,6 +619,30 @@
     }
   }
 
+  /* ---------- social & support links ---------- */
+  const ICONS = {
+    x: '<path d="M18.9 2H22l-7.2 8.3L23 22h-6.6l-5.1-6.7L5.4 22H2.3l7.7-8.8L1.5 2h6.7l4.6 6.2L18.9 2zm-1.1 18h1.8L7.2 3.9H5.3L17.8 20z"/>',
+    telegram: '<path d="M21.9 4.3 18.7 19.6c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9-8.1c.4-.3-.1-.5-.6-.2L6.2 13.3l-4.8-1.5c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.6.2 1.4 1.3z"/>',
+    whatsapp: '<path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-2.9-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/><path d="M9.2 7.4 10.3 9.6 9.4 10.6C10.1 11.9 11.1 12.9 12.4 13.6L13.4 12.7 15.6 13.8C15.7 15 14.7 16 13.5 15.9 10.4 15.6 7.4 12.6 7.1 9.5 7 8.3 8 7.3 9.2 7.4Z"/>',
+  };
+  const handle = (v) => String(v || '').trim().replace(/^@/, '');
+  const linkFor = {
+    x: (v) => (/^https:\/\//.test(v) ? v : `https://x.com/${encodeURIComponent(handle(v))}`),
+    telegram: (v) => (/^https:\/\//.test(v) ? v : `https://t.me/${encodeURIComponent(handle(v))}`),
+    whatsapp: (v) => (/^https:\/\//.test(v) ? v : `https://wa.me/${String(v).replace(/\D/g, '')}`),
+  };
+  function renderFootLinks() {
+    const links = window.GOALCAST_LINKS || {};
+    const item = (kind, value, text) => {
+      const icon = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">${ICONS[kind]}</svg>`;
+      return String(value || '').trim()
+        ? `<a class="social" href="${esc(linkFor[kind](String(value).trim()))}" target="_blank" rel="noopener">${icon}<span>${text}</span></a>`
+        : `<span class="social off" title="Link coming soon">${icon}<span>${text}<small>coming soon</small></span></span>`;
+    };
+    $('#foot-links').innerHTML = `<div><h4>Follow GoalCast</h4><div class="social-row">${item('x', links.x, 'X')}${item('telegram', links.telegramChannel, 'Telegram channel')}</div></div>
+      <div><h4>Contact support</h4><div class="social-row">${item('whatsapp', links.whatsapp, 'WhatsApp')}${item('telegram', links.telegramSupport, 'Telegram')}</div></div>`;
+  }
+
   /* ---------- routing & events ---------- */
   const routes = { '': viewMatches, safe: viewSafe, value: viewValue, results: viewResults, model: viewModel,
     market: viewMarket, leagues: viewLeagues, premium: viewPremium, day: viewMatches, league: viewLeague, blog: viewBlog, intl: viewIntl };
@@ -701,6 +725,7 @@
   addEventListener('hashchange', () => render(false));
 
   /* ---------- boot ---------- */
+  renderFootLinks();
   document.documentElement.dataset.theme = store.get('gc-theme', matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   const load = (name) => fetch(`data/${name}.json`, { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error(`${name}: ${r.status}`); return r.json(); });
   Promise.all([...['predictions', 'results', 'model'].map(load), ...['leagues', 'blog', 'sponsors'].map((n) => load(n).catch(() => null))]).then(([pred, res, model, leagues, blog, sponsors]) => {

@@ -6,3 +6,16 @@ window.GOALCAST_CONFIG = {
   supabaseUrl: '',
   supabaseAnonKey: '',
 };
+
+/* Social and support links shown in the footer.
+   Fill in a username, a phone number or a full link; anything left empty shows as "coming soon".
+     x:               your X handle, e.g. 'goalcast' (or a full https://x.com/... link)
+     telegramChannel: your Telegram channel, e.g. 'goalcast_tips'
+     whatsapp:        support phone number with country code, digits only, e.g. '2348012345678'
+     telegramSupport: the Telegram account that answers support messages, e.g. 'goalcast_help' */
+window.GOALCAST_LINKS = {
+  x: '',
+  telegramChannel: '',
+  whatsapp: '',
+  telegramSupport: '',
+};
