@@ -242,6 +242,11 @@
         <div class="panel"><h3>What drives a prediction</h3><p>Share of the match-result model's total gain, top ${x.importance.length} of 46 inputs.</p>
           ${x.importance.map((f) => `<div class="hbar"><span class="num">${esc(f.feature)}</span><div><i style="width:${(f.gain / maxGain) * 100}%"></i></div><span class="num">${pct(f.gain, 1)}</span></div>`).join('')}</div>
       </div>
+      ${m.intl && Object.keys(m.intl).length ? `<div class="section-head"><h2>International models</h2></div>
+      <div class="table-wrap"><table class="compare"><thead><tr><th>Model</th><th>Holdout matches</th><th>1X2 accuracy</th><th>Log loss ↓</th><th>Base-rate accuracy</th><th>Base-rate log loss</th></tr></thead><tbody>
+        ${Object.values(m.intl).map((f) => `<tr><td><strong>${esc(f.label)}</strong></td><td>${int(f.model.n)}</td><td class="best">${pct(f.model.accuracy, 1)}</td><td class="best">${f.model.log_loss.toFixed(4)}</td><td>${pct(f.base_rate.accuracy, 1)}</td><td>${f.base_rate.log_loss.toFixed(4)}</td></tr>`).join('')}
+      </tbody></table></div>
+      <p class="muted" style="font-size:13px">Separate models for national teams and for continental club cups, built on ratings, recent form and head-to-head from international matches only. No odds data is available for these, so they are compared with a base-rate guess rather than with bookmakers.</p>` : ''}
       <div class="section-head"><h2>Version history</h2></div>
       <div class="table-wrap"><table class="compare"><thead><tr><th>Version</th><th>Holdout matches</th><th>Accuracy</th><th>Log loss</th><th>Market log loss</th></tr></thead><tbody>
         ${m.history.map((h) => `<tr><td class="num"><strong>${h.version}</strong>${h.version === m.version ? ' <span class="badge won">active</span>' : ''}</td><td>${int(h.n_test)}</td><td>${pct(h.accuracy, 1)}</td><td>${h.log_loss.toFixed(4)}</td><td>${h.bookmaker_log_loss.toFixed(4)}</td></tr>`).join('')}
@@ -281,7 +286,7 @@
           <div class="panel"><h3>Likeliest scores</h3><p>Even the top score is a long shot.</p>
             ${m.scores.map((x) => `<div class="hbar" style="grid-template-columns:44px 1fr 48px"><strong class="num">${x.s}</strong><div><i style="width:${(x.p / m.scores[0].p) * 100}%"></i></div><span class="num">${pct(x.p, 1)}</span></div>`).join('')}</div>
         </div>
-        <div class="panel"><h3>Head to head on the numbers</h3><p>Averages over each side's last ten league matches unless stated.</p>
+        <div class="panel"><h3>Head to head on the numbers</h3><p>Averages over each side's last ten ${m.intl ? 'international' : 'league'} matches unless stated.</p>
           <div class="vs"><span class="l">${esc(m.home)}</span><span class="c"></span><span class="rr">${esc(m.away)}</span>
             ${vsRow('Elo rating', c.elo?.h, c.elo?.a)}${vsRow('Points / game', c.stats.h.ppg, c.stats.a.ppg)}${vsRow('Goals for', c.stats.h.gf, c.stats.a.gf)}
             ${vsRow('Goals against', c.stats.h.ga, c.stats.a.ga)}${vsRow('Shots on target (last 5)', c.stats.h.sot, c.stats.a.sot)}${vsRow('Season points / game', c.stats.h.season_ppg, c.stats.a.season_ppg)}${vsRow('Days since last match', c.rest.h, c.rest.a)}</div></div>
@@ -315,6 +320,30 @@
     store.set('gc-slip', state.slip);
     renderSlip();
     if (!same) slipEl.hidden = false;
+  }
+
+  /* ---------- international ---------- */
+  const REGIONS = { europe: 'Europe', africa: 'Africa', 'north-america': 'North America' };
+  const regionSlug = (name) => Object.keys(REGIONS).find((k) => REGIONS[k] === name);
+
+  function viewIntl(slug) {
+    const region = REGIONS[slug] ? slug : 'europe';
+    const name = REGIONS[region];
+    const fixtures = upcoming().filter((m) => m.intl && m.country === name);
+    const record = state.res.intl?.regions?.[name];
+    const comps = [...new Set(fixtures.map((m) => m.league))];
+    const dummy = (x) => ({ home: x.home, away: x.away });
+    return `<div class="page-head"><span class="eyebrow">International</span><h1>${name}</h1>
+        <p>Continental club competitions and national-team matches. These use two separate models trained only on international results, so they are less precise than the league predictions and have no bookmaker comparison.</p></div>
+      <div class="chips" style="margin:16px 0">${Object.entries(REGIONS).map(([k, v]) => `<a class="chip ${k === region ? 'on' : ''}" href="#/intl/${k}">${v}</a>`).join('')}</div>
+      ${record ? `<div class="note"><strong>${pct(record.rate, 1)} of match-result picks were right</strong> across ${int(record.n)} ${name} internationals in the last year, none of which the models had seen.</div>` : ''}
+      ${fixtures.length ? comps.map((c) => `<h3 class="day-label">${esc(c)} · ${fixtures.filter((m) => m.league === c).length} matches</h3><div class="grid">${fixtures.filter((m) => m.league === c).map(card).join('')}</div>`).join('')
+        : '<p class="empty">No international fixtures here in the next ten days. Matches appear automatically as each round or international window approaches.</p>'}
+      ${record ? `<div class="section-head"><h2>Recent results</h2></div>
+        <div class="table-wrap"><table><thead><tr><th>Date</th><th>Match</th><th>Score</th><th>Prediction</th><th class="r">Probability</th><th>Result</th></tr></thead><tbody>
+        ${record.rows.slice(0, 40).map((x) => { const t = x.tips['1X2']; return `<tr><td class="num">${x.date}</td><td><strong>${esc(x.home)} v ${esc(x.away)}</strong><br><span class="muted">${esc(x.league)}</span></td>
+          <td class="num"><strong>${x.score}</strong></td><td>${esc(label(t.sel, dummy(x)))}</td><td class="r num">${pct(t.p, 1)}</td><td><span class="badge ${t.won ? 'won' : 'lost'}">${t.won ? 'Won' : 'Lost'}</span></td></tr>`; }).join('')}
+        </tbody></table></div><p class="muted" style="font-size:13px">Holdout matches: predicted by a model trained only on earlier results.</p>` : ''}`;
   }
 
   /* ---------- blog & sponsors ---------- */
@@ -404,7 +433,10 @@
     const leagues = state.res.backtest.by_league.slice().sort((a, b) => a.country.localeCompare(b.country) || a.league.localeCompare(b.league));
     return `<div class="page-head"><h1>Leagues</h1><p>Pick a league for its standings, top scorers, top assists and upcoming predictions. ${leagues.length} leagues are covered.</p></div>
       <div class="tiles" style="margin-top:18px">${leagues.map((l) => `<a class="tile link" href="#/league/${l.div}"><h3>${esc(l.country)}</h3><b style="font-size:19px">${esc(l.league)}</b>
-        <p>${leaderLine(l.div)}</p><p>${counts[l.div] ? `${counts[l.div]} upcoming` : 'No fixtures listed yet'} · ${pct(l.rate, 1)} model accuracy</p><div class="meter"><i style="width:${l.rate * 100}%"></i></div></a>`).join('')}</div>`;
+        <p>${leaderLine(l.div)}</p><p>${counts[l.div] ? `${counts[l.div]} upcoming` : 'No fixtures listed yet'} · ${pct(l.rate, 1)} model accuracy</p><div class="meter"><i style="width:${l.rate * 100}%"></i></div></a>`).join('')}</div>
+      <div class="section-head"><h2>International</h2></div>
+      <div class="tiles">${Object.entries(REGIONS).map(([k, v]) => { const n = upcoming().filter((m) => m.intl && m.country === v).length; const r = state.res.intl?.regions?.[v];
+        return `<a class="tile link" href="#/intl/${k}"><h3>Club cups and national teams</h3><b style="font-size:19px">${v}</b><p>${n ? `${n} upcoming` : 'No fixtures listed yet'}${r ? ` · ${pct(r.rate, 1)} model accuracy` : ''}</p></a>`; }).join('')}</div>`;
   }
 
   function viewLeague(div) {
@@ -485,6 +517,7 @@
       ${dd('Markets', 'market', `${MARKETS.map((k) => `<a href="#/market/${k.slug}">${k.name}</a>`).join('')}<hr><a href="#/safe">Safe tips</a><a href="#/value">Model vs market</a>`)}
       ${dd('By day', 'day', days.length ? days.map((d) => `<a href="#/day/${d}">${fmtDay(d)}</a>`).join('') : '<span class="muted">No fixtures listed</span>')}
       ${dd('Leagues', 'league', `<div class="menu-cols">${Object.keys(byCountry).sort().map((c) => `<div><h4>${esc(c)}</h4>${byCountry[c].map((l) => `<a href="#/league/${l.div}">${esc(l.league)}</a>`).join('')}</div>`).join('')}</div><hr><a href="#/leagues">All leagues</a>`)}
+      ${dd('International', 'intl', Object.entries(REGIONS).map(([k, v]) => `<a href="#/intl/${k}">${v}</a>`).join(''))}
       <a href="#/results" data-route="results">Results</a>
       <a href="#/model" data-route="model">Model</a>
       <a href="#/blog" data-route="blog">Blog</a>
@@ -588,8 +621,8 @@
 
   /* ---------- routing & events ---------- */
   const routes = { '': viewMatches, safe: viewSafe, value: viewValue, results: viewResults, model: viewModel,
-    market: viewMarket, leagues: viewLeagues, premium: viewPremium, day: viewMatches, league: viewLeague, blog: viewBlog };
-  const GROUPS = { market: 'market', safe: 'market', value: 'market', day: 'day', league: 'league', leagues: 'league' };
+    market: viewMarket, leagues: viewLeagues, premium: viewPremium, day: viewMatches, league: viewLeague, blog: viewBlog, intl: viewIntl };
+  const GROUPS = { market: 'market', safe: 'market', value: 'market', day: 'day', league: 'league', leagues: 'league', intl: 'intl' };
   function render(keepScroll) {
     let [route, arg] = location.hash.replace(/^#\/?/, '').split('/');
     if (!routes[route]) route = '';

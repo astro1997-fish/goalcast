@@ -35,6 +35,14 @@ def _odds(row) -> dict[str, float]:
     return {"1": row.odds_h, "X": row.odds_d, "2": row.odds_a, "O2.5": row.odds_o25, "U2.5": row.odds_u25}
 
 
+def league_info(div: str) -> tuple[str, str]:
+    """(competition name, country or region) for a league code or an international competition code."""
+    if div in LEAGUES:
+        return LEAGUES[div][0], LEAGUES[div][1]
+    from ml.intl.config import COMPETITIONS
+    return COMPETITIONS[div][0], COMPETITIONS[div][1]
+
+
 def analyse(row) -> dict:
     """Everything derived from one match's scoreline distribution."""
     m = markets.score_matrix(row.lam_h, row.lam_a, row.p_h, row.p_d, row.p_a)
@@ -104,7 +112,7 @@ def export_predictions(pred: Predictor, matches: pd.DataFrame, feats: pd.DataFra
         s = a["sels"]
         f = feats.loc[matches.index[matches["id"] == row.id][0]]
         imp = markets.implied(row.odds_h, row.odds_d, row.odds_a)
-        league, country, _ = LEAGUES[row.div]
+        league, country = league_info(row.div)
         out.append({
             "id": row.id, "div": row.div, "league": league, "country": country, "kickoff": row.kickoff,
             "home": row.home, "away": row.away,
@@ -131,14 +139,22 @@ def update_ledger(predictions: list[dict], matches: pd.DataFrame, version: str) 
     for p in predictions:
         # first publication wins: a logged prediction is never revised
         if p["id"] not in ledger and p["kickoff"] > now:
-            ledger[p["id"]] = {"id": p["id"], "published": now, "version": version, "kickoff": p["kickoff"], "date": p["kickoff"][:10],
+            ledger[p["id"]] = {"id": p["id"], "published": now, "version": p.get("version", version), "kickoff": p["kickoff"], "date": p["kickoff"][:10],
                                "div": p["div"], "league": p["league"], "home": p["home"], "away": p["away"],
                                "probs": [p["probs"]["h"], p["probs"]["d"], p["probs"]["a"]], "tips": p["tips"], "score": None}
-    done = matches[matches["played"]].set_index("id")
+    done = matches[matches["played"]].drop_duplicates(subset=["id"]).set_index("id")
+    # sources disagree on the date of late kick-offs, so also match on the two teams within two days
+    recent = done[done["date"] >= pd.Timestamp.now().normalize() - pd.Timedelta(days=45)]
+    by_teams = {}
+    for r in recent.itertuples():
+        by_teams.setdefault((r.home, r.away), []).append(r)
     for entry in ledger.values():
-        if entry["score"] is None and entry["id"] in done.index:
-            r = done.loc[entry["id"]]
-            hg, ag = int(r["fthg"]), int(r["ftag"])
+        if entry["score"] is not None:
+            continue
+        r = done.loc[entry["id"]] if entry["id"] in done.index else next(
+            (c for c in by_teams.get((entry["home"], entry["away"]), []) if abs((c.date - pd.Timestamp(entry["date"])).days) <= 2), None)
+        if r is not None:
+            hg, ag = int(r.fthg), int(r.ftag)
             entry["score"] = f"{hg}-{ag}"
             for market, tip in entry["tips"].items():
                 tip["won"] = bool(won(market, tip["sel"], hg, ag))
@@ -232,12 +248,22 @@ def export() -> None:
     matches = load_matches()
     feats, context = build_features(matches)
     predictions = export_predictions(pred, matches, feats, context)
-    ledger = update_ledger(predictions, matches, pred.version)
+    settled = matches[["id", "date", "home", "away", "fthg", "ftag", "played"]]
+    intl = {}
+    try:
+        from ml.intl.export import intl_model, intl_predictions, intl_results
+        intl_preds, intl_played = intl_predictions()
+        predictions = sorted(predictions + intl_preds, key=lambda p: p["kickoff"])
+        settled = pd.concat([settled, intl_played.assign(played=True)], ignore_index=True)
+        intl = {"results": intl_results(), "model": intl_model()}
+    except FileNotFoundError as err:
+        print(f"international predictions skipped: {err}")
+    ledger = update_ledger(predictions, settled, pred.version)
     generated = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     payloads = {
         "predictions": {"generated": generated, "version": pred.version, "labels": markets.LABELS, "matches": predictions},
-        "results": {"generated": generated, **export_results(ledger)},
-        "model": {"generated": generated, **export_model(pred.version, matches)},
+        "results": {"generated": generated, **export_results(ledger), "intl": intl.get("results")},
+        "model": {"generated": generated, **export_model(pred.version, matches), "intl": intl.get("model")},
         "leagues": {"generated": generated, "leagues": export_leagues(matches, generated)},
     }
     for name, payload in payloads.items():

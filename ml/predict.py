@@ -13,25 +13,26 @@ from ml.config import MODELS_DIR, ROOT
 MODEL_NAMES = ("match_result", "home_goals", "away_goals")
 
 
-def latest_version() -> str:
-    row = registry.latest_version("match_result")
+def latest_version(model_name: str = "match_result") -> str:
+    row = registry.latest_version(model_name)
     if row:
         return row["version"]
-    files = sorted(MODELS_DIR.glob("match_result_*Z.json"))
+    files = sorted(MODELS_DIR.glob(f"{model_name}_*Z.json"))
     if not files:
-        raise FileNotFoundError("no trained model: run `python -m ml.training.train_match_result`")
-    return files[-1].stem.removeprefix("match_result_")
+        raise FileNotFoundError(f"no trained {model_name} model: run `python -m ml.pipeline`")
+    return files[-1].stem.removeprefix(f"{model_name}_")
 
 
 class Predictor:
-    def __init__(self, version: str | None = None):
-        self.version = version or latest_version()
+    def __init__(self, version: str | None = None, prefix: str = ""):
+        """``prefix`` selects a model family, e.g. ``"nations_"`` or ``"clubs_"``; empty is the league model."""
+        self.version = version or latest_version(f"{prefix}match_result")
         self.boosters, self.scalers = {}, {}
         for name in MODEL_NAMES:
             booster = xgb.Booster()
-            booster.load_model(ROOT / "ml" / "models" / f"{name}_{self.version}.json")
+            booster.load_model(ROOT / "ml" / "models" / f"{prefix}{name}_{self.version}.json")
             self.boosters[name] = booster
-            self.scalers[name] = json.loads((MODELS_DIR / f"{name}_{self.version}_scaler.json").read_text())
+            self.scalers[name] = json.loads((MODELS_DIR / f"{prefix}{name}_{self.version}_scaler.json").read_text())
 
     def _run(self, name: str, feats: pd.DataFrame) -> np.ndarray:
         s = self.scalers[name]
