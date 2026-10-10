@@ -13965,5 +13965,87 @@
    }
   },
   "score": null
+ },
+ "20261020-fenerbahce-slaviaprague": {
+  "id": "20261020-fenerbahce-slaviaprague",
+  "published": "2026-10-10T17:57:34Z",
+  "version": "20261010T175627Z",
+  "kickoff": "2026-10-20T16:45:00Z",
+  "date": "2026-10-20",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Fenerbahce",
+  "away": "Slavia Prague",
+  "probs": [
+   0.6932,
+   0.1472,
+   0.1597
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6932
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8403
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5933
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5036
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1178
+   },
+   "SAFE": {
+    "sel": "12",
+    "p": 0.8528
+   }
+  },
+  "score": null
+ },
+ "20261020-sabahfk-borussiadortmund": {
+  "id": "20261020-sabahfk-borussiadortmund",
+  "published": "2026-10-10T17:57:34Z",
+  "version": "20261010T175627Z",
+  "kickoff": "2026-10-20T16:45:00Z",
+  "date": "2026-10-20",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Sabah FK",
+  "away": "Borussia Dortmund",
+  "probs": [
+   0.2459,
+   0.2024,
+   0.5517
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.5517
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7541
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5492
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5457
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.1136
+   }
+  },
+  "score": null
  }
 }
