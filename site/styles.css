@@ -239,7 +239,7 @@ dialog.auth::backdrop { background: rgba(0, 0, 0, .6); }
 .lock-card { position: absolute; inset: 0; margin: auto; height: fit-content; width: min(440px, 100%); text-align: center; background: var(--surface); border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); border-radius: 18px; padding: 26px 22px; box-shadow: var(--shadow); }
 .lock-card h2 { font-size: 24px; font-weight: 800; }
 
-@media (max-width: 1020px) {
+@media (max-width: 1320px) {
   .burger { display: block; }
   .brand span { display: none; }
   .nav { display: none; position: fixed; top: 60px; left: 0; right: 0; bottom: 0; flex-direction: column; align-items: stretch; gap: 2px; padding: 12px 16px 40px; background: var(--bg); overflow-y: auto; z-index: 25; }
@@ -312,3 +312,12 @@ dialog.auth::backdrop { background: rgba(0, 0, 0, .6); }
 a.social:hover { border-color: var(--accent); color: var(--accent); }
 .social.off { color: var(--muted); border-style: dashed; cursor: default; }
 .social small { display: block; font-size: 11px; font-weight: 500; }
+
+/* logo */
+.brand { gap: 10px; color: var(--text); }
+.brand-mark { flex: none; }
+.brand-word { display: block; width: auto; }
+@media (max-width: 560px) { .brand-word { display: none; } }
+.top .wrap { max-width: 1360px; }
+.top-actions .btn, .nav > a { white-space: nowrap; }
+.top-actions { flex: none; }
