@@ -13887,5 +13887,83 @@
    }
   },
   "score": null
+ },
+ "20261019-tottenham-coventry": {
+  "id": "20261019-tottenham-coventry",
+  "published": "2026-10-10T11:16:03Z",
+  "version": "20261010T111457Z",
+  "kickoff": "2026-10-19T19:00:00Z",
+  "date": "2026-10-19",
+  "div": "E0",
+  "league": "Premier League",
+  "home": "Tottenham",
+  "away": "Coventry",
+  "probs": [
+   0.4443,
+   0.2811,
+   0.2747
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4443
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7253
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5078
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5415
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1336
+   }
+  },
+  "score": null
+ },
+ "20261019-getafe-vallecano": {
+  "id": "20261019-getafe-vallecano",
+  "published": "2026-10-10T11:16:03Z",
+  "version": "20261010T111457Z",
+  "kickoff": "2026-10-19T19:00:00Z",
+  "date": "2026-10-19",
+  "div": "SP1",
+  "league": "La Liga",
+  "home": "Getafe",
+  "away": "Vallecano",
+  "probs": [
+   0.3801,
+   0.2971,
+   0.3228
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.3801
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6772
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5053
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5588
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.141
+   }
+  },
+  "score": null
  }
 }
