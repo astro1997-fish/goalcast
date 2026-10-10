@@ -634,13 +634,13 @@
   function renderFootLinks() {
     const links = window.GOALCAST_LINKS || {};
     const item = (kind, value, text) => {
-      const icon = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">${ICONS[kind]}</svg>`;
+      const icon = `<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">${ICONS[kind]}</svg>`;
       return String(value || '').trim()
-        ? `<a class="social" href="${esc(linkFor[kind](String(value).trim()))}" target="_blank" rel="noopener">${icon}<span>${text}</span></a>`
-        : `<span class="social off" title="Link coming soon">${icon}<span>${text}<small>coming soon</small></span></span>`;
+        ? `<a class="social" href="${esc(linkFor[kind](String(value).trim()))}" target="_blank" rel="noopener" aria-label="${text}" title="${text}">${icon}</a>`
+        : `<span class="social off" role="img" aria-label="${text} (coming soon)" title="${text}: coming soon">${icon}</span>`;
     };
     $('#foot-links').innerHTML = `<div><h4>Follow GoalCast</h4><div class="social-row">${item('x', links.x, 'X')}${item('telegram', links.telegramChannel, 'Telegram channel')}</div></div>
-      <div><h4>Contact support</h4><div class="social-row">${item('whatsapp', links.whatsapp, 'WhatsApp')}${item('telegram', links.telegramSupport, 'Telegram')}</div></div>`;
+      <div><h4>Contact support</h4><div class="social-row">${item('whatsapp', links.whatsapp, 'WhatsApp support')}${item('telegram', links.telegramSupport, 'Telegram support')}</div></div>`;
   }
 
   /* ---------- routing & events ---------- */
