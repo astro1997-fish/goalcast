@@ -43,6 +43,7 @@ def load(name: str) -> dict:
 
 
 PRED, RES, MODEL, LEAGUES, BLOG = load("predictions"), load("results"), load("model"), load("leagues").get("leagues", {}), load("blog")
+STATIC_PAGES = load("pages").get("pages", [])
 NOW = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 UPCOMING = [m for m in PRED.get("matches", []) if m["kickoff"] > NOW]
 POSTS = [p for p in BLOG.get("posts", []) if p["date"] <= date.today().isoformat()]
@@ -180,6 +181,11 @@ def page_post(post):
     return f"{post['title']} | GoalCast", post["summary"] or post["title"], body, extra
 
 
+def page_static(p):
+    body = (f'<article class="post"><h1>{e(p["title"])}</h1><p class="muted">Last updated {p["updated"]}</p><div class="prose">{p["html"]}</div></article>')
+    return f"{p['title']} | GoalCast", p["summary"] or p["title"], body, ""
+
+
 def routes() -> dict[str, tuple]:
     pages = {"": page_home(), "safe": page_safe(), "value": page_value(), "results": page_results(), "model": page_model(),
              "premium": page_premium(), "leagues": page_leagues(), "blog": page_blog()}
@@ -187,6 +193,7 @@ def routes() -> dict[str, tuple]:
     pages.update({f"league/{div}": page_league(div) for div in LEAGUES})
     pages.update({f"intl/{slug}": page_intl(slug) for slug in REGIONS})
     pages.update({f"blog/{p['slug']}": page_post(p) for p in POSTS})
+    pages.update({p["slug"]: page_static(p) for p in STATIC_PAGES})
     return pages
 
 

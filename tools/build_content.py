@@ -18,6 +18,7 @@ import markdown
 
 ROOT = Path(__file__).resolve().parent.parent
 BLOG_DIR = ROOT / "content" / "blog"
+PAGES_DIR = ROOT / "content" / "pages"
 SPONSORS_PATH = ROOT / "content" / "sponsors.json"
 OUT_DIR = ROOT / "site" / "data"
 
@@ -92,6 +93,21 @@ def build_blog() -> list[dict]:
     return sorted(posts, key=lambda p: (p["date"], p["slug"]), reverse=True)
 
 
+def build_static_pages() -> list[dict]:
+    """Standalone pages such as the terms and the privacy policy, from ``content/pages/*.md``."""
+    paths = sorted(p for p in PAGES_DIR.glob("*.md") if not p.name.startswith("_")) if PAGES_DIR.exists() else []
+    blog_slugs = {p.stem for p in BLOG_DIR.glob("*.md")} if BLOG_DIR.exists() else set()
+    pages = []
+    for path in paths:
+        meta, body = parse_post(path)
+        if not meta.get("title"):
+            warn(f"{path.name}: no title, skipped")
+            continue
+        pages.append({"slug": path.stem, "title": meta["title"], "summary": meta.get("summary", ""), "updated": meta.get("updated", ""),
+                      "html": markdown.markdown(resolve_links(body, path.name, blog_slugs), extensions=["extra", "sane_lists"])})
+    return pages
+
+
 def build_sponsors() -> dict:
     if not SPONSORS_PATH.exists():
         return {"sponsors": [], "advertise": {}}
@@ -123,10 +139,11 @@ def build_sponsors() -> dict:
 
 def build() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    posts, sponsors = build_blog(), build_sponsors()
+    posts, sponsors, pages = build_blog(), build_sponsors(), build_static_pages()
     (OUT_DIR / "blog.json").write_text(json.dumps({"posts": posts}, separators=(",", ":")), encoding="utf-8")
     (OUT_DIR / "sponsors.json").write_text(json.dumps(sponsors, separators=(",", ":")), encoding="utf-8")
-    print(f"built {len(posts)} posts, {len(sponsors['sponsors'])} active sponsors, {len(warnings)} warnings")
+    (OUT_DIR / "pages.json").write_text(json.dumps({"pages": pages}, separators=(",", ":")), encoding="utf-8")
+    print(f"built {len(posts)} posts, {len(pages)} pages, {len(sponsors['sponsors'])} active sponsors, {len(warnings)} warnings")
 
 
 if __name__ == "__main__":

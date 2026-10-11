@@ -321,3 +321,9 @@ a.social:hover { border-color: var(--accent); color: var(--accent); }
 .top .wrap { max-width: 1360px; }
 .top-actions .btn, .nav > a { white-space: nowrap; }
 .top-actions { flex: none; }
+
+/* footer: legal links */
+.foot-nav { display: flex; flex-wrap: wrap; gap: 6px 20px; align-items: center; }
+.foot-nav a { color: var(--text); font-weight: 600; text-decoration: none; }
+.foot-nav a:hover { color: var(--accent); }
+.foot-nav span { border: 1px solid var(--line); border-radius: 99px; padding: 1px 9px; font-size: 12px; font-weight: 700; }

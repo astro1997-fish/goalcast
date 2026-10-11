@@ -47,6 +47,11 @@ build log (GitHub → Actions).
 Upload pictures to `site/assets/blog/` and refer to them as
 `![description](assets/blog/file-name.jpg)`.
 
+## Terms, privacy and other pages
+
+The terms of use, privacy policy and responsible gambling page are in `content/pages`, written the same way as blog
+posts. Edit a file on GitHub to change its wording and update the `updated` date at the top.
+
 ## Site address
 
 `content/site.json` holds the site's public address. It is used for the sitemap and for the links search engines and

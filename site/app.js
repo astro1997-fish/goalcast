@@ -6,7 +6,7 @@
   const BASE = new URL('.', document.currentScript.src).pathname; // site root, wherever the site is hosted
   const app = $('#app'), slipEl = $('#slip'), detailEl = $('#detail');
   const state = {
-    pred: null, res: null, model: null, leagues: null, blog: null, sponsors: null,
+    pred: null, res: null, model: null, leagues: null, blog: null, sponsors: null, pages: null,
     day: 'all', league: 'all', q: '', sort: 'time',
     resTab: 'backtest', resMarket: '1X2', resOutcome: 'all',
     slip: [],
@@ -400,6 +400,12 @@
       ${more.length ? `<div class="section-head"><h2>More articles</h2></div><div class="post-grid">${more.map(postCard).join('')}</div>` : ''}`;
   }
 
+  function viewPage(slug) {
+    const p = (state.pages?.pages || []).find((x) => x.slug === slug);
+    if (!p) return viewMatches();
+    return `<article class="post"><h1>${esc(p.title)}</h1>${p.updated ? `<p class="muted">Last updated ${longDate(p.updated)}</p>` : ''}<div class="prose">${p.html}</div></article>`;
+  }
+
   /* ---------- markets, leagues, premium ---------- */
   const line = (sel) => (m) => ({ sel, p: m.sels[sel] });
   const MARKETS = [
@@ -652,7 +658,7 @@
     if (route === 'market') return (MARKETS.find((k) => k.slug === arg) || MARKETS[0]).title;
     if (route === 'intl') return `${REGIONS[arg] || 'Europe'} international football predictions`;
     if (route === 'blog' && arg) return posts().find((p) => p.slug === arg)?.title || TITLES.blog;
-    return TITLES[route] || '';
+    return TITLES[route] || (state.pages?.pages || []).find((p) => p.slug === route)?.title || '';
   }
   /* Internal links are written as "#/route" in the templates and become real addresses here. */
   const routed = (html) => html.replaceAll('href="#/', `href="${BASE}`).replaceAll('src="assets/', `src="${BASE}assets/`);
@@ -662,7 +668,8 @@
     render(false);
   }
   const routes = { '': viewMatches, safe: viewSafe, value: viewValue, results: viewResults, model: viewModel,
-    market: viewMarket, leagues: viewLeagues, premium: viewPremium, day: viewMatches, league: viewLeague, blog: viewBlog, intl: viewIntl };
+    market: viewMarket, leagues: viewLeagues, premium: viewPremium, day: viewMatches, league: viewLeague, blog: viewBlog, intl: viewIntl,
+    terms: () => viewPage('terms'), privacy: () => viewPage('privacy'), 'responsible-gambling': () => viewPage('responsible-gambling') };
   const GROUPS = { market: 'market', safe: 'market', value: 'market', day: 'day', league: 'league', leagues: 'league', intl: 'intl' };
   function render(keepScroll) {
     let [route, arg] = currentRoute().split('/');
@@ -759,8 +766,8 @@
   renderFootLinks();
   document.documentElement.dataset.theme = store.get('gc-theme', matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   const load = (name) => fetch(`${BASE}data/${name}.json`, { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error(`${name}: ${r.status}`); return r.json(); });
-  Promise.all([...['predictions', 'results', 'model'].map(load), ...['leagues', 'blog', 'sponsors'].map((n) => load(n).catch(() => null))]).then(([pred, res, model, leagues, blog, sponsors]) => {
-    Object.assign(state, { pred, res, model, leagues, blog, sponsors });
+  Promise.all([...['predictions', 'results', 'model'].map(load), ...['leagues', 'blog', 'sponsors', 'pages'].map((n) => load(n).catch(() => null))]).then(([pred, res, model, leagues, blog, sponsors, pages]) => {
+    Object.assign(state, { pred, res, model, leagues, blog, sponsors, pages });
     const live = new Set(pred.matches.map((m) => m.id));
     state.slip = store.get('gc-slip', []).filter((x) => live.has(x.id));
     $('#foot-meta').textContent = `Updated ${new Date(pred.generated).toLocaleString()} · model ${pred.version}`;
