@@ -760,7 +760,19 @@
   addEventListener('popstate', () => { if (state.pred) render(false); });
   addEventListener('hashchange', () => { if (location.hash.startsWith('#/') && state.pred) { history.replaceState(null, '', BASE + location.hash.slice(2)); render(false); } });
 
+  /* ---------- visitor counting ---------- */
+  function startAnalytics() {
+    const token = (window.GOALCAST_ANALYTICS || {}).cloudflareToken;
+    if (!token || location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
+    const s = document.createElement('script');
+    s.defer = true;
+    s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    s.dataset.cfBeacon = JSON.stringify({ token }); // the beacon follows page changes inside the app by itself
+    document.head.append(s);
+  }
+
   /* ---------- boot ---------- */
+  startAnalytics();
   if (location.hash.startsWith('#/')) history.replaceState(null, '', BASE + location.hash.slice(2)); // links shared before pages had real addresses
   $('.brand').href = BASE;
   renderFootLinks();

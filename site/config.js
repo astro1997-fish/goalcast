@@ -19,3 +19,10 @@ window.GOALCAST_LINKS = {
   whatsapp: '19715162270',
   telegramSupport: 'Goal_castpredict',
 };
+
+/* Visitor counting with Cloudflare Web Analytics (free, no cookies).
+   Paste the token from Cloudflare -> Web Analytics -> your site -> "Manage site" -> JS snippet.
+   Leave empty to switch counting off. */
+window.GOALCAST_ANALYTICS = {
+  cloudflareToken: '',
+};

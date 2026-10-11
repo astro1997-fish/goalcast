@@ -12,6 +12,7 @@ You can read every prediction without an account, and we do not ask who you are.
 
 - **Preferences stored on your device.** Your colour theme and your accumulator slip are saved in your own browser so they are still there when you return. They are not sent to us.
 - **Hosting records.** The company that hosts the site receives standard technical details with each visit, such as your IP address and browser type, as every website's host does. We do not use these to identify you.
+- **Visitor counts.** We count visits with Cloudflare Web Analytics so we know which pages are read. It does not use cookies, does not follow you to other websites and does not build a profile of you; we only see totals, such as how many people opened a page and which country they were in.
 - **No advertising trackers.** We do not use tracking or advertising cookies, and we do not sell information about visitors.
 
 ## If you create an account
@@ -56,4 +57,4 @@ GoalCast is for adults. We do not knowingly collect information from anyone unde
 
 ## Changes
 
-If the way we handle information changes, for example if we add visitor statistics, we will update this page first. The date at the top shows the latest version.
+If the way we handle information changes, we will update this page first. The date at the top shows the latest version.
