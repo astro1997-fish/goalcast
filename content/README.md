@@ -47,6 +47,11 @@ build log (GitHub → Actions).
 Upload pictures to `site/assets/blog/` and refer to them as
 `![description](assets/blog/file-name.jpg)`.
 
+## Site address
+
+`content/site.json` holds the site's public address. It is used for the sitemap and for the links search engines and
+social networks see. Change it when the site moves to its own domain.
+
 ## Sponsors and adverts
 
 Edit `content/sponsors.json`. Each sponsor is one block:

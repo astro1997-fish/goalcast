@@ -9,3 +9,4 @@ data/goalcast.db
 data/backtest.csv
 data/backtest_intl.csv
 ml/models/*.json
+dist/

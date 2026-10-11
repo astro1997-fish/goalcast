@@ -31,6 +31,8 @@ jobs:
         run: python -m ml.pipeline
       - name: Build blog and sponsor data
         run: python -m tools.build_content
+      - name: Build one page per address, sitemap and robots.txt
+        run: python -m tools.build_pages
       - name: Commit refreshed predictions and ledger
         run: |
           git config user.name "goalcast-bot"
@@ -41,5 +43,5 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: dist
       - uses: actions/deploy-pages@v4

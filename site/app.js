@@ -3,6 +3,7 @@
   'use strict';
 
   const $ = (sel, root = document) => root.querySelector(sel);
+  const BASE = new URL('.', document.currentScript.src).pathname; // site root, wherever the site is hosted
   const app = $('#app'), slipEl = $('#slip'), detailEl = $('#detail');
   const state = {
     pred: null, res: null, model: null, leagues: null, blog: null, sponsors: null,
@@ -513,7 +514,7 @@
     const byCountry = {};
     state.res.backtest.by_league.forEach((l) => { (byCountry[l.country] ||= []).push(l); });
     const dd = (name, key, body) => `<details class="dd" data-group="${key}"><summary>${name}</summary><div class="menu">${body}</div></details>`;
-    $('#nav').innerHTML = `<a href="#/" data-route="">Predictions</a>
+    $('#nav').innerHTML = routed(`<a href="#/" data-route="">Predictions</a>
       ${dd('Markets', 'market', `${MARKETS.map((k) => `<a href="#/market/${k.slug}">${k.name}</a>`).join('')}<hr><a href="#/safe">Safe tips</a><a href="#/value">Model vs market</a>`)}
       ${dd('By day', 'day', days.length ? days.map((d) => `<a href="#/day/${d}">${fmtDay(d)}</a>`).join('') : '<span class="muted">No fixtures listed</span>')}
       ${dd('Leagues', 'league', `<div class="menu-cols">${Object.keys(byCountry).sort().map((c) => `<div><h4>${esc(c)}</h4>${byCountry[c].map((l) => `<a href="#/league/${l.div}">${esc(l.league)}</a>`).join('')}</div>`).join('')}</div><hr><a href="#/leagues">All leagues</a>`)}
@@ -521,7 +522,7 @@
       <a href="#/results" data-route="results">Results</a>
       <a href="#/model" data-route="model">Model</a>
       <a href="#/blog" data-route="blog">Blog</a>
-      <a href="#/premium" data-route="premium" class="premium">★ Premium</a>`;
+      <a href="#/premium" data-route="premium" class="premium">★ Premium</a>`);
   }
   const closeMenus = (except) => document.querySelectorAll('details.dd[open]').forEach((d) => { if (d !== except) d.open = false; });
 
@@ -531,13 +532,13 @@
   const auth = { client: null, user: null, mode: 'signin', msg: null, busy: false };
   const authEl = $('#auth');
   const displayName = () => auth.user?.user_metadata?.display_name || auth.user?.email?.split('@')[0] || 'Member';
-  const redirectTo = () => location.origin + location.pathname;
+  const redirectTo = () => location.origin + BASE;
 
   function renderAccount() {
-    $('#account').innerHTML = auth.user
+    $('#account').innerHTML = routed(auth.user
       ? `<details class="dd right"><summary class="avatar" aria-label="Account menu">${esc(displayName()[0].toUpperCase())}</summary><div class="menu">
           <span class="muted" style="padding:6px 10px;display:block">${esc(auth.user.email)}</span><hr><a href="#/premium">★ Premium</a><button data-action="sign-out">Sign out</button></div></details>`
-      : `<button class="btn primary" data-action="auth-open" data-v="signin">Sign in</button>`;
+      : `<button class="btn primary" data-action="auth-open" data-v="signin">Sign in</button>`);
   }
 
   function openAuth(mode, keep = {}) {
@@ -644,11 +645,27 @@
   }
 
   /* ---------- routing & events ---------- */
+  const TITLES = { safe: 'Safe football tips today', value: 'Model vs bookmaker odds', results: 'Football prediction results', model: 'How the GoalCast model performs',
+    premium: 'Premium football tips', leagues: 'Football leagues, standings and top scorers', blog: 'GoalCast blog' };
+  function pageTitle(route, arg) {
+    if (route === 'league' && state.leagues?.leagues?.[arg]) return `${state.leagues.leagues[arg].league} table, top scorers and predictions`;
+    if (route === 'market') return (MARKETS.find((k) => k.slug === arg) || MARKETS[0]).title;
+    if (route === 'intl') return `${REGIONS[arg] || 'Europe'} international football predictions`;
+    if (route === 'blog' && arg) return posts().find((p) => p.slug === arg)?.title || TITLES.blog;
+    return TITLES[route] || '';
+  }
+  /* Internal links are written as "#/route" in the templates and become real addresses here. */
+  const routed = (html) => html.replaceAll('href="#/', `href="${BASE}`).replaceAll('src="assets/', `src="${BASE}assets/`);
+  const currentRoute = () => decodeURIComponent(location.pathname.slice(BASE.length)).replace(/\/+$/, '').replace(/^index\.html$/, '');
+  function navigate(path) {
+    history.pushState(null, '', BASE + path);
+    render(false);
+  }
   const routes = { '': viewMatches, safe: viewSafe, value: viewValue, results: viewResults, model: viewModel,
     market: viewMarket, leagues: viewLeagues, premium: viewPremium, day: viewMatches, league: viewLeague, blog: viewBlog, intl: viewIntl };
   const GROUPS = { market: 'market', safe: 'market', value: 'market', day: 'day', league: 'league', leagues: 'league', intl: 'intl' };
   function render(keepScroll) {
-    let [route, arg] = location.hash.replace(/^#\/?/, '').split('/');
+    let [route, arg] = currentRoute().split('/');
     if (!routes[route]) route = '';
     if (!keepScroll) {
       adTurn += 1; // booked sponsors take turns, one step per page view
@@ -659,7 +676,9 @@
     document.querySelectorAll('#nav > a').forEach((a) => a.classList.toggle('on', a.dataset.route === route));
     document.querySelectorAll('#nav details').forEach((d) => d.classList.toggle('on', d.dataset.group === GROUPS[route]));
     const y = scrollY;
-    app.innerHTML = adSlot('banner') + routes[route](arg);
+    app.innerHTML = routed(adSlot('banner') + routes[route](arg));
+    const title = pageTitle(route, arg);
+    document.title = title ? `${title} | GoalCast` : 'GoalCast: football predictions, graded in public';
     scrollTo(0, keepScroll ? y : 0);
     if (detailEl.open) openDetail(detailEl.dataset.id);
   }
@@ -711,7 +730,7 @@
     submitAuth(e.target);
   });
   document.addEventListener('change', (e) => {
-    if ('changeLeague' in e.target.dataset) { location.hash = `#/league/${e.target.value}`; return; }
+    if ('changeLeague' in e.target.dataset) { navigate(`league/${e.target.value}`); return; }
     const key = e.target.dataset.change;
     if (key) { state[key] = e.target.value; render(true); }
   });
@@ -722,12 +741,24 @@
     const box = $('[data-input="q"]');
     box.focus(); box.setSelectionRange(state.q.length, state.q.length);
   });
-  addEventListener('hashchange', () => render(false));
+  /* Links inside the site switch page without a reload; everything else behaves normally. */
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || a.target || a.origin !== location.origin) return;
+    if (!a.pathname.startsWith(BASE) || /\.[a-z0-9]+$/i.test(a.pathname) || !state.pred) return;
+    e.preventDefault();
+    history.pushState(null, '', a.href);
+    render(false);
+  });
+  addEventListener('popstate', () => { if (state.pred) render(false); });
+  addEventListener('hashchange', () => { if (location.hash.startsWith('#/') && state.pred) { history.replaceState(null, '', BASE + location.hash.slice(2)); render(false); } });
 
   /* ---------- boot ---------- */
+  if (location.hash.startsWith('#/')) history.replaceState(null, '', BASE + location.hash.slice(2)); // links shared before pages had real addresses
+  $('.brand').href = BASE;
   renderFootLinks();
   document.documentElement.dataset.theme = store.get('gc-theme', matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-  const load = (name) => fetch(`data/${name}.json`, { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error(`${name}: ${r.status}`); return r.json(); });
+  const load = (name) => fetch(`${BASE}data/${name}.json`, { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error(`${name}: ${r.status}`); return r.json(); });
   Promise.all([...['predictions', 'results', 'model'].map(load), ...['leagues', 'blog', 'sponsors'].map((n) => load(n).catch(() => null))]).then(([pred, res, model, leagues, blog, sponsors]) => {
     Object.assign(state, { pred, res, model, leagues, blog, sponsors });
     const live = new Set(pred.matches.map((m) => m.id));

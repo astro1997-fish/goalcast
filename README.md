@@ -20,6 +20,7 @@ every result, wins and losses alike.
 | `api/main.py` | FastAPI: `GET /model/performance`, `/predictions`, `/results`, and the site |
 | `content/` | Blog posts (Markdown) and sponsor adverts — see `content/README.md` |
 | `tools/build_content.py` | Turns `content/` into `site/data/blog.json` and `sponsors.json` |
+| `tools/build_pages.py` | Builds the deployable site in `dist/`: one real HTML page per address, `sitemap.xml` and `robots.txt` |
 | `site/` | The website: plain HTML, CSS and JavaScript, no build step |
 | `data/ledger.json` | Predictions logged before kick-off, settled afterwards, never revised |
 
@@ -28,7 +29,9 @@ every result, wins and losses alike.
 ```bash
 pip install -r requirements.txt
 python -m ml.pipeline                 # download, train, export
-python -m http.server 8123 --directory site
+python -m tools.build_content        # blog and sponsors
+python -m tools.build_pages          # writes dist/
+python -m http.server 8123 --directory dist
 ```
 
 Or with uv: `uv run python -m ml.training.train_match_result`, then
