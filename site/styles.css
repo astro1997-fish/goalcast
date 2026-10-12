@@ -327,3 +327,6 @@ a.social:hover { border-color: var(--accent); color: var(--accent); }
 .foot-nav a { color: var(--text); font-weight: 600; text-decoration: none; }
 .foot-nav a:hover { color: var(--accent); }
 .foot-nav span { border: 1px solid var(--line); border-radius: 99px; padding: 1px 9px; font-size: 12px; font-weight: 700; }
+
+#auth-form label.check { display: flex; align-items: center; gap: 8px; font-weight: 500; cursor: pointer; }
+#auth-form label.check input { width: auto; }

@@ -559,16 +559,27 @@
       ${m === 'signup' ? field('name', 'Name', 'text', 'autocomplete="name" maxlength="60"') : ''}
       ${m !== 'newpass' ? field('email', 'Email', 'email', 'autocomplete="email"') : ''}
       ${m !== 'reset' ? field('password', m === 'newpass' ? 'New password' : 'Password', 'password', `autocomplete="${m === 'signin' ? 'current-password' : 'new-password'}"`) : ''}
-      ${m === 'signup' || m === 'newpass' ? '<p class="muted" style="font-size:12.5px;margin:0">At least 8 characters.</p>' : ''}
+      ${m !== 'reset' ? `<label class="check"><input type="checkbox" data-show-password ${auth.showPassword ? 'checked' : ''}> Show password</label>` : ''}
+      ${m === 'signup' || m === 'newpass' ? '<p class="muted" style="font-size:12.5px;margin:0">At least 8 characters. <span id="pw-count"></span></p>' : ''}
       ${auth.msg ? `<p class="auth-msg ${auth.msg.ok ? 'ok' : 'err'}" role="alert">${esc(auth.msg.text)}</p>` : ''}
       <button class="btn primary" type="submit" ${auth.busy ? 'disabled' : ''}>${auth.busy ? 'Please wait…' : actions[m]}</button>
       ${m === 'signin' ? '<button type="button" class="linkish" data-action="auth-open" data-v="reset">Forgot your password?</button>' : ''}
       ${m === 'reset' ? '<button type="button" class="linkish" data-action="auth-open" data-v="signin">Back to sign in</button>' : ''}
       ${m === 'signup' ? '<p class="muted" style="font-size:12px;margin:0">18+ only. We store your email to sign you in and nothing else.</p>' : ''}
     </form>`;
-    for (const name of ['name', 'email']) { const box = authEl.querySelector(`[name=${name}]`); if (box && keep[name]) box.value = keep[name]; }
+    for (const name of ['name', 'email', 'password']) { const box = authEl.querySelector(`[name=${name}]`); if (box && keep[name]) box.value = keep[name]; }
+    syncPassword();
     if (!authEl.open) authEl.showModal();
     authEl.querySelector('input')?.focus();
+  }
+
+  /* Keeps the password box in step with the "Show password" tick and the character count. */
+  function syncPassword() {
+    const box = authEl.querySelector('[name=password]');
+    if (!box) return;
+    box.type = auth.showPassword ? 'text' : 'password';
+    const count = $('#pw-count', authEl);
+    if (count) count.textContent = box.value.length ? `You have typed ${box.value.length}.` : '';
   }
 
   async function submitAuth(form) {
@@ -576,7 +587,7 @@
     const valid = form.checkValidity();
     const say = (text, ok = false) => { auth.msg = { text, ok }; auth.busy = false; openAuth(auth.mode, v); };
     if (!auth.client) return say('Accounts are not switched on yet. The site owner needs to add the sign-in settings in config.js.');
-    if ((auth.mode === 'signup' || auth.mode === 'newpass') && v.password.length < 8) return say('Passwords need at least 8 characters.');
+    if ((auth.mode === 'signup' || auth.mode === 'newpass') && v.password.length < 8) return say(`Passwords need at least 8 characters. Yours has ${v.password.length}.`);
     if (!valid) return say('Please fill in every field with a valid value.');
     auth.busy = true; auth.msg = null; openAuth(auth.mode, v);
     const a = auth.client.auth;
@@ -737,11 +748,13 @@
     submitAuth(e.target);
   });
   document.addEventListener('change', (e) => {
+    if ('showPassword' in e.target.dataset) { auth.showPassword = e.target.checked; syncPassword(); return; }
     if ('changeLeague' in e.target.dataset) { navigate(`league/${e.target.value}`); return; }
     const key = e.target.dataset.change;
     if (key) { state[key] = e.target.value; render(true); }
   });
   document.addEventListener('input', (e) => {
+    if (e.target.name === 'password' && authEl.contains(e.target)) { syncPassword(); return; }
     if (e.target.dataset.input !== 'q') return;
     state.q = e.target.value;
     render(true);
