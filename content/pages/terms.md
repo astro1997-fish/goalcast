@@ -64,4 +64,4 @@ We may update these terms. The date at the top shows the latest version. Continu
 
 ## Contact
 
-Questions about these terms: use the support links at the bottom of any page.
+Questions about these terms: email [infogoalcast@gmail.com](mailto:infogoalcast@gmail.com) or use the support links at the bottom of any page.

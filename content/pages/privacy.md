@@ -47,7 +47,7 @@ You can ask us to:
 - correct it
 - delete your account and its information
 
-Depending on where you live, the law may give you further rights over your personal information. To make a request, use the support links at the bottom of any page.
+Depending on where you live, the law may give you further rights over your personal information. To make a request, email [infogoalcast@gmail.com](mailto:infogoalcast@gmail.com) or use the support links at the bottom of any page.
 
 You can clear the preferences saved on your device at any time by clearing this site's data in your browser settings.
 
