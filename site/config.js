@@ -24,5 +24,5 @@ window.GOALCAST_LINKS = {
    Paste the token from Cloudflare -> Web Analytics -> your site -> "Manage site" -> JS snippet.
    Leave empty to switch counting off. */
 window.GOALCAST_ANALYTICS = {
-  cloudflareToken: '',
+  cloudflareToken: '33500c2d87a04aaa8e8c79ed8da33c0e',
 };

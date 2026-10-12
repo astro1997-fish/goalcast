@@ -765,7 +765,7 @@
     const token = (window.GOALCAST_ANALYTICS || {}).cloudflareToken;
     if (!token || location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
     const s = document.createElement('script');
-    s.defer = true;
+    s.type = 'module';
     s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
     s.dataset.cfBeacon = JSON.stringify({ token }); // the beacon follows page changes inside the app by itself
     document.head.append(s);
