@@ -5,7 +5,7 @@ with goals, a win to nil, a two-goal margin, team goals and so on), all read
 from the same scoreline distribution as every other market.
 
 They are never written to the public site files. The pipeline uploads them to
-a database table that only accounts with an active plan can read.
+a Neon Postgres table that only accounts with an active plan can read.
 """
 from __future__ import annotations
 
@@ -14,7 +14,6 @@ import os
 from datetime import datetime, timedelta, timezone
 
 import numpy as np
-import requests
 
 from ml.markets import _AWAY, _DRAW, _HOME, _I, _J, _TOTAL
 
@@ -106,19 +105,51 @@ def backtest_record(rows) -> dict:
     return {"picks": stat(top), "long": stat(longs)}
 
 
+SETUP_SQL = """
+create table if not exists premium_content (
+  id text primary key,
+  payload jsonb not null,
+  updated_at timestamptz not null default now()
+);
+alter table premium_content enable row level security;
+"""
+# Only accounts whose sign-in token carries an active plan may read. The functions and the role exist once
+# the Neon Data API is switched on for the database, so this part is skipped until then.
+POLICY_SQL = """
+drop policy if exists "members with an active plan can read" on premium_content;
+create policy "members with an active plan can read" on premium_content
+  for select to authenticated
+  using (
+    coalesce(auth.session() -> 'app_metadata' ->> 'plan', '') <> ''
+    and coalesce(nullif(auth.session() -> 'app_metadata' ->> 'plan_until', '')::date, current_date) >= current_date
+  );
+grant select on premium_content to authenticated;
+"""
+DATA_API_READY_SQL = """
+select exists (select 1 from pg_roles where rolname = 'authenticated')
+   and exists (select 1 from pg_proc p join pg_namespace n on n.oid = p.pronamespace where n.nspname = 'auth' and p.proname = 'session')
+"""
+
+
 def upload(payload: dict) -> bool:
-    """Store the payload where only paying members can read it. Returns False when not configured."""
-    url, key = os.environ.get("SUPABASE_URL"), os.environ.get("SUPABASE_SERVICE_KEY")
-    if not url or not key:
-        print("premium picks not uploaded: SUPABASE_URL / SUPABASE_SERVICE_KEY are not set")
+    """Store the payload in the Neon database, where only paying members can read it. Returns False when not configured."""
+    dsn = os.environ.get("DATABASE_URL")
+    if not dsn:
+        print("premium picks not uploaded: DATABASE_URL is not set")
         return False
-    r = requests.post(
-        f"{url.rstrip('/')}/rest/v1/{TABLE}",
-        headers={"apikey": key, "Authorization": f"Bearer {key}", "Content-Type": "application/json", "Prefer": "resolution=merge-duplicates"},
-        data=json.dumps([{"id": "picks", "payload": payload, "updated_at": payload["generated"]}]), timeout=40,
-    )
-    if r.status_code >= 300:
-        print(f"premium picks upload failed: {r.status_code} {r.text[:200]}")
-        return False
+    import psycopg
+    from psycopg.types.json import Jsonb
+
+    with psycopg.connect(dsn, connect_timeout=30) as con:
+        con.execute(SETUP_SQL)
+        if con.execute(DATA_API_READY_SQL).fetchone()[0]:
+            con.execute(POLICY_SQL)
+        else:
+            print("premium picks: the Neon Data API is not switched on yet, so members cannot read them")
+        con.execute(
+            f"insert into {TABLE} (id, payload, updated_at) values (%s, %s, %s) "
+            "on conflict (id) do update set payload = excluded.payload, updated_at = excluded.updated_at",
+            ("picks", Jsonb(payload), payload["generated"]),
+        )
     print(f"premium picks uploaded: {sum(len(d['picks']) for d in payload['days'])} picks over {len(payload['days'])} days")
     return True

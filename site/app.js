@@ -635,9 +635,17 @@
 
   /* Special picks: fetched from the members-only table, so they exist only for accounts with an active plan. */
   async function loadPremium() {
-    if (!isPremium() || !auth.client?.from) { state.premium = null; return; }
-    const { data, error } = await auth.client.from('premium_content').select('payload').eq('id', 'picks').maybeSingle();
-    state.premium = error || !data ? { missing: true } : data.payload;
+    const api = (cfg.neonDataApi || '').replace(/\/+$/, '');
+    if (!isPremium()) { state.premium = null; return; }
+    if (!api) state.premium = { missing: true };
+    else try {
+      const { data } = await auth.client.auth.getSession();
+      const r = await fetch(`${api}/premium_content?id=eq.picks&select=payload`, { headers: { Authorization: `Bearer ${data.session?.access_token}`, Accept: 'application/json' } });
+      const rows = r.ok ? await r.json() : [];
+      state.premium = rows[0]?.payload || { missing: true };
+    } catch {
+      state.premium = { missing: true };
+    }
     if (currentRoute().split('/')[0] === 'premium') render(true);
   }
   const specialRow = (e) => `<tr class="click" data-action="open" data-id="${e.id}"><td><strong>${esc(e.home)} v ${esc(e.away)}</strong><br><span class="muted">${esc(e.league)}</span></td>

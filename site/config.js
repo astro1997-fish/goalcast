@@ -5,6 +5,9 @@
 window.GOALCAST_CONFIG = {
   supabaseUrl: 'https://rutiffsubtqqgrotwava.supabase.co',
   supabaseAnonKey: 'sb_publishable_KCqkjXTta39rfMKgfsUoUg_Ey5bXFtE',
+  /* Neon Data API address for members-only content (Neon console -> Data API). Safe to publish:
+     the database only answers accounts with an active plan. */
+  neonDataApi: '',
 };
 
 /* Social and support links shown in the footer.

@@ -51,28 +51,21 @@ Upload pictures to `site/assets/blog/` and refer to them as
 
 Plans and prices are set in `site/config.js` under `GOALCAST_PLANS`.
 
-### One-time setup for special picks
+### One-time setup for special picks (Neon database)
 
-Special picks are kept in a table that only paying members can read. Create it once in Supabase, under **SQL Editor**:
+Special picks are kept in a Neon database table that only paying members can read. Sign-in stays with Supabase;
+Neon is told to trust those sign-ins.
 
-```sql
-create table if not exists public.premium_content (
-  id text primary key,
-  payload jsonb not null,
-  updated_at timestamptz not null default now()
-);
-alter table public.premium_content enable row level security;
-create policy "members with an active plan can read" on public.premium_content
-  for select to authenticated
-  using (
-    coalesce(auth.jwt() -> 'app_metadata' ->> 'plan', '') <> ''
-    and coalesce(nullif(auth.jwt() -> 'app_metadata' ->> 'plan_until', '')::date, current_date) >= current_date
-  );
-```
+1. In the Neon console, create a project, then open **Data API** and enable it.
+   - Authentication provider: **Other provider**
+   - JWKS URL: `https://rutiffsubtqqgrotwava.supabase.co/auth/v1/.well-known/jwks.json`
+   - JWT audience: `authenticated`
+2. Copy the Data API address it shows and put it in `site/config.js` as `neonDataApi`.
+3. In the Neon console, press **Connect** and copy the connection string. In GitHub, open the repository's
+   **Settings -> Secrets and variables -> Actions**, press **New repository secret**, name it `DATABASE_URL` and paste
+   the connection string. It contains the database password: never put it anywhere else.
 
-Then give the automatic update permission to write to it: in Supabase, open **Project Settings → API Keys** and copy
-the **secret** key. In GitHub, open the repository's **Settings → Secrets and variables → Actions**, press
-**New repository secret**, name it `SUPABASE_SERVICE_KEY` and paste the key. Never put this key anywhere else.
+The automatic update creates the table and its access rule by itself on its next run.
 
 ### Switching a member's plan on
 

@@ -27,7 +27,7 @@ We store:
 
 We use these only to sign you in, to let you reset your password, and to unlock member features. We do not send marketing email without asking you first.
 
-Accounts are run for us by Supabase, an account and database service, which stores this information on our behalf.
+Accounts are run for us by Supabase, an account service, which stores this information on our behalf. Members-only content is served from a database hosted by Neon, which receives your sign-in token to confirm your plan but does not store your account details.
 
 ## If you contact support
 
