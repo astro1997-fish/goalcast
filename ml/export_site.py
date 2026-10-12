@@ -17,6 +17,7 @@ import pandas as pd
 from ml import markets, registry
 from ml.config import BACKTEST_PATH, LEAGUES, LEDGER_PATH, SITE_DATA_DIR, current_season_start
 from ml.data.download import load_matches
+from ml.data.logos import build_logos
 from ml.data.players import fetch_leaders
 from ml.features.build import build_features
 from ml.predict import Predictor
@@ -266,6 +267,8 @@ def export() -> None:
         "model": {"generated": generated, **export_model(pred.version, matches), "intl": intl.get("model")},
         "leagues": {"generated": generated, "leagues": export_leagues(matches, generated)},
     }
+    logos_path = SITE_DATA_DIR / "logos.json"
+    payloads["logos"] = build_logos(matches, json.loads(logos_path.read_text(encoding="utf-8")) if logos_path.exists() else None)
     for name, payload in payloads.items():
         (SITE_DATA_DIR / f"{name}.json").write_text(json.dumps(payload, separators=(",", ":")), encoding="utf-8")
     print(f"exported {len(predictions)} predictions, {payloads['results']['backtest']['n']:,} backtest results, "

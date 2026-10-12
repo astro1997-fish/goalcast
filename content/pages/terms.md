@@ -50,7 +50,7 @@ Please do not:
 
 ## Our content
 
-The GoalCast name, logo, design and written content belong to GoalCast. Team and competition names belong to their owners and are used only to identify matches.
+The GoalCast name, logo, design and written content belong to GoalCast. Team and competition names, crests and logos belong to their owners and are used only to identify matches. GoalCast is not affiliated with or endorsed by any club, league or competition.
 
 ## Liability
 

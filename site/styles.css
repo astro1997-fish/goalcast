@@ -452,3 +452,12 @@ html { overflow-x: clip; }
   .has-photo .hero-slogan { right: max(24px, calc(50vw - 660px)); bottom: 22px; }
   .has-photo .hero-in { min-height: 470px; }
 }
+
+/* club crests, flags and competition logos */
+.crest-img, .league-logo { object-fit: contain; flex: none; vertical-align: middle; }
+.team .crest-img, .team .crest { margin-right: 8px; vertical-align: -5px; }
+.team .crest { display: inline-grid; }
+.lg .league-logo { margin-right: 6px; vertical-align: -3px; }
+.with-crest { display: inline-flex; align-items: center; gap: 8px; }
+h1.with-crest { display: flex; gap: 14px; }
+.vs-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }

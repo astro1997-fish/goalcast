@@ -6,7 +6,7 @@
   const BASE = new URL('.', document.currentScript.src).pathname; // site root, wherever the site is hosted
   const app = $('#app'), slipEl = $('#slip'), detailEl = $('#detail');
   const state = {
-    pred: null, res: null, model: null, leagues: null, blog: null, sponsors: null, pages: null,
+    pred: null, res: null, model: null, leagues: null, blog: null, sponsors: null, pages: null, logos: null,
     day: 'all', league: 'all', q: '', sort: 'time',
     resTab: 'backtest', resMarket: '1X2', resOutcome: 'all',
     slip: [],
@@ -56,10 +56,10 @@
   const card = (m) => {
     const t = m.tips;
     return `<article class="card" data-action="open" data-id="${m.id}" tabindex="0">
-      <div class="card-top"><span class="lg">${esc(m.league)} · ${esc(m.country)}</span><span class="num">${fmtTime(m.kickoff)} · ${countdown(m.kickoff)}</span></div>
+      <div class="card-top"><span class="lg">${leagueLogo(m.div, 16)}${esc(m.league)} · ${esc(m.country)}</span><span class="num">${fmtTime(m.kickoff)} · ${countdown(m.kickoff)}</span></div>
       <div class="teams-row">
-        <span class="team">${favs().includes(m.home) ? '★ ' : ''}${esc(m.home)}</span>${formDots(m.ctx.last?.h)}
-        <span class="team">${favs().includes(m.away) ? '★ ' : ''}${esc(m.away)}</span>${formDots(m.ctx.last?.a)}
+        <span class="team">${crest(m.home, 22)}${favs().includes(m.home) ? '★ ' : ''}${esc(m.home)}</span>${formDots(m.ctx.last?.h)}
+        <span class="team">${crest(m.away, 22)}${favs().includes(m.away) ? '★ ' : ''}${esc(m.away)}</span>${formDots(m.ctx.last?.a)}
       </div>
       ${probBar(m.probs)}
       <div class="bar-legend"><span>Home</span><span>Draw</span><span>Away</span></div>
@@ -78,14 +78,30 @@
   };
 
   /* ---------- home page: hero, feature strip, featured matches ---------- */
-  /* Team badge drawn from the name: initials on a colour derived from it. No club artwork is used. */
-  function crest(name, size = 44) {
+  /* Team badge: the club crest or national flag when one is known, otherwise initials on a colour derived from the name. */
+  function monogram(name, size = 44) {
     const words = name.replace(/[^\p{L}\p{N} ]/gu, ' ').split(/\s+/).filter(Boolean);
     const initials = (words.length > 1 ? words[0][0] + words[1][0] : (words[0] || '?').slice(0, 3)).toUpperCase();
     let hash = 0;
     for (const ch of name) hash = (hash * 31 + ch.codePointAt(0)) % 360;
-    return `<span class="crest" style="--h:${hash};width:${size}px;height:${size}px;font-size:${Math.round(size * (initials.length > 2 ? 0.3 : 0.38))}px" aria-hidden="true">${esc(initials)}</span>`;
+    return `<span class="crest" style="--h:${hash};width:${size}px;height:${size}px;font-size:${Math.max(7, Math.round(size * (initials.length > 2 ? 0.3 : 0.38)))}px" aria-hidden="true">${esc(initials)}</span>`;
   }
+  function crest(name, size = 44) {
+    const url = state.logos?.teams?.[name];
+    return url ? `<img class="crest-img" src="${esc(url)}" alt="" width="${size}" height="${size}" loading="lazy" data-team="${esc(name)}">` : monogram(name, size);
+  }
+  function leagueLogo(div, size = 20) {
+    const logo = state.logos?.leagues?.[div];
+    if (!logo) return '';
+    const url = document.documentElement.dataset.theme === 'light' ? logo.light : logo.dark;
+    return `<img class="league-logo" src="${esc(url)}" alt="" width="${size}" height="${size}" loading="lazy">`;
+  }
+  /* A picture that fails to load falls back to the drawn badge (teams) or disappears (competitions). */
+  document.addEventListener('error', (e) => {
+    const img = e.target;
+    if (img.classList?.contains('crest-img')) img.outerHTML = monogram(img.dataset.team, img.width);
+    else if (img.classList?.contains('league-logo')) img.remove();
+  }, true);
   const ICON = {
     target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><path d="M12 12l7.5-7.5M19.5 4.5V8M19.5 4.5H16"/>',
     bars: '<path d="M4 20V13M9.3 20V9M14.7 20V11M20 20V5"/><path d="M4 8l5-3.5 5 2.5 6-4.5"/>',
@@ -311,7 +327,7 @@
     const formList = (arr) => (arr && arr.length ? `<ul class="list">${arr.slice().reverse().map((f) => `<li><span>${esc(f.slice(2))}</span><span class="badge ${f[0] === 'W' ? 'won' : f[0] === 'L' ? 'lost' : 'pending'}">${f[0]}</span></li>`).join('')}</ul>` : '<p class="muted">No recent matches on record.</p>');
 
     detailEl.innerHTML = `<div class="d-head"><div><div class="muted">${esc(m.league)} · ${esc(m.country)} · ${fmtDay(dayKey(m.kickoff))} ${fmtTime(m.kickoff)} · ${countdown(m.kickoff)}</div>
-        <h2>${esc(m.home)} v ${esc(m.away)}</h2>
+        <h2 class="vs-head">${crest(m.home, 36)}<span>${esc(m.home)} v ${esc(m.away)}</span>${crest(m.away, 36)}</h2>
         ${auth.user ? `<div class="follow">${[m.home, m.away].map((t) => `<button class="btn small" data-action="fav-toggle" data-v="${esc(t)}">${favs().includes(t) ? '★ Following' : '☆ Follow'} ${esc(t)}</button>`).join('')}</div>` : ''}</div><button class="x" data-action="close-detail" aria-label="Close">×</button></div>
       <div class="d-body">
         <div class="panel"><h3>Match result ${pips(m.confidence)}</h3><p>Model: expected goals ${m.xg.h.toFixed(2)} – ${m.xg.a.toFixed(2)}.</p>
@@ -376,7 +392,7 @@
         <p>Continental club competitions and national-team matches. These use two separate models trained only on international results, so they are less precise than the league predictions and have no bookmaker comparison.</p></div>
       <div class="chips" style="margin:16px 0">${Object.entries(REGIONS).map(([k, v]) => `<a class="chip ${k === region ? 'on' : ''}" href="#/intl/${k}">${v}</a>`).join('')}</div>
       ${record ? `<div class="note"><strong>${pct(record.rate, 1)} of match-result picks were right</strong> across ${int(record.n)} ${name} internationals in the last year, none of which the models had seen.</div>` : ''}
-      ${fixtures.length ? comps.map((c) => `<h3 class="day-label">${esc(c)} · ${fixtures.filter((m) => m.league === c).length} matches</h3><div class="grid">${fixtures.filter((m) => m.league === c).map(card).join('')}</div>`).join('')
+      ${fixtures.length ? comps.map((c) => `<h3 class="day-label with-crest">${leagueLogo(fixtures.find((m) => m.league === c).div, 22)}${esc(c)} · ${fixtures.filter((m) => m.league === c).length} matches</h3><div class="grid">${fixtures.filter((m) => m.league === c).map(card).join('')}</div>`).join('')
         : '<p class="empty">No international fixtures here in the next ten days. Matches appear automatically as each round or international window approaches.</p>'}
       ${record ? `<div class="section-head"><h2>Recent results</h2></div>
         <div class="table-wrap"><table><thead><tr><th>Date</th><th>Match</th><th>Score</th><th>Prediction</th><th class="r">Probability</th><th>Result</th></tr></thead><tbody>
@@ -551,7 +567,7 @@
     upcoming().forEach((m) => { counts[m.div] = (counts[m.div] || 0) + 1; });
     const leagues = state.res.backtest.by_league.slice().sort((a, b) => a.country.localeCompare(b.country) || a.league.localeCompare(b.league));
     return `<div class="page-head"><h1>Leagues</h1><p>Pick a league for its standings, top scorers, top assists and upcoming predictions. ${leagues.length} leagues are covered.</p></div>
-      <div class="tiles" style="margin-top:18px">${leagues.map((l) => `<a class="tile link" href="#/league/${l.div}"><h3>${esc(l.country)}</h3><b style="font-size:19px">${esc(l.league)}</b>
+      <div class="tiles" style="margin-top:18px">${leagues.map((l) => `<a class="tile link" href="#/league/${l.div}"><h3>${esc(l.country)}</h3><b class="with-crest" style="font-size:19px">${leagueLogo(l.div, 28)}${esc(l.league)}</b>
         <p>${leaderLine(l.div)}</p><p>${counts[l.div] ? `${counts[l.div]} upcoming` : 'No fixtures listed yet'} · ${pct(l.rate, 1)} model accuracy</p><div class="meter"><i style="width:${l.rate * 100}%"></i></div></a>`).join('')}</div>
       <div class="section-head"><h2>International</h2></div>
       <div class="tiles">${Object.entries(REGIONS).map(([k, v]) => { const n = upcoming().filter((m) => m.intl && m.country === v).length; const r = state.res.intl?.regions?.[v];
@@ -568,15 +584,15 @@
       .map(([k, v]) => `<option value="${k}" ${k === div ? 'selected' : ''}>${esc(v.country)} · ${esc(v.league)}</option>`).join('');
     const players = (rows, key, other, title, hint) => `<div class="panel"><h3>${title}</h3><p>${hint}</p>
       ${rows.length ? `<div class="table-wrap flat"><table class="players"><thead><tr><th>#</th><th>Player</th><th class="r" title="Matches played">MP</th><th class="r">${key === 'goals' ? 'Goals' : 'Assists'}</th><th class="r">${other === 'goals' ? 'Goals' : 'Assists'}</th></tr></thead><tbody>
-        ${rows.map((p, i) => `<tr><td class="num muted">${i + 1}</td><td><strong>${esc(p.player)}</strong><br><span class="muted">${esc(p.team)}</span></td><td class="r num">${p.apps}</td><td class="r num"><strong>${p[key]}</strong></td><td class="r num muted">${p[other]}</td></tr>`).join('')}
+        ${rows.map((p, i) => `<tr><td class="num muted">${i + 1}</td><td><strong>${esc(p.player)}</strong><br><span class="muted with-crest">${crest(p.team, 16)}${esc(p.team)}</span></td><td class="r num">${p.apps}</td><td class="r num"><strong>${p[key]}</strong></td><td class="r num muted">${p[other]}</td></tr>`).join('')}
         </tbody></table></div>` : '<p class="muted">No player statistics available for this league yet.</p>'}</div>`;
-    return `<div class="page-head"><span class="eyebrow">${esc(L.country)} · ${esc(L.season)}</span><h1>${esc(L.league)}</h1>
+    return `<div class="page-head"><span class="eyebrow">${esc(L.country)} · ${esc(L.season)}</span><h1 class="with-crest">${leagueLogo(div, 52)}${esc(L.league)}</h1>
         <p>${L.table.length} clubs · ${fixtures.length ? `${fixtures.length} upcoming predictions` : 'no fixtures listed yet'}${acc ? ` · model picked the right result in ${pct(acc.rate, 1)} of ${int(acc.n)} holdout matches here` : ''}.</p></div>
       <div class="filters" style="margin-top:16px"><select class="field" data-change-league aria-label="Switch league">${options}</select>
         <div class="chips"><button class="chip" data-action="jump" data-v="league-table">Standings</button><button class="chip" data-action="jump" data-v="league-scorers">Top scorers</button><button class="chip" data-action="jump" data-v="league-assists">Top assists</button>${fixtures.length ? '<button class="chip" data-action="jump" data-v="league-fixtures">Fixtures</button>' : ''}</div></div>
       <div class="section-head" id="league-table"><h2>Standings</h2></div>
       ${L.table.length ? `<div class="table-wrap"><table class="standings"><thead><tr><th>#</th><th>Club</th><th class="r" title="Played">P</th><th class="r" title="Won">W</th><th class="r" title="Drawn">D</th><th class="r" title="Lost">L</th><th class="r" title="Goals for">GF</th><th class="r" title="Goals against">GA</th><th class="r" title="Goal difference">GD</th><th class="r">Pts</th><th>Form</th></tr></thead><tbody>
-        ${L.table.map((t) => `<tr><td class="num muted">${t.pos}</td><td><strong>${esc(t.team)}</strong></td><td class="r num">${t.p}</td><td class="r num">${t.w}</td><td class="r num">${t.d}</td><td class="r num">${t.l}</td><td class="r num">${t.gf}</td><td class="r num">${t.ga}</td><td class="r num">${t.gd > 0 ? '+' : ''}${t.gd}</td><td class="r num"><strong>${t.pts}</strong></td><td>${formDots(t.form)}</td></tr>`).join('')}
+        ${L.table.map((t) => `<tr><td class="num muted">${t.pos}</td><td><span class="with-crest">${crest(t.team, 22)}<strong>${esc(t.team)}</strong></span></td><td class="r num">${t.p}</td><td class="r num">${t.w}</td><td class="r num">${t.d}</td><td class="r num">${t.l}</td><td class="r num">${t.gf}</td><td class="r num">${t.ga}</td><td class="r num">${t.gd > 0 ? '+' : ''}${t.gd}</td><td class="r num"><strong>${t.pts}</strong></td><td>${formDots(t.form)}</td></tr>`).join('')}
         </tbody></table></div><p class="muted" style="font-size:13px">Calculated from match results: points, then goal difference, then goals scored. Points deductions and league-specific tie-breakers are not applied.</p>`
         : '<p class="empty">No matches played yet this season.</p>'}
       <div class="two" style="margin-top:8px">
@@ -856,7 +872,7 @@
       case 'res-outcome': state.resOutcome = v; rerender(); break;
       case 'theme': {
         const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
-        document.documentElement.dataset.theme = next; store.set('gc-theme', next); break;
+        document.documentElement.dataset.theme = next; store.set('gc-theme', next); if (state.pred) render(true); break;
       }
     }
   });
@@ -914,8 +930,8 @@
   renderFootLinks();
   document.documentElement.dataset.theme = store.get('gc-theme', matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   const load = (name) => fetch(`${BASE}data/${name}.json`, { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error(`${name}: ${r.status}`); return r.json(); });
-  Promise.all([...['predictions', 'results', 'model'].map(load), ...['leagues', 'blog', 'sponsors', 'pages'].map((n) => load(n).catch(() => null))]).then(([pred, res, model, leagues, blog, sponsors, pages]) => {
-    Object.assign(state, { pred, res, model, leagues, blog, sponsors, pages });
+  Promise.all([...['predictions', 'results', 'model'].map(load), ...['leagues', 'blog', 'sponsors', 'pages', 'logos'].map((n) => load(n).catch(() => null))]).then(([pred, res, model, leagues, blog, sponsors, pages, logos]) => {
+    Object.assign(state, { pred, res, model, leagues, blog, sponsors, pages, logos });
     const live = new Set(pred.matches.map((m) => m.id));
     state.slip = store.get('gc-slip', []).filter((x) => live.has(x.id));
     $('#foot-meta').textContent = `Updated ${new Date(pred.generated).toLocaleString()} · model ${pred.version}`;
