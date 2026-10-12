@@ -51,6 +51,31 @@ Upload pictures to `site/assets/blog/` and refer to them as
 
 Plans and prices are set in `site/config.js` under `GOALCAST_PLANS`.
 
+### One-time setup for special picks
+
+Special picks are kept in a table that only paying members can read. Create it once in Supabase, under **SQL Editor**:
+
+```sql
+create table if not exists public.premium_content (
+  id text primary key,
+  payload jsonb not null,
+  updated_at timestamptz not null default now()
+);
+alter table public.premium_content enable row level security;
+create policy "members with an active plan can read" on public.premium_content
+  for select to authenticated
+  using (
+    coalesce(auth.jwt() -> 'app_metadata' ->> 'plan', '') <> ''
+    and coalesce(nullif(auth.jwt() -> 'app_metadata' ->> 'plan_until', '')::date, current_date) >= current_date
+  );
+```
+
+Then give the automatic update permission to write to it: in Supabase, open **Project Settings → API Keys** and copy
+the **secret** key. In GitHub, open the repository's **Settings → Secrets and variables → Actions**, press
+**New repository secret**, name it `SUPABASE_SERVICE_KEY` and paste the key. Never put this key anywhere else.
+
+### Switching a member's plan on
+
 When someone has paid, switch Premium on for their account in Supabase:
 
 1. Open your Supabase project and go to **SQL Editor**.

@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 import numpy as np
 import pandas as pd
 
-from ml import markets, registry
+from ml import markets, premium, registry
 from ml.config import BACKTEST_PATH, LEAGUES, LEDGER_PATH, SITE_DATA_DIR, current_season_start
 from ml.data.download import load_matches
 from ml.data.logos import build_logos
@@ -115,6 +115,7 @@ def export_predictions(pred: Predictor, matches: pd.DataFrame, feats: pd.DataFra
         imp = markets.implied(row.odds_h, row.odds_d, row.odds_a)
         league, country = league_info(row.div)
         out.append({
+            "_special": premium.choose(a["matrix"]),  # members only: removed before the public files are written
             "id": row.id, "div": row.div, "league": league, "country": country, "kickoff": row.kickoff,
             "home": row.home, "away": row.away,
             "probs": {"h": round(row.p_h, 4), "d": round(row.p_d, 4), "a": round(row.p_a, 4)},
@@ -261,9 +262,15 @@ def export() -> None:
         print(f"international predictions skipped: {err}")
     ledger = update_ledger(predictions, settled, pred.version)
     generated = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    bt = pd.read_csv(BACKTEST_PATH, parse_dates=["date"])
+    record = premium.backtest_record((f"{r.date:%Y-%m-%d}", markets.score_matrix(r.lam_h, r.lam_a, r.p_h, r.p_d, r.p_a), int(r.fthg), int(r.ftag))
+                                     for r in bt.itertuples(index=False))
+    premium.upload(premium.build_payload(predictions, record, generated))
+    for p in predictions:
+        p.pop("_special", None)
     payloads = {
         "predictions": {"generated": generated, "version": pred.version, "labels": markets.LABELS, "matches": predictions},
-        "results": {"generated": generated, **export_results(ledger), "intl": intl.get("results")},
+        "results": {"generated": generated, **export_results(ledger), "intl": intl.get("results"), "premium": record},
         "model": {"generated": generated, **export_model(pred.version, matches), "intl": intl.get("model")},
         "leagues": {"generated": generated, "leagues": export_leagues(matches, generated)},
     }

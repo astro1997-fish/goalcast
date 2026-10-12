@@ -6,7 +6,7 @@
   const BASE = new URL('.', document.currentScript.src).pathname; // site root, wherever the site is hosted
   const app = $('#app'), slipEl = $('#slip'), detailEl = $('#detail');
   const state = {
-    pred: null, res: null, model: null, leagues: null, blog: null, sponsors: null, pages: null, logos: null,
+    pred: null, res: null, model: null, leagues: null, blog: null, sponsors: null, pages: null, logos: null, premium: null,
     day: 'all', league: 'all', q: '', sort: 'time',
     resTab: 'backtest', resMarket: '1X2', resOutcome: 'all',
     slip: [],
@@ -633,6 +633,36 @@
         <td class="r num">${pct(t.p, 1)}</td><td class="r num">${fair(t.p)}</td><td>${unitPips(t.p)}</td><td class="r">${addBtn(m, t.sel)}</td></tr>`; }).join('')}</tbody></table></div>`;
   const strongest = (list, n) => list.slice().sort((a, b) => b.tips['1X2'].p - a.tips['1X2'].p).slice(0, n);
 
+  /* Special picks: fetched from the members-only table, so they exist only for accounts with an active plan. */
+  async function loadPremium() {
+    if (!isPremium() || !auth.client?.from) { state.premium = null; return; }
+    const { data, error } = await auth.client.from('premium_content').select('payload').eq('id', 'picks').maybeSingle();
+    state.premium = error || !data ? { missing: true } : data.payload;
+    if (currentRoute().split('/')[0] === 'premium') render(true);
+  }
+  const specialRow = (e) => `<tr class="click" data-action="open" data-id="${e.id}"><td><strong>${esc(e.home)} v ${esc(e.away)}</strong><br><span class="muted">${esc(e.league)}</span></td>
+      <td>${fmtDay(dayKey(e.kickoff))} ${fmtTime(e.kickoff)}<br><span class="muted">${countdown(e.kickoff)}</span></td><td><strong>${esc(e.label)}</strong></td>
+      <td class="r num">${pct(e.p, 1)}</td><td class="r num">${fair(e.p)}</td><td>${unitPips(e.p)}</td></tr>`;
+  function specialPicks() {
+    const P = state.premium;
+    if (!P) return '<p class="empty">Loading your special picks…</p>';
+    if (P.missing) return '<div class="note warn">Special picks are being prepared and will appear here shortly.</div>';
+    const now = new Date().toISOString();
+    const days = P.days.map((d) => ({ ...d, picks: d.picks.filter((e) => e.kickoff > now) })).filter((d) => d.picks.length);
+    const r = P.record?.picks;
+    return `${r ? `<div class="note"><strong>${pct(r.rate, 1)} of special picks landed</strong> on a year of matches the model had never seen (${int(r.hits)} of ${int(r.n)}; it expected ${pct(r.expected, 1)}). That still means roughly ${Math.round((1 - r.rate) * 10)} in ten lose.</div>` : ''}
+      ${days.length ? days.map((d) => `<h3 class="day-label">${fmtDay(d.date)} · ${d.picks.length} special picks</h3>
+        <div class="table-wrap"><table><thead><tr><th>Match</th><th>Kick-off</th><th>Special pick</th><th class="r">Chance</th><th class="r">Fair odds</th><th>Stake</th></tr></thead><tbody>${d.picks.map(specialRow).join('')}</tbody></table></div>`).join('')
+        : '<p class="empty">No special picks for the next few days yet. New ones are added twice a day.</p>'}
+      <div class="two" style="margin-top:16px">
+        ${P.treble && P.treble.legs.every((e) => e.kickoff > now) ? `<div class="panel"><h3>⭐ Special treble</h3><p>${pct(P.treble.p, 1)} chance all three land · fair odds ${fair(P.treble.p)}</p>
+          <ul class="list">${P.treble.legs.map((e) => `<li><span><strong>${esc(e.label)}</strong><br><span class="muted">${esc(e.home)} v ${esc(e.away)}</span></span><span class="num">${pct(e.p)}</span></li>`).join('')}</ul></div>` : ''}
+        ${P.long && P.long.kickoff > now ? `<div class="panel"><h3>🎲 Big-price pick</h3><p>A long shot: more likely to lose than win, at a bigger price.</p>
+          <ul class="list"><li><span><strong>${esc(P.long.label)}</strong><br><span class="muted">${esc(P.long.home)} v ${esc(P.long.away)} · ${fmtDay(dayKey(P.long.kickoff))} ${fmtTime(P.long.kickoff)}</span></span><span class="num">${pct(P.long.p)} · fair odds ${fair(P.long.p)}</span></li></ul>
+          ${P.record?.long ? `<p class="muted" style="margin-top:8px">Picks like this landed ${pct(P.record.long.rate, 1)} of the time on the holdout year.</p>` : ''}</div>` : ''}
+      </div>`;
+  }
+
   function premiumMembers(plan) {
     const all = upcoming();
     const today = strongest(all.filter((m) => dayKey(m.kickoff) === todayKey()), 6);
@@ -647,6 +677,8 @@
         <span class="tag" style="background:none;padding:0">★ BANKER OF THE DAY · ${fmtDay(dayKey(banker.kickoff)).toUpperCase()} ${fmtTime(banker.kickoff)}</span>
         <div class="teams">${esc(banker.home)} v ${esc(banker.away)}</div><div class="muted">${esc(banker.league)} · ${countdown(banker.kickoff)}</div>
         <div class="big"><b>${pct(banker.tips.SAFE.p)}</b><span><strong>${esc(label(banker.tips.SAFE.sel, banker))}</strong><br><span class="muted">fair odds ${fair(banker.tips.SAFE.p)}</span></span></div></div>` : ''}
+      <div class="section-head"><h2>⭐ Special picks <span class="badge won">Members only</span></h2></div>
+      ${specialPicks()}
       <div class="section-head"><h2>🎯 Today's selections</h2></div>
       ${today.length ? selectionTable(today) : '<p class="empty">No matches today. See the weekend selections below.</p>'}
       <div class="section-head"><h2>🎯 Weekend selections</h2></div>
@@ -667,6 +699,7 @@
   }
 
   const FEATURES = [
+    ['⭐', 'Special picks', 'Members-only selections from combination markets you will not find on the free site, such as a win with goals or a win to nil.', true],
     ['📊', 'Match statistics and analysis', 'Full breakdown of every match: all markets, scoreline chances, form and head-to-head.', true],
     ['🎯', 'Daily and weekend selections', "The model's strongest picks for today and for the weekend, in one list.", true],
     ['🏆', 'Accumulator analysis', 'Ready-made combinations with the true chance that every leg lands.', true],
@@ -689,6 +722,7 @@
           ${auth.user ? '<button class="btn" disabled>Your current plan</button>' : '<button class="btn outline" data-action="auth-open" data-v="signup">Create free account</button>'}</div>
         ${PLANS.map(card).join('')}
       </div>
+      ${state.res.premium?.picks ? `<div class="note" style="margin-top:22px"><strong>Special picks landed ${pct(state.res.premium.picks.rate, 1)} of the time</strong> across ${int(state.res.premium.picks.n)} picks on a year of matches the model had never seen. The model expected ${pct(state.res.premium.picks.expected, 1)}. No pick is guaranteed.</div>` : ''}
       <div class="section-head"><h2>What members receive</h2></div>
       <div class="features">${FEATURES.map(([icon, title, text, live]) => `<div class="feature"><span class="feature-icon">${icon}</span><div><strong>${title}${live ? '' : ' <span class="badge pending">Coming soon</span>'}</strong><p>${text}</p></div></div>`).join('')}</div>
       <div class="two" style="margin-top:22px">
@@ -848,6 +882,7 @@
         if (state.pred) render(true);
         if (event === 'PASSWORD_RECOVERY') { auth.msg = null; openAuth('newpass'); }
         notifyFavs();
+        loadPremium();
       });
     } catch (err) {
       console.error('GoalCast accounts unavailable:', err);
@@ -941,7 +976,7 @@
         break;
       case 'plan-choose': openPlan(v); break;
       case 'plan-refresh':
-        auth.client?.auth.refreshSession().then(() => { render(true); if (!isPremium()) alert('Premium is not active on this account yet. If you have paid, please message us and we will switch it on.'); });
+        auth.client?.auth.refreshSession().then(() => { render(true); loadPremium(); if (!isPremium()) alert('Premium is not active on this account yet. If you have paid, please message us and we will switch it on.'); });
         break;
       case 'burger': document.body.classList.toggle('nav-open'); break;
       case 'auth-open': auth.msg = null; openAuth(v); break;

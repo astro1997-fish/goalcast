@@ -29,6 +29,9 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Download data, train a new model version, export site data
         run: python -m ml.pipeline
+        env:
+          SUPABASE_URL: https://rutiffsubtqqgrotwava.supabase.co
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
       - name: Build blog and sponsor data
         run: python -m tools.build_content
       - name: Build one page per address, sitemap and robots.txt
