@@ -32,5 +32,5 @@ window.GOALCAST_ANALYTICS = {
    and put its path here, e.g. 'assets/hero.jpg'. Only use pictures you have the rights to:
    photos of real players and club badges need a licence. */
 window.GOALCAST_HOME = {
-  heroImage: '',
+  heroImage: 'assets/hero.webp',
 };

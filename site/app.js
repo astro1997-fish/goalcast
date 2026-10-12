@@ -95,25 +95,6 @@
   };
   const icon = (name) => `<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[name]}</svg>`;
 
-  /* The biggest matches of the next few days: strongest pairings first, one per competition where possible. */
-  function featuredMatches(all, n = 5) {
-    const soon = all.filter((m) => new Date(m.kickoff) - Date.now() < 5 * 864e5);
-    const ranked = (soon.length >= n ? soon : all).slice().sort((a, b) => (b.ctx.elo.h + b.ctx.elo.a) - (a.ctx.elo.h + a.ctx.elo.a));
-    const picked = [];
-    for (const m of ranked) if (picked.length < n && !picked.some((p) => p.div === m.div)) picked.push(m);
-    for (const m of ranked) if (picked.length < n && !picked.includes(m)) picked.push(m);
-    return picked.sort((a, b) => a.kickoff.localeCompare(b.kickoff));
-  }
-  const featureCard = (m) => {
-    const best = m.tips['1X2'].sel;
-    const box = (sel, p) => `<span class="${sel === best ? 'on' : ''}"><i>${sel}</i>${pct(p)}</span>`;
-    return `<article class="fcard" data-action="open" data-id="${m.id}" tabindex="0">
-      <div class="fcard-top"><strong>${esc(m.league)}</strong><span class="num">${fmtDay(dayKey(m.kickoff))} · ${fmtTime(m.kickoff)}</span></div>
-      <div class="fcard-teams"><div>${crest(m.home)}<span>${esc(m.home)}</span></div><em>VS</em><div>${crest(m.away)}<span>${esc(m.away)}</span></div></div>
-      <div class="fcard-odds" aria-label="Model probabilities: home ${pct(m.probs.h)}, draw ${pct(m.probs.d)}, away ${pct(m.probs.a)}">${box('1', m.probs.h)}${box('X', m.probs.d)}${box('2', m.probs.a)}</div>
-    </article>`;
-  };
-
   function homeHero(all, tip) {
     const photo = (window.GOALCAST_HOME || {}).heroImage;
     const second = all.filter((m) => m !== tip).sort((a, b) => b.tips['1X2'].p - a.tips['1X2'].p)[0];
@@ -125,13 +106,12 @@
           <div class="hc-big"><b>${pct(tip.tips['1X2'].p)}</b><span><strong>${esc(label(tip.tips['1X2'].sel, tip))}</strong><br>${esc(tip.league)} · likeliest score ${tip.tips.CS.sel}</span></div>
           ${probBar(tip.probs)}
         </div>` : ''}`;
-    return `<section class="home-hero">
+    return `<section class="home-hero ${photo ? 'has-photo' : ''}">
       <div class="hero-bg" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       <div class="hero-in">
         <div class="hero-copy">
-          <p class="hero-tags"><span>Football predictions</span><span>Real data</span><span>Better insights</span><span>Proven record</span></p>
-          <h1>Real football <em>predictions</em> that work.</h1>
-          <p class="hero-lede">AI-powered analysis. Real match data. Every result published.<br>Make better-informed picks with GoalCast.</p>
+          <h1><span class="hero-kicker">Welcome to</span><span class="hero-brand">Goal<em>Cast</em></span><span class="hero-sub">Football predictions</span></h1>
+          <p class="hero-lede">AI predictions. In-depth analysis. Every result published.<br>Your smarter view of the game.</p>
           <div class="hero-cta"><button class="btn primary big" data-action="to-matches">View today's predictions <span aria-hidden="true">→</span></button><a class="btn big outline" href="#/premium">♛ Explore Premium</a></div>
         </div>
         <div class="hero-art">${art}<p class="hero-slogan" aria-hidden="true">Bet smart.<br><em>Check GoalCast.</em></p></div>
@@ -144,8 +124,6 @@
       <a href="#/results">${icon('medal')}<p><strong>Proven results</strong>Track our performance</p></a>
       <div>${icon('shield')}<p><strong>Secure &amp; reliable</strong>Your trust matters</p></div>
     </section>
-    ${all.length ? `<div class="section-head featured-head"><h2>Upcoming matches <span class="live-dot">Upcoming</span></h2><button class="linkish strong" data-action="to-matches">View all matches →</button></div>
-      <div class="frow">${featuredMatches(all).map(featureCard).join('')}</div>` : ''}
     ${adSlot('banner')}`;
   }
 
@@ -173,14 +151,8 @@
         <div class="grid">${feed(list.filter((m) => dayKey(m.kickoff) === d), i === 0)}</div>`).join('');
 
     return `${day ? `<div class="page-head"><h1>Predictions for ${fmtDay(day)}</h1><p>Every match on this day, with the model's probabilities.</p></div>` : homeHero(all, tip)}
-    <div class="stats">
-      <div class="stat"><b>${all.length}</b><span>upcoming predictions</span></div>
-      <div class="stat"><b>${pct(safe.rate)}</b><span>safe-tip hit rate, ${int(safe.n)} holdout picks</span></div>
-      <div class="stat"><b>${pct(x12.rate, 1)}</b><span>1X2 accuracy on ${int(x12.n)} unseen matches</span></div>
-      <div class="stat"><b>${state.model.coverage.leagues}</b><span>leagues, ${int(state.model.coverage.teams)} teams tracked</span></div>
-    </div>
     ${favMatches().length ? `<div class="section-head"><h2>★ Your teams</h2><a class="btn small" href="#/my-teams">Manage teams</a></div><div class="grid">${favMatches().slice(0, 6).map(card).join('')}</div>` : ''}
-    <div class="section-head" id="matches"><h2>${day ? 'Matches' : 'All predictions'}</h2>
+    <div class="section-head featured-head" id="matches"><h2>${day ? 'Matches' : 'Upcoming matches <span class="live-dot">Upcoming</span>'}</h2>
       <div class="tabs"><button data-action="sort" data-v="time" class="${state.sort === 'time' ? 'on' : ''}">By kick-off</button><button data-action="sort" data-v="conf" class="${state.sort === 'conf' ? 'on' : ''}">By confidence</button></div>
     </div>
     <div class="filters">
@@ -189,6 +161,12 @@
       <input class="field" type="search" placeholder="Search team…" value="${esc(state.q)}" data-input="q" aria-label="Search team">
     </div>
     <div id="match-list">${body}</div>
+    <div class="stats" style="margin-top:34px">
+      <div class="stat"><b>${all.length}</b><span>upcoming predictions</span></div>
+      <div class="stat"><b>${pct(safe.rate)}</b><span>safe-tip hit rate, ${int(safe.n)} holdout picks</span></div>
+      <div class="stat"><b>${pct(x12.rate, 1)}</b><span>1X2 accuracy on ${int(x12.n)} unseen matches</span></div>
+      <div class="stat"><b>${state.model.coverage.leagues}</b><span>leagues, ${int(state.model.coverage.teams)} teams tracked</span></div>
+    </div>
     ${posts().length ? `<div class="section-head"><h2>From the blog</h2><a class="btn small" href="#/blog">All articles</a></div><div class="post-grid">${posts().slice(0, 3).map(postCard).join('')}</div>` : ''}
     <div class="section-head"><h2>How it works</h2></div>
     <div class="steps">
