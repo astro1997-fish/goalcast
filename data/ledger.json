@@ -14848,5 +14848,44 @@
    }
   },
   "score": null
+ },
+ "20261022-kairatalmaty-panathinaikos": {
+  "id": "20261022-kairatalmaty-panathinaikos",
+  "published": "2026-10-12T16:29:41Z",
+  "version": "20261012T162833Z",
+  "kickoff": "2026-10-22T14:30:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "Kairat Almaty",
+  "away": "Panathinaikos",
+  "probs": [
+   0.3215,
+   0.2141,
+   0.4644
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4644
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6785
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.532
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5134
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.1272
+   }
+  },
+  "score": null
  }
 }
