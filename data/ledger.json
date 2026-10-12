@@ -14551,5 +14551,302 @@
    }
   },
   "score": null
+ },
+ "20261021-realmadrid-rbleipzig": {
+  "id": "20261021-realmadrid-rbleipzig",
+  "published": "2026-10-12T02:55:02Z",
+  "version": "20261012T025356Z",
+  "kickoff": "2026-10-21T19:00:00Z",
+  "date": "2026-10-21",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Real Madrid",
+  "away": "RB Leipzig",
+  "probs": [
+   0.7635,
+   0.1335,
+   0.1031
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.7635
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8969
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.6896
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.525
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1052
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8969
+   }
+  },
+  "score": null
+ },
+ "20261021-astonvilla-vikingfk": {
+  "id": "20261021-astonvilla-vikingfk",
+  "published": "2026-10-12T02:55:02Z",
+  "version": "20261012T025356Z",
+  "kickoff": "2026-10-21T19:00:00Z",
+  "date": "2026-10-21",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Aston Villa",
+  "away": "Viking FK",
+  "probs": [
+   0.8131,
+   0.11,
+   0.0768
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.8131
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.9232
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.682
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.6116
+   },
+   "CS": {
+    "sel": "3-0",
+    "p": 0.1255
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.9232
+   }
+  },
+  "score": null
+ },
+ "20261021-bayernmunich-arsenal": {
+  "id": "20261021-bayernmunich-arsenal",
+  "published": "2026-10-12T02:55:02Z",
+  "version": "20261012T025356Z",
+  "kickoff": "2026-10-21T19:00:00Z",
+  "date": "2026-10-21",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Bayern Munich",
+  "away": "Arsenal",
+  "probs": [
+   0.5316,
+   0.2138,
+   0.2546
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5316
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7454
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5699
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5664
+   },
+   "CS": {
+    "sel": "2-1",
+    "p": 0.1001
+   }
+  },
+  "score": null
+ },
+ "20261021-clubbrugge-lens": {
+  "id": "20261021-clubbrugge-lens",
+  "published": "2026-10-12T02:55:02Z",
+  "version": "20261012T025356Z",
+  "kickoff": "2026-10-21T19:00:00Z",
+  "date": "2026-10-21",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Club Brugge",
+  "away": "Lens",
+  "probs": [
+   0.618,
+   0.1866,
+   0.1954
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.618
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8046
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5868
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5488
+   },
+   "CS": {
+    "sel": "2-1",
+    "p": 0.1066
+   },
+   "SAFE": {
+    "sel": "12",
+    "p": 0.8134
+   }
+  },
+  "score": null
+ },
+ "20261021-internazionale-shakhtardonetsk": {
+  "id": "20261021-internazionale-shakhtardonetsk",
+  "published": "2026-10-12T02:55:02Z",
+  "version": "20261012T025356Z",
+  "kickoff": "2026-10-21T19:00:00Z",
+  "date": "2026-10-21",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Internazionale",
+  "away": "Shakhtar Donetsk",
+  "probs": [
+   0.6796,
+   0.1661,
+   0.1543
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6796
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8457
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5996
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5229
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.112
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8457
+   }
+  },
+  "score": null
+ },
+ "20261021-realbetis-feyenoordrotterdam": {
+  "id": "20261021-realbetis-feyenoordrotterdam",
+  "published": "2026-10-12T02:55:02Z",
+  "version": "20261012T025356Z",
+  "kickoff": "2026-10-21T19:00:00Z",
+  "date": "2026-10-21",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Real Betis",
+  "away": "Feyenoord Rotterdam",
+  "probs": [
+   0.6494,
+   0.1922,
+   0.1584
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6494
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8416
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5937
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5376
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1057
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8416
+   }
+  },
+  "score": null
+ },
+ "20261021-sportingcp-lasklinz": {
+  "id": "20261021-sportingcp-lasklinz",
+  "published": "2026-10-12T02:55:02Z",
+  "version": "20261012T025356Z",
+  "kickoff": "2026-10-21T19:00:00Z",
+  "date": "2026-10-21",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Sporting CP",
+  "away": "LASK Linz",
+  "probs": [
+   0.7333,
+   0.1586,
+   0.1081
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.7333
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8919
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5741
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5429
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1324
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8919
+   }
+  },
+  "score": null
  }
 }
