@@ -14887,5 +14887,1426 @@
    }
   },
   "score": null
+ },
+ "20261022-ararat-armenia-azalkmaar": {
+  "id": "20261022-ararat-armenia-azalkmaar",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "Ararat-Armenia",
+  "away": "AZ Alkmaar",
+  "probs": [
+   0.3229,
+   0.2656,
+   0.4116
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4116
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6771
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5175
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5283
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1263
+   }
+  },
+  "score": null
+ },
+ "20261022-trabzonspor-heartofmidlothian": {
+  "id": "20261022-trabzonspor-heartofmidlothian",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "Trabzonspor",
+  "away": "Heart of Midlothian",
+  "probs": [
+   0.5045,
+   0.2501,
+   0.2455
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5045
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7545
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5528
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5257
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1304
+   }
+  },
+  "score": null
+ },
+ "20261022-redstarbelgrade-fckbenhavn": {
+  "id": "20261022-redstarbelgrade-fckbenhavn",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "Red Star Belgrade",
+  "away": "F.C. K\u00f8benhavn",
+  "probs": [
+   0.3638,
+   0.282,
+   0.3542
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.3638
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6458
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5408
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5184
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.134
+   }
+  },
+  "score": null
+ },
+ "20261022-pafos-rigafc": {
+  "id": "20261022-pafos-rigafc",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "Pafos",
+  "away": "Riga FC",
+  "probs": [
+   0.5127,
+   0.2732,
+   0.2141
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5127
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7859
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.548
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5159
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1292
+   }
+  },
+  "score": null
+ },
+ "20261022-kaunozalgiris-skbrann": {
+  "id": "20261022-kaunozalgiris-skbrann",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "Kauno Zalgiris",
+  "away": "SK Brann",
+  "probs": [
+   0.4213,
+   0.2586,
+   0.3201
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4213
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6799
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5172
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5253
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.123
+   }
+  },
+  "score": null
+ },
+ "20261022-interdescaldes-csucraiova": {
+  "id": "20261022-interdescaldes-csucraiova",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "Inter D'Escaldes",
+  "away": "CSU Craiova",
+  "probs": [
+   0.4328,
+   0.2541,
+   0.3132
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4328
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6868
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5165
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5505
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1204
+   }
+  },
+  "score": null
+ },
+ "20261022-iberia1999-mjllbyaif": {
+  "id": "20261022-iberia1999-mjllbyaif",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "Iberia 1999",
+  "away": "Mj\u00e4llby AIF",
+  "probs": [
+   0.3749,
+   0.2668,
+   0.3583
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.3749
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6417
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5303
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5191
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1269
+   }
+  },
+  "score": null
+ },
+ "20261022-getafe-fclugano": {
+  "id": "20261022-getafe-fclugano",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "Getafe",
+  "away": "FC Lugano",
+  "probs": [
+   0.563,
+   0.2205,
+   0.2165
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.563
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7835
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5532
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5443
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1041
+   }
+  },
+  "score": null
+ },
+ "20261022-jablonec-brightonhovealbion": {
+  "id": "20261022-jablonec-brightonhovealbion",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "Jablonec",
+  "away": "Brighton & Hove Albion",
+  "probs": [
+   0.2899,
+   0.3362,
+   0.3739
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.3739
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7101
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.6129
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5214
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.157
+   },
+   "SAFE": {
+    "sel": "U3.5",
+    "p": 0.801
+   }
+  },
+  "score": null
+ },
+ "20261022-unionst-gilloise-hapoelbeer": {
+  "id": "20261022-unionst-gilloise-hapoelbeer",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "Union St.-Gilloise",
+  "away": "Hapoel Be'er",
+  "probs": [
+   0.6054,
+   0.2087,
+   0.1859
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6054
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8141
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5319
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5054
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1174
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8141
+   }
+  },
+  "score": null
+ },
+ "20261022-sksturmgraz-marseille": {
+  "id": "20261022-sksturmgraz-marseille",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "SK Sturm Graz",
+  "away": "Marseille",
+  "probs": [
+   0.3683,
+   0.273,
+   0.3587
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.3683
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6413
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5737
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5175
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1287
+   }
+  },
+  "score": null
+ },
+ "20261022-oficrete-bayerleverkusen": {
+  "id": "20261022-oficrete-bayerleverkusen",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "OFI Crete",
+  "away": "Bayer Leverkusen",
+  "probs": [
+   0.2632,
+   0.308,
+   0.4288
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4288
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7368
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5871
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5141
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1449
+   }
+  },
+  "score": null
+ },
+ "20261022-lechpoznan-sunderland": {
+  "id": "20261022-lechpoznan-sunderland",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "Lech Poznan",
+  "away": "Sunderland",
+  "probs": [
+   0.6413,
+   0.1884,
+   0.1704
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6413
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8296
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5719
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5049
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1104
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8296
+   }
+  },
+  "score": null
+ },
+ "20261022-juventus-staderennais": {
+  "id": "20261022-juventus-staderennais",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "Juventus",
+  "away": "Stade Rennais",
+  "probs": [
+   0.6178,
+   0.181,
+   0.2012
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6178
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7988
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5892
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5484
+   },
+   "CS": {
+    "sel": "2-1",
+    "p": 0.1067
+   },
+   "SAFE": {
+    "sel": "12",
+    "p": 0.819
+   }
+  },
+  "score": null
+ },
+ "20261022-ferencvaros-torreense": {
+  "id": "20261022-ferencvaros-torreense",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "Ferencvaros",
+  "away": "Torreense",
+  "probs": [
+   0.5965,
+   0.2133,
+   0.1902
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5965
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8098
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.508
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5148
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1235
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8098
+   }
+  },
+  "score": null
+ },
+ "20261022-dinamozagreb-necnijmegen": {
+  "id": "20261022-dinamozagreb-necnijmegen",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "Dinamo Zagreb",
+  "away": "NEC Nijmegen",
+  "probs": [
+   0.61,
+   0.203,
+   0.187
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.61
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.813
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5741
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5257
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1025
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.813
+   }
+  },
+  "score": null
+ },
+ "20261022-fcnordsjlland-cskasofia": {
+  "id": "20261022-fcnordsjlland-cskasofia",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T16:45:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "FC Nordsj\u00e6lland",
+  "away": "CSKA Sofia",
+  "probs": [
+   0.6513,
+   0.1801,
+   0.1686
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6513
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8314
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5467
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5155
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1193
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8314
+   }
+  },
+  "score": null
+ },
+ "20261022-viktoriaplzen-levskisofia": {
+  "id": "20261022-viktoriaplzen-levskisofia",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "Viktoria Plzen",
+  "away": "Levski Sofia",
+  "probs": [
+   0.6365,
+   0.1933,
+   0.1702
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6365
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8298
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5285
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5138
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1258
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8298
+   }
+  },
+  "score": null
+ },
+ "20261022-fcmidtjylland-sint-truidense": {
+  "id": "20261022-fcmidtjylland-sint-truidense",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "FC Midtjylland",
+  "away": "Sint-Truidense",
+  "probs": [
+   0.6876,
+   0.1694,
+   0.1429
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6876
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8571
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5569
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.544
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1262
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8571
+   }
+  },
+  "score": null
+ },
+ "20261022-braga-kaagent": {
+  "id": "20261022-braga-kaagent",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "Braga",
+  "away": "KAA Gent",
+  "probs": [
+   0.5899,
+   0.2122,
+   0.1979
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5899
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8021
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.567
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5461
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1029
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8021
+   }
+  },
+  "score": null
+ },
+ "20261022-boracbanjaluka-kupskuopio": {
+  "id": "20261022-boracbanjaluka-kupskuopio",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "Borac Banja Luka",
+  "away": "KuPS Kuopio",
+  "probs": [
+   0.4809,
+   0.2893,
+   0.2298
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4809
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7702
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.6168
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5667
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1429
+   },
+   "SAFE": {
+    "sel": "U3.5",
+    "p": 0.8122
+   }
+  },
+  "score": null
+ },
+ "20261022-asmonaco-scfreiburg": {
+  "id": "20261022-asmonaco-scfreiburg",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "AS Monaco",
+  "away": "SC Freiburg",
+  "probs": [
+   0.2699,
+   0.2472,
+   0.4829
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4829
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7301
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5531
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5711
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.116
+   }
+  },
+  "score": null
+ },
+ "20261022-ajaxamsterdam-atalanta": {
+  "id": "20261022-ajaxamsterdam-atalanta",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "Ajax Amsterdam",
+  "away": "Atalanta",
+  "probs": [
+   0.2795,
+   0.1935,
+   0.527
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.527
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7205
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.6169
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5949
+   },
+   "CS": {
+    "sel": "1-2",
+    "p": 0.0939
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8206
+   }
+  },
+  "score": null
+ },
+ "20261022-agf-egnatia": {
+  "id": "20261022-agf-egnatia",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "AGF",
+  "away": "Egnatia",
+  "probs": [
+   0.5137,
+   0.2189,
+   0.2675
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5137
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7325
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5484
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5386
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1348
+   }
+  },
+  "score": null
+ },
+ "20261022-tsghoffenheim-lyon": {
+  "id": "20261022-tsghoffenheim-lyon",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "TSG Hoffenheim",
+  "away": "Lyon",
+  "probs": [
+   0.2575,
+   0.2082,
+   0.5342
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.5342
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7425
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5771
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.569
+   },
+   "CS": {
+    "sel": "1-2",
+    "p": 0.0996
+   }
+  },
+  "score": null
+ },
+ "20261022-afcbournemouth-acmilan": {
+  "id": "20261022-afcbournemouth-acmilan",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "AFC Bournemouth",
+  "away": "AC Milan",
+  "probs": [
+   0.286,
+   0.276,
+   0.438
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.438
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.714
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5452
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5067
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.131
+   }
+  },
+  "score": null
+ },
+ "20261022-olympiacos-spartaprague": {
+  "id": "20261022-olympiacos-spartaprague",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "Olympiacos",
+  "away": "Sparta Prague",
+  "probs": [
+   0.6107,
+   0.2033,
+   0.186
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6107
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.814
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5559
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.53
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1129
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.814
+   }
+  },
+  "score": null
+ },
+ "20261022-nkcelje-rbsalzburg": {
+  "id": "20261022-nkcelje-rbsalzburg",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "NK Celje",
+  "away": "RB Salzburg",
+  "probs": [
+   0.499,
+   0.2292,
+   0.2719
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.499
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7281
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5551
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5635
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1077
+   }
+  },
+  "score": null
+ },
+ "20261022-lillestrom-realsociedad": {
+  "id": "20261022-lillestrom-realsociedad",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "Lillestrom",
+  "away": "Real Sociedad",
+  "probs": [
+   0.238,
+   0.1575,
+   0.6045
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.6045
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.762
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.6036
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.557
+   },
+   "CS": {
+    "sel": "1-2",
+    "p": 0.1088
+   },
+   "SAFE": {
+    "sel": "12",
+    "p": 0.8425
+   }
+  },
+  "score": null
+ },
+ "20261022-jagielloniabialystok-anderlecht": {
+  "id": "20261022-jagielloniabialystok-anderlecht",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "Jagiellonia Bialystok",
+  "away": "Anderlecht",
+  "probs": [
+   0.5301,
+   0.2223,
+   0.2476
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5301
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7524
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5367
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5417
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1076
+   }
+  },
+  "score": null
+ },
+ "20261022-celtic-celtavigo": {
+  "id": "20261022-celtic-celtavigo",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "Celtic",
+  "away": "Celta Vigo",
+  "probs": [
+   0.3874,
+   0.2323,
+   0.3803
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.3874
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6197
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5229
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5494
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.11
+   }
+  },
+  "score": null
+ },
+ "20261022-besiktas-crystalpalace": {
+  "id": "20261022-besiktas-crystalpalace",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "Besiktas",
+  "away": "Crystal Palace",
+  "probs": [
+   0.3858,
+   0.2402,
+   0.374
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.3858
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.626
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.525
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5555
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1136
+   }
+  },
+  "score": null
+ },
+ "20261022-fcthun-hajduksplit": {
+  "id": "20261022-fcthun-hajduksplit",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "FC Thun",
+  "away": "Hajduk Split",
+  "probs": [
+   0.3418,
+   0.2502,
+   0.408
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.408
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6582
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.524
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5155
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.119
+   }
+  },
+  "score": null
+ },
+ "20261022-omonianicosia-benfica": {
+  "id": "20261022-omonianicosia-benfica",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa",
+  "league": "UEFA Europa League",
+  "home": "Omonia Nicosia",
+  "away": "Benfica",
+  "probs": [
+   0.3421,
+   0.2492,
+   0.4088
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4088
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6579
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5619
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5202
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.1202
+   }
+  },
+  "score": null
+ },
+ "20261022-lincolnredimps-fctwente": {
+  "id": "20261022-lincolnredimps-fctwente",
+  "published": "2026-10-12T21:49:22Z",
+  "version": "20261012T214821Z",
+  "kickoff": "2026-10-22T19:00:00Z",
+  "date": "2026-10-22",
+  "div": "uefa.europa.conf",
+  "league": "UEFA Conference League",
+  "home": "Lincoln Red Imps",
+  "away": "FC Twente",
+  "probs": [
+   0.3383,
+   0.2679,
+   0.3939
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.3939
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6617
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5485
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5031
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1271
+   }
+  },
+  "score": null
  }
 }
