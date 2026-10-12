@@ -1,10 +1,10 @@
 /* Account sign-in settings.
    Create a free project at https://supabase.com, then copy two values from
-   Project Settings -> API. Both are safe to publish: the "anon" key is the
-   public browser key. Never put the "service_role" key here. */
+   Project Settings -> API. Both are safe to publish: the "publishable" (or "anon") key
+   is the public browser key. Never put a "secret" or "service_role" key here. */
 window.GOALCAST_CONFIG = {
-  supabaseUrl: '',
-  supabaseAnonKey: '',
+  supabaseUrl: 'https://rutiffsubtqqgrotwava.supabase.co',
+  supabaseAnonKey: 'sb_publishable_KCqkjXTta39rfMKgfsUoUg_Ey5bXFtE',
 };
 
 /* Social and support links shown in the footer.
