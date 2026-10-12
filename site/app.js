@@ -616,30 +616,116 @@
     return 1 / p >= target ? { legs, p } : null;
   }
 
-  function viewPremium() {
+  /* ---------- premium membership ---------- */
+  const PLANS = window.GOALCAST_PLANS || [];
+  /* A member's plan lives in their account's protected settings, which only the site owner can change. */
+  function planOf() {
+    const meta = auth.user?.app_metadata || {};
+    if (!meta.plan || (meta.plan_until && meta.plan_until < todayKey())) return null;
+    return { id: meta.plan, until: meta.plan_until || null, name: PLANS.find((p) => p.id === meta.plan)?.name || 'Premium' };
+  }
+  const isPremium = () => Boolean(planOf());
+  /* Stake guide: more confident picks get more units, never more than three. */
+  const units = (p) => (p >= 0.75 ? 3 : p >= 0.6 ? 2 : 1);
+  const unitPips = (p) => `<span class="units" title="${units(p)} of 3 units">${[1, 2, 3].map((i) => `<i class="${i <= units(p) ? 'on' : ''}"></i>`).join('')}</span>`;
+  const selectionTable = (rows) => `<div class="table-wrap"><table><thead><tr><th>Match</th><th>Kick-off</th><th>Selection</th><th class="r">Chance</th><th class="r">Fair odds</th><th>Stake</th><th></th></tr></thead><tbody>
+      ${rows.map((m) => { const t = m.tips['1X2']; return `<tr class="click" data-action="open" data-id="${m.id}"><td>${matchCell(m)}</td><td>${whenCell(m)}</td><td><strong>${esc(label(t.sel, m))}</strong></td>
+        <td class="r num">${pct(t.p, 1)}</td><td class="r num">${fair(t.p)}</td><td>${unitPips(t.p)}</td><td class="r">${addBtn(m, t.sel)}</td></tr>`; }).join('')}</tbody></table></div>`;
+  const strongest = (list, n) => list.slice().sort((a, b) => b.tips['1X2'].p - a.tips['1X2'].p).slice(0, n);
+
+  function premiumMembers(plan) {
+    const all = upcoming();
+    const today = strongest(all.filter((m) => dayKey(m.kickoff) === todayKey()), 6);
+    const weekend = strongest(all.filter((m) => [0, 6].includes(new Date(m.kickoff).getDay()) && new Date(m.kickoff) - Date.now() < 7 * 864e5), 8);
     const pool = accaPool();
     const banker = pool[0];
     const accas = [2, 3, 5].map((target) => ({ target, acca: buildAcca(pool, target) })).filter((x) => x.acca);
-    const head = `<div class="page-head"><span class="eyebrow">★ Members</span><h1>Premium</h1><p>The model's banker of the day and ready-made accumulators, built from its safest selections in the next three days.</p></div>`;
-    if (!auth.user) {
-      return `${head}<div class="lock">
-        <div class="lock-preview" aria-hidden="true"><div class="panel"><h3>Banker of the day</h3><p>•••••••• v •••••••• — ••% ••••• ••• •••••</p></div>
-          <div class="panel"><h3>2 odds accumulator</h3><p>• legs · ••% chance all land</p></div><div class="panel"><h3>5 odds accumulator</h3><p>• legs · ••% chance all land</p></div></div>
-        <div class="lock-card"><h2>Free for members</h2><p class="muted">Create an account to unlock Premium. It takes a minute and there is nothing to pay.</p>
-          <div class="hero-cta" style="justify-content:center"><button class="btn primary" data-action="auth-open" data-v="signup">Create free account</button><button class="btn" data-action="auth-open" data-v="signin">Sign in</button></div></div>
-      </div>`;
-    }
-    const s = marketStat('SAFE');
-    return `${head}
-      <div class="note">Signed in as <strong>${esc(displayName())}</strong>. Legs are safe tips, which landed ${pct(s.rate, 1)} of the time on the holdout year. Combined chances assume the matches are independent.</div>
-      ${banker ? `<div class="totd" data-action="open" data-id="${banker.id}" tabindex="0" style="margin-bottom:14px">
+    const s = marketStat('SAFE'), x = marketStat('1X2');
+    return `<div class="page-head"><span class="eyebrow">★ ${esc(plan.name)} member</span><h1>Premium</h1>
+        <p>Signed in as ${esc(displayName())}.${plan.until ? ` Your membership runs until ${longDate(plan.until)}.` : ''}</p></div>
+      ${banker ? `<div class="totd" data-action="open" data-id="${banker.id}" tabindex="0" style="margin:18px 0 6px">
         <span class="tag" style="background:none;padding:0">★ BANKER OF THE DAY · ${fmtDay(dayKey(banker.kickoff)).toUpperCase()} ${fmtTime(banker.kickoff)}</span>
         <div class="teams">${esc(banker.home)} v ${esc(banker.away)}</div><div class="muted">${esc(banker.league)} · ${countdown(banker.kickoff)}</div>
-        <div class="big"><b>${pct(banker.tips.SAFE.p)}</b><span><strong>${esc(label(banker.tips.SAFE.sel, banker))}</strong><br><span class="muted">fair odds ${fair(banker.tips.SAFE.p)}</span></span></div></div>` : '<p class="empty">No selection clears the 80% bar in the next three days.</p>'}
-      <div class="tiles" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">${accas.map(({ target, acca }) => `<div class="panel"><h3>${target} odds accumulator</h3>
+        <div class="big"><b>${pct(banker.tips.SAFE.p)}</b><span><strong>${esc(label(banker.tips.SAFE.sel, banker))}</strong><br><span class="muted">fair odds ${fair(banker.tips.SAFE.p)}</span></span></div></div>` : ''}
+      <div class="section-head"><h2>🎯 Today's selections</h2></div>
+      ${today.length ? selectionTable(today) : '<p class="empty">No matches today. See the weekend selections below.</p>'}
+      <div class="section-head"><h2>🎯 Weekend selections</h2></div>
+      ${weekend.length ? selectionTable(weekend) : '<p class="empty">Weekend fixtures appear here from midweek.</p>'}
+      <div class="section-head"><h2>🏆 Accumulator analysis</h2></div>
+      ${accas.length ? `<div class="tiles" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">${accas.map(({ target, acca }) => `<div class="panel"><h3>${target} odds accumulator</h3>
         <p>${acca.legs.length} legs · ${pct(acca.p, 1)} chance all land · fair odds ${fair(acca.p)}</p>
         <ul class="list">${acca.legs.map((m) => `<li><span><strong>${esc(label(m.tips.SAFE.sel, m))}</strong><br><span class="muted">${esc(m.home)} v ${esc(m.away)}</span></span><span class="num">${pct(m.tips.SAFE.p)}</span></li>`).join('')}</ul>
-        <button class="btn small" style="margin-top:12px" data-action="acca-load" data-v="${target}">Load into slip</button></div>`).join('')}</div>`;
+        <button class="btn small" style="margin-top:12px" data-action="acca-load" data-v="${target}">Load into slip</button></div>`).join('')}</div>` : '<p class="empty">Not enough safe selections in the next three days to build accumulators.</p>'}
+      <div class="two" style="margin-top:22px">
+        <div class="panel"><h3>💡 Staking guide</h3><p>How to read the stake bars beside each selection.</p>
+          <ul class="list"><li><span>${unitPips(0.8)} 3 units</span><span class="muted">75% chance or higher</span></li><li><span>${unitPips(0.65)} 2 units</span><span class="muted">60% to 75%</span></li><li><span>${unitPips(0.5)} 1 unit</span><span class="muted">below 60%</span></li></ul>
+          <p style="margin-top:10px">Treat one unit as about 1% of the money you have set aside for betting, and never raise stakes to chase a loss. This is a way to keep stakes consistent, not a promise of profit.</p></div>
+        <div class="panel"><h3>📈 The record</h3><p>Measured on a year of matches the model had never seen.</p>
+          <ul class="list"><li><span>Match-result picks</span><strong class="num">${pct(x.rate, 1)} of ${int(x.n)}</strong></li><li><span>Safe tips</span><strong class="num">${pct(s.rate, 1)} of ${int(s.n)}</strong></li></ul>
+          <p style="margin-top:10px"><a href="#/results">See every result, wins and losses</a> · <a href="#/my-teams">Set up alerts for your teams</a></p></div>
+      </div>`;
+  }
+
+  const FEATURES = [
+    ['📊', 'Match statistics and analysis', 'Full breakdown of every match: all markets, scoreline chances, form and head-to-head.', true],
+    ['🎯', 'Daily and weekend selections', "The model's strongest picks for today and for the weekend, in one list.", true],
+    ['🏆', 'Accumulator analysis', 'Ready-made combinations with the true chance that every leg lands.', true],
+    ['💡', 'Staking guide', 'A suggested stake size beside each selection, to keep your betting consistent.', true],
+    ['🔔', 'Alerts for your teams', 'Follow up to 20 teams and get an alert on your device before they play.', true],
+    ['📈', 'Transparent results tracking', 'Every selection is logged before kick-off and its result published, win or lose.', true],
+    ['📲', 'Telegram and WhatsApp alerts', 'Selections sent straight to your phone.', false],
+  ];
+
+  function premiumSales() {
+    const s = marketStat('SAFE');
+    const card = (p) => `<div class="plan ${p.badge ? 'featured' : ''}">${p.badge ? `<span class="plan-badge">${esc(p.badge)}</span>` : ''}
+        <h3>${esc(p.name)}</h3><div class="plan-price"><b>${esc(p.price)}</b><span>/ ${esc(p.per)}</span></div>
+        <p class="plan-note">${esc(p.note || ' ')}</p>
+        <button class="btn ${p.badge ? 'primary' : 'outline'}" data-action="plan-choose" data-v="${esc(p.id)}">Choose ${esc(p.name.toLowerCase())}</button></div>`;
+    return `<div class="page-head premium-head"><span class="eyebrow">★ GoalCast Premium</span><h1>Go deeper on every match.</h1>
+        <p>Daily and weekend selections, accumulator analysis, a staking guide and alerts for your teams. No promises of guaranteed wins: you can check our full record, losses included, before you join.</p></div>
+      <div class="plans">
+        <div class="plan"><h3>Free</h3><div class="plan-price"><b>£0</b></div><p class="plan-note">Match-result predictions, league tables and results.</p>
+          ${auth.user ? '<button class="btn" disabled>Your current plan</button>' : '<button class="btn outline" data-action="auth-open" data-v="signup">Create free account</button>'}</div>
+        ${PLANS.map(card).join('')}
+      </div>
+      <div class="section-head"><h2>What members receive</h2></div>
+      <div class="features">${FEATURES.map(([icon, title, text, live]) => `<div class="feature"><span class="feature-icon">${icon}</span><div><strong>${title}${live ? '' : ' <span class="badge pending">Coming soon</span>'}</strong><p>${text}</p></div></div>`).join('')}</div>
+      <div class="two" style="margin-top:22px">
+        <div class="panel"><h3>How joining works</h3><ol class="steps-list"><li>Create a free account, or sign in.</li><li>Choose a plan and message us to arrange payment.</li><li>We switch Premium on for your account and you get full access.</li></ol>
+          <p class="muted" style="margin-top:8px">Plans do not renew automatically. You decide whether to continue when yours ends.</p></div>
+        <div class="panel"><h3>Straight answers</h3>
+          <p><strong>Do you guarantee wins?</strong> No. Nobody honestly can. Safe tips landed ${pct(s.rate, 1)} of the time on a year of unseen matches, which still means some lose. <a href="#/results">See the record</a>.</p>
+          <p><strong>Who is it for?</strong> Adults aged 18 and over who bet for entertainment and want better information. Please read our <a href="#/responsible-gambling">responsible gambling</a> page.</p></div>
+      </div>
+      ${auth.user ? '<p class="muted" style="margin-top:16px">Already paid? <button class="linkish" data-action="plan-refresh">Refresh my access</button></p>' : ''}`;
+  }
+
+  function viewPremium() {
+    const plan = planOf();
+    return plan ? premiumMembers(plan) : premiumSales();
+  }
+
+  /* Until card payments are connected, joining is arranged by message; the owner then switches the plan on. */
+  function openPlan(id) {
+    const p = PLANS.find((x) => x.id === id);
+    if (!p) return;
+    if (!auth.user) { auth.msg = { text: `Create a free account first, then choose the ${p.name.toLowerCase()} plan.`, ok: true }; openAuth('signup'); return; }
+    const links = window.GOALCAST_LINKS || {}, email = (state.sponsors?.advertise || {}).email;
+    const text = `Hello GoalCast, I would like the ${p.name} plan (${p.price} per ${p.per}). My account email is ${auth.user.email}.`;
+    const options = [
+      links.whatsapp && ['WhatsApp', `https://wa.me/${String(links.whatsapp).replace(/\D/g, '')}?text=${encodeURIComponent(text)}`],
+      links.telegramSupport && ['Telegram', linkFor.telegram(String(links.telegramSupport))],
+      email && ['Email', `mailto:${email}?subject=${encodeURIComponent(`GoalCast ${p.name} plan`)}&body=${encodeURIComponent(text)}`],
+    ].filter(Boolean);
+    detailEl.innerHTML = `<div class="d-head"><div><div class="muted">GoalCast Premium</div><h2>${esc(p.name)} plan · ${esc(p.price)} per ${esc(p.per)}</h2></div><button class="x" data-action="close-detail" aria-label="Close">×</button></div>
+      <div class="d-body"><div class="panel"><h3>Message us to join</h3>
+        <p>Send us a message and we will arrange payment and switch Premium on for <strong>${esc(auth.user.email)}</strong>. Your plan and account email are already filled in.</p>
+        <div class="hero-cta">${options.map(([name, href], i) => `<a class="btn ${i ? '' : 'primary'}" href="${esc(href)}" target="_blank" rel="noopener">Message on ${name}</a>`).join('')}</div>
+        <p class="muted" style="margin-top:12px">Telegram does not fill in the message for you, so please include your plan and account email there. Only pay through details we send you from these official contacts.</p></div>
+        <div class="panel"><h3>Before you join</h3><p>Predictions are probabilities, not guarantees, and some will lose. Only bet what you can afford to lose. 18+ only. <a href="#/terms">Terms of use</a> · <a href="#/responsible-gambling">Responsible gambling</a></p></div></div>`;
+    delete detailEl.dataset.id;
+    if (!detailEl.open) detailEl.showModal();
   }
 
   /* ---------- navigation ---------- */
@@ -671,7 +757,7 @@
   function renderAccount() {
     $('#account').innerHTML = routed(auth.user
       ? `<details class="dd right"><summary class="avatar" aria-label="Account menu">${esc(displayName()[0].toUpperCase())}</summary><div class="menu">
-          <span class="muted" style="padding:6px 10px;display:block">${esc(auth.user.email)}</span><hr><a href="#/my-teams">My teams${favMatches().length ? ` · ${favMatches().length} upcoming` : ''}</a><a href="#/premium">★ Premium</a><button data-action="sign-out">Sign out</button></div></details>`
+          <span class="muted" style="padding:6px 10px;display:block">${esc(auth.user.email)}</span><hr>${isPremium() ? `<span class="badge won" style="margin:4px 10px">★ ${esc(planOf().name)}</span>` : ''}<a href="#/my-teams">My teams${favMatches().length ? ` · ${favMatches().length} upcoming` : ''}</a><a href="#/premium">★ Premium</a><button data-action="sign-out">Sign out</button></div></details>`
       : `<button class="btn outline btn-login" data-action="auth-open" data-v="signin">Log in</button><button class="btn primary" data-action="auth-open" data-v="signup">Sign up</button>`);
   }
 
@@ -794,7 +880,7 @@
 
   /* ---------- routing & events ---------- */
   const TITLES = { safe: 'Safe football tips today', value: 'Model vs bookmaker odds', results: 'Football prediction results', model: 'How the GoalCast model performs',
-    premium: 'Premium football tips', 'my-teams': 'My teams', leagues: 'Football leagues, standings and top scorers', blog: 'GoalCast blog' };
+    premium: 'GoalCast Premium: plans and prices', 'my-teams': 'My teams', leagues: 'Football leagues, standings and top scorers', blog: 'GoalCast blog' };
   function pageTitle(route, arg) {
     if (route === 'league' && state.leagues?.leagues?.[arg]) return `${state.leagues.leagues[arg].league} table, top scorers and predictions`;
     if (route === 'market') return (MARKETS.find((k) => k.slug === arg) || MARKETS[0]).title;
@@ -829,7 +915,7 @@
     const title = pageTitle(route, arg);
     document.title = title ? `${title} | GoalCast` : 'GoalCast: football predictions, graded in public';
     scrollTo(0, keepScroll ? y : 0);
-    if (detailEl.open) openDetail(detailEl.dataset.id);
+    if (detailEl.open && detailEl.dataset.id) openDetail(detailEl.dataset.id);
   }
 
   document.addEventListener('click', (e) => {
@@ -852,6 +938,10 @@
       case 'notify-toggle':
         if (notifyOn()) { store.set('gc-notify', false); rerender(); break; }
         Notification.requestPermission().then((permission) => { store.set('gc-notify', permission === 'granted'); store.set('gc-notified', []); render(true); notifyFavs(); });
+        break;
+      case 'plan-choose': openPlan(v); break;
+      case 'plan-refresh':
+        auth.client?.auth.refreshSession().then(() => { render(true); if (!isPremium()) alert('Premium is not active on this account yet. If you have paid, please message us and we will switch it on.'); });
         break;
       case 'burger': document.body.classList.toggle('nav-open'); break;
       case 'auth-open': auth.msg = null; openAuth(v); break;

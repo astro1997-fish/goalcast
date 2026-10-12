@@ -134,8 +134,9 @@ def page_model():
 
 
 def page_premium():
-    lede = "A banker of the day and ready-made accumulators built from the model's safest selections. Free for members."
-    return "Premium football tips | GoalCast", lede, head("Premium", lede), ""
+    lede = ("GoalCast Premium: daily and weekend selections, accumulator analysis, a staking guide and alerts for your teams. "
+            "Weekly £9.99, monthly £29.99 or yearly £249.99. No guaranteed wins; every result is published.")
+    return "GoalCast Premium: plans and prices", lede, head("GoalCast Premium", lede), ""
 
 
 def page_leagues():
@@ -234,7 +235,7 @@ def build() -> None:
     (DIST / "404.html").write_text(render(template, "", not_found, BASE_PATH), encoding="utf-8", newline="\n")
 
     today = date.today().isoformat()
-    urls = "".join(f"<url><loc>{SITE_URL}{route + '/' if route else ''}</loc><lastmod>{today}</lastmod></url>\n" for route in pages if route != "premium")
+    urls = "".join(f"<url><loc>{SITE_URL}{route + '/' if route else ''}</loc><lastmod>{today}</lastmod></url>\n" for route in pages)
     (DIST / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n', encoding="utf-8")
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
     print(f"built {len(pages)} pages into dist/ for {SITE_URL}")

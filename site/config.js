@@ -34,3 +34,11 @@ window.GOALCAST_ANALYTICS = {
 window.GOALCAST_HOME = {
   heroImage: 'assets/hero.webp',
 };
+
+/* Premium plans shown on the Premium page. Change a price or note here and it updates everywhere.
+   "id" is what you type when switching a member's plan on (see content/README.md). */
+window.GOALCAST_PLANS = [
+  { id: 'weekly', name: 'Weekly', price: '£9.99', per: 'week', note: 'Short-term access, no commitment.' },
+  { id: 'monthly', name: 'Monthly', price: '£29.99', per: 'month', note: 'Works out at £6.92 a week.', badge: '⭐ Most popular' },
+  { id: 'yearly', name: 'Yearly', price: '£249.99', per: 'year', note: 'Works out at £20.83 a month. Save 30%.', badge: '🔥 Best value' },
+];

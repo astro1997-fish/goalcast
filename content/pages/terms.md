@@ -1,7 +1,7 @@
 ---
 title: Terms of use
 summary: The rules for using GoalCast, and what the predictions are and are not.
-updated: 2026-10-11
+updated: 2026-10-13
 ---
 
 By using GoalCast you agree to these terms. If you do not agree, please do not use the site.
@@ -31,6 +31,14 @@ Gambling laws differ from country to country. You are responsible for making sur
 ## Accounts
 
 If you create an account, keep your password private and tell us if you think someone else has used it. You are responsible for activity on your account. We may suspend or close accounts that are used to abuse the site.
+
+## Premium membership
+
+Premium plans and their prices are listed on the [Premium page](page:premium). Payment is arranged directly with us through the contacts shown on the site, and we then switch Premium on for your account for the period you paid for. Plans do not renew automatically.
+
+Premium gives access to additional selections and analysis. It does not guarantee winning bets or profit, and the points under "Predictions are not guarantees" apply to it in full.
+
+If you have a problem with a payment or your access, contact us and we will put it right.
 
 ## Accuracy of information
 

@@ -461,3 +461,25 @@ html { overflow-x: clip; }
 .with-crest { display: inline-flex; align-items: center; gap: 8px; }
 h1.with-crest { display: flex; gap: 14px; }
 .vs-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+/* premium plans */
+.plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 12px; margin-top: 22px; align-items: stretch; }
+.plan { position: relative; display: flex; flex-direction: column; gap: 6px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px 18px 18px; }
+.plan.featured { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 14px 40px color-mix(in srgb, var(--accent) 12%, transparent); }
+.plan h3 { font-size: 17px; }
+.plan-badge { position: absolute; top: -12px; left: 16px; background: var(--accent); color: var(--on-accent); font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 99px; white-space: nowrap; }
+.plan-price { display: flex; align-items: baseline; gap: 6px; margin-top: 4px; }
+.plan-price b { font-size: 34px; font-weight: 800; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.plan-price span { color: var(--muted); }
+.plan-note { color: var(--muted); font-size: 13.5px; margin: 0 0 10px; min-height: 40px; }
+.plan .btn { margin-top: auto; text-align: center; }
+.premium-head h1 { font-size: clamp(30px, 4.4vw, 48px); }
+.features { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 10px; }
+.feature { display: flex; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.feature-icon { font-size: 24px; line-height: 1.2; }
+.feature p { margin: 3px 0 0; color: var(--muted); font-size: 13.5px; }
+.steps-list { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 6px; }
+.units { display: inline-flex; gap: 3px; vertical-align: middle; margin-right: 6px; }
+.units i { width: 14px; height: 8px; border-radius: 3px; background: var(--line); }
+.units i.on { background: var(--accent); }
+.panel p a, .page-head p a { color: var(--accent); }

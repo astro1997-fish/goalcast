@@ -47,6 +47,24 @@ build log (GitHub → Actions).
 Upload pictures to `site/assets/blog/` and refer to them as
 `![description](assets/blog/file-name.jpg)`.
 
+## Premium members
+
+Plans and prices are set in `site/config.js` under `GOALCAST_PLANS`.
+
+When someone has paid, switch Premium on for their account in Supabase:
+
+1. Open your Supabase project and go to **SQL Editor**.
+2. Paste the line below, change the email, the plan (`weekly`, `monthly` or `yearly`) and the last day of access, then press **Run**.
+
+```sql
+update auth.users
+set raw_app_meta_data = raw_app_meta_data || '{"plan": "monthly", "plan_until": "2026-11-13"}'
+where email = 'member@example.com';
+```
+
+The member then signs out and in again, or presses **Refresh my access** on the Premium page. Access ends by itself
+after the `plan_until` date. To end it early, run the same line with `"plan": ""`.
+
 ## Terms, privacy and other pages
 
 The terms of use, privacy policy and responsible gambling page are in `content/pages`, written the same way as blog
