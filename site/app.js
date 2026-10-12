@@ -58,8 +58,8 @@
     return `<article class="card" data-action="open" data-id="${m.id}" tabindex="0">
       <div class="card-top"><span class="lg">${esc(m.league)} · ${esc(m.country)}</span><span class="num">${fmtTime(m.kickoff)} · ${countdown(m.kickoff)}</span></div>
       <div class="teams-row">
-        <span class="team">${esc(m.home)}</span>${formDots(m.ctx.last?.h)}
-        <span class="team">${esc(m.away)}</span>${formDots(m.ctx.last?.a)}
+        <span class="team">${favs().includes(m.home) ? '★ ' : ''}${esc(m.home)}</span>${formDots(m.ctx.last?.h)}
+        <span class="team">${favs().includes(m.away) ? '★ ' : ''}${esc(m.away)}</span>${formDots(m.ctx.last?.a)}
       </div>
       ${probBar(m.probs)}
       <div class="bar-legend"><span>Home</span><span>Draw</span><span>Away</span></div>
@@ -121,6 +121,7 @@
       <div class="stat"><b>${pct(x12.rate, 1)}</b><span>1X2 accuracy on ${int(x12.n)} unseen matches</span></div>
       <div class="stat"><b>${state.model.coverage.leagues}</b><span>leagues, ${int(state.model.coverage.teams)} teams tracked</span></div>
     </div>
+    ${favMatches().length ? `<div class="section-head"><h2>★ Your teams</h2><a class="btn small" href="#/my-teams">Manage teams</a></div><div class="grid">${favMatches().slice(0, 6).map(card).join('')}</div>` : ''}
     <div class="section-head" id="matches"><h2>Upcoming matches</h2>
       <div class="tabs"><button data-action="sort" data-v="time" class="${state.sort === 'time' ? 'on' : ''}">By kick-off</button><button data-action="sort" data-v="conf" class="${state.sort === 'conf' ? 'on' : ''}">By confidence</button></div>
     </div>
@@ -274,7 +275,8 @@
     const formList = (arr) => (arr && arr.length ? `<ul class="list">${arr.slice().reverse().map((f) => `<li><span>${esc(f.slice(2))}</span><span class="badge ${f[0] === 'W' ? 'won' : f[0] === 'L' ? 'lost' : 'pending'}">${f[0]}</span></li>`).join('')}</ul>` : '<p class="muted">No recent matches on record.</p>');
 
     detailEl.innerHTML = `<div class="d-head"><div><div class="muted">${esc(m.league)} · ${esc(m.country)} · ${fmtDay(dayKey(m.kickoff))} ${fmtTime(m.kickoff)} · ${countdown(m.kickoff)}</div>
-        <h2>${esc(m.home)} v ${esc(m.away)}</h2></div><button class="x" data-action="close-detail" aria-label="Close">×</button></div>
+        <h2>${esc(m.home)} v ${esc(m.away)}</h2>
+        ${auth.user ? `<div class="follow">${[m.home, m.away].map((t) => `<button class="btn small" data-action="fav-toggle" data-v="${esc(t)}">${favs().includes(t) ? '★ Following' : '☆ Follow'} ${esc(t)}</button>`).join('')}</div>` : ''}</div><button class="x" data-action="close-detail" aria-label="Close">×</button></div>
       <div class="d-body">
         <div class="panel"><h3>Match result ${pips(m.confidence)}</h3><p>Model: expected goals ${m.xg.h.toFixed(2)} – ${m.xg.a.toFixed(2)}.</p>
           ${probBar(m.probs)}<div class="bar-legend"><span>${esc(m.home)}</span><span>Draw</span><span>${esc(m.away)}</span></div>
@@ -406,6 +408,80 @@
     return `<article class="post"><h1>${esc(p.title)}</h1>${p.updated ? `<p class="muted">Last updated ${longDate(p.updated)}</p>` : ''}<div class="prose">${p.html}</div></article>`;
   }
 
+  /* ---------- favourite teams ---------- */
+  const MAX_FAVS = 20;
+  const favs = () => auth.user?.user_metadata?.favorite_teams || [];
+  const isFav = (m) => { const f = favs(); return f.includes(m.home) || f.includes(m.away); };
+  const favMatches = () => (favs().length ? upcoming().filter(isFav) : []);
+  let teamIndex = null;
+  /* Every team the site knows, with the competition it plays in. */
+  function allTeams() {
+    if (teamIndex) return teamIndex;
+    teamIndex = new Map();
+    Object.values(state.leagues?.leagues || {}).forEach((l) => l.table.forEach((t) => teamIndex.set(t.team, l.league)));
+    (state.pred?.matches || []).forEach((m) => [m.home, m.away].forEach((t) => { if (!teamIndex.has(t)) teamIndex.set(t, m.league); }));
+    return teamIndex;
+  }
+  const teamChips = (list) => (list.length
+    ? list.map((t) => `<span class="chip on team-chip">${esc(t)}<button type="button" data-action="team-remove" data-v="${esc(t)}" aria-label="Remove ${esc(t)}">×</button></span>`).join('')
+    : '<span class="muted" style="font-size:13px">None chosen yet.</span>');
+  const teamPicker = (list) => `<div class="team-picker"><input class="field" list="team-list" placeholder="Type a team name…" data-team-input autocomplete="off" aria-label="Add a favourite team">
+      <div class="team-chips">${teamChips(list)}</div></div>`;
+
+  async function saveFavs(list) {
+    if (!auth.client || !auth.user) return;
+    const { error } = await auth.client.auth.updateUser({ data: { favorite_teams: list.slice(0, MAX_FAVS) } });
+    if (error) alert(`Could not save your teams: ${error.message}`);
+  }
+  /* Adding works in two places: the sign-up form (kept until the account exists) and the My teams page (saved at once). */
+  function addTeam(input) {
+    const name = [...allTeams().keys()].find((t) => t.toLowerCase() === input.value.trim().toLowerCase());
+    if (!name) return;
+    input.value = '';
+    if (authEl.contains(input)) {
+      if (!auth.pickTeams.includes(name) && auth.pickTeams.length < MAX_FAVS) auth.pickTeams.push(name);
+      $('.team-chips', authEl).innerHTML = teamChips(auth.pickTeams);
+    } else if (!favs().includes(name)) saveFavs([...favs(), name]);
+  }
+  function removeTeam(name, inDialog) {
+    if (inDialog) {
+      auth.pickTeams = auth.pickTeams.filter((t) => t !== name);
+      $('.team-chips', authEl).innerHTML = teamChips(auth.pickTeams);
+    } else saveFavs(favs().filter((t) => t !== name));
+  }
+
+  /* Alerts on this device: shown when GoalCast is opened and a followed team plays within a day. */
+  const canNotify = () => 'Notification' in window;
+  const notifyOn = () => canNotify() && Notification.permission === 'granted' && store.get('gc-notify', false);
+  function notifyFavs() {
+    if (!notifyOn() || !state.pred) return;
+    const seen = store.get('gc-notified', []);
+    favMatches().filter((m) => new Date(m.kickoff) - Date.now() < 24 * 36e5 && !seen.includes(m.id)).slice(0, 3).forEach((m) => {
+      const t = m.tips['1X2'];
+      new Notification(`${m.home} v ${m.away}`, { body: `${fmtDay(dayKey(m.kickoff))} ${fmtTime(m.kickoff)} · ${m.league}\nPrediction: ${label(t.sel, m)} (${pct(t.p)})`, icon: `${BASE}assets/brand/goalcast-icon-lime.png`, tag: m.id });
+      seen.push(m.id);
+    });
+    store.set('gc-notified', seen.slice(-200));
+  }
+
+  function viewMyTeams() {
+    const head = `<div class="page-head"><span class="eyebrow">★ Members</span><h1>My teams</h1><p>Follow up to ${MAX_FAVS} teams. Their matches are starred across the site and collected here with the model's predictions.</p></div>`;
+    if (!auth.user) {
+      return `${head}<div class="note">Sign in to follow teams. It is free.</div>
+        <div class="hero-cta"><button class="btn primary" data-action="auth-open" data-v="signup">Create free account</button><button class="btn" data-action="auth-open" data-v="signin">Sign in</button></div>`;
+    }
+    const list = favs(), matches = favMatches();
+    const alerts = !canNotify() ? '<p class="muted">This browser does not support alerts.</p>'
+      : Notification.permission === 'denied' ? '<p class="muted">Alerts are blocked for this site in your browser settings. Allow notifications there to switch them on.</p>'
+        : `<button class="btn ${notifyOn() ? '' : 'primary'}" data-action="notify-toggle">${notifyOn() ? 'Turn alerts off on this device' : 'Turn alerts on for this device'}</button>`;
+    return `${head}
+      <div class="panel" style="margin-top:18px"><h3>Teams you follow</h3><p>Start typing and pick a team from the list.</p>${teamPicker(list)}</div>
+      <div class="panel" style="margin-top:12px"><h3>Match alerts</h3><p>When you open GoalCast, this device shows an alert for any followed team playing in the next 24 hours.</p>${alerts}</div>
+      <div class="section-head"><h2>Upcoming matches</h2></div>
+      ${matches.length ? `<div class="grid">${matches.map(card).join('')}</div>`
+        : `<p class="empty">${list.length ? 'None of your teams has a match listed in the next ten days.' : 'Follow a team to see its matches here.'}</p>`}`;
+  }
+
   /* ---------- markets, leagues, premium ---------- */
   const line = (sel) => (m) => ({ sel, p: m.sels[sel] });
   const MARKETS = [
@@ -535,7 +611,7 @@
   /* ---------- accounts (Supabase Auth) ---------- */
   const SUPABASE_CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js';
   const cfg = window.GOALCAST_CONFIG || {};
-  const auth = { client: null, user: null, mode: 'signin', msg: null, busy: false };
+  const auth = { client: null, user: null, mode: 'signin', msg: null, busy: false, pickTeams: [] };
   const authEl = $('#auth');
   const displayName = () => auth.user?.user_metadata?.display_name || auth.user?.email?.split('@')[0] || 'Member';
   const redirectTo = () => location.origin + BASE;
@@ -543,7 +619,7 @@
   function renderAccount() {
     $('#account').innerHTML = routed(auth.user
       ? `<details class="dd right"><summary class="avatar" aria-label="Account menu">${esc(displayName()[0].toUpperCase())}</summary><div class="menu">
-          <span class="muted" style="padding:6px 10px;display:block">${esc(auth.user.email)}</span><hr><a href="#/premium">★ Premium</a><button data-action="sign-out">Sign out</button></div></details>`
+          <span class="muted" style="padding:6px 10px;display:block">${esc(auth.user.email)}</span><hr><a href="#/my-teams">My teams${favMatches().length ? ` · ${favMatches().length} upcoming` : ''}</a><a href="#/premium">★ Premium</a><button data-action="sign-out">Sign out</button></div></details>`
       : `<button class="btn primary" data-action="auth-open" data-v="signin">Sign in</button>`);
   }
 
@@ -561,6 +637,7 @@
       ${m !== 'reset' ? field('password', m === 'newpass' ? 'New password' : 'Password', 'password', `autocomplete="${m === 'signin' ? 'current-password' : 'new-password'}"`) : ''}
       ${m !== 'reset' ? `<label class="check"><input type="checkbox" data-show-password ${auth.showPassword ? 'checked' : ''}> Show password</label>` : ''}
       ${m === 'signup' || m === 'newpass' ? '<p class="muted" style="font-size:12.5px;margin:0">At least 8 characters. <span id="pw-count"></span></p>' : ''}
+      ${m === 'signup' ? `<div class="pick-teams"><span>Favourite teams <small>(optional)</small></span>${teamPicker(auth.pickTeams)}<small>We will star their matches and collect them for you.</small></div>` : ''}
       ${auth.msg ? `<p class="auth-msg ${auth.msg.ok ? 'ok' : 'err'}" role="alert">${esc(auth.msg.text)}</p>` : ''}
       <button class="btn primary" type="submit" ${auth.busy ? 'disabled' : ''}>${auth.busy ? 'Please wait…' : actions[m]}</button>
       ${m === 'signin' ? '<button type="button" class="linkish" data-action="auth-open" data-v="reset">Forgot your password?</button>' : ''}
@@ -593,8 +670,9 @@
     const a = auth.client.auth;
     try {
       if (auth.mode === 'signup') {
-        const { data, error } = await a.signUp({ email: v.email, password: v.password, options: { data: { display_name: v.name.trim() }, emailRedirectTo: redirectTo() } });
+        const { data, error } = await a.signUp({ email: v.email, password: v.password, options: { data: { display_name: v.name.trim(), favorite_teams: auth.pickTeams }, emailRedirectTo: redirectTo() } });
         if (error) throw error;
+        auth.pickTeams = [];
         if (!data.session) return say('Almost there: we sent a confirmation link to your email. Open it to finish creating your account.', true);
       } else if (auth.mode === 'signin') {
         const { error } = await a.signInWithPassword({ email: v.email, password: v.password });
@@ -631,6 +709,7 @@
         renderAccount();
         if (state.pred) render(true);
         if (event === 'PASSWORD_RECOVERY') { auth.msg = null; openAuth('newpass'); }
+        notifyFavs();
       });
     } catch (err) {
       console.error('GoalCast accounts unavailable:', err);
@@ -663,7 +742,7 @@
 
   /* ---------- routing & events ---------- */
   const TITLES = { safe: 'Safe football tips today', value: 'Model vs bookmaker odds', results: 'Football prediction results', model: 'How the GoalCast model performs',
-    premium: 'Premium football tips', leagues: 'Football leagues, standings and top scorers', blog: 'GoalCast blog' };
+    premium: 'Premium football tips', 'my-teams': 'My teams', leagues: 'Football leagues, standings and top scorers', blog: 'GoalCast blog' };
   function pageTitle(route, arg) {
     if (route === 'league' && state.leagues?.leagues?.[arg]) return `${state.leagues.leagues[arg].league} table, top scorers and predictions`;
     if (route === 'market') return (MARKETS.find((k) => k.slug === arg) || MARKETS[0]).title;
@@ -679,7 +758,7 @@
     render(false);
   }
   const routes = { '': viewMatches, safe: viewSafe, value: viewValue, results: viewResults, model: viewModel,
-    market: viewMarket, leagues: viewLeagues, premium: viewPremium, day: viewMatches, league: viewLeague, blog: viewBlog, intl: viewIntl,
+    market: viewMarket, leagues: viewLeagues, premium: viewPremium, day: viewMatches, league: viewLeague, blog: viewBlog, intl: viewIntl, 'my-teams': viewMyTeams,
     terms: () => viewPage('terms'), privacy: () => viewPage('privacy'), 'responsible-gambling': () => viewPage('responsible-gambling') };
   const GROUPS = { market: 'market', safe: 'market', value: 'market', day: 'day', league: 'league', leagues: 'league', intl: 'intl' };
   function render(keepScroll) {
@@ -716,6 +795,12 @@
       case 'slip-clear': state.slip = []; store.set('gc-slip', []); renderSlip(); rerender(); break;
       case 'toggle-slip': slipEl.hidden = !slipEl.hidden; break;
       case 'open': openDetail(id); break;
+      case 'team-remove': removeTeam(v, authEl.contains(el)); break;
+      case 'fav-toggle': saveFavs(favs().includes(v) ? favs().filter((t) => t !== v) : [...favs(), v]); break;
+      case 'notify-toggle':
+        if (notifyOn()) { store.set('gc-notify', false); rerender(); break; }
+        Notification.requestPermission().then((permission) => { store.set('gc-notify', permission === 'granted'); store.set('gc-notified', []); render(true); notifyFavs(); });
+        break;
       case 'burger': document.body.classList.toggle('nav-open'); break;
       case 'auth-open': auth.msg = null; openAuth(v); break;
       case 'auth-close': authEl.close(); break;
@@ -748,12 +833,14 @@
     submitAuth(e.target);
   });
   document.addEventListener('change', (e) => {
+    if ('teamInput' in e.target.dataset) { addTeam(e.target); return; }
     if ('showPassword' in e.target.dataset) { auth.showPassword = e.target.checked; syncPassword(); return; }
     if ('changeLeague' in e.target.dataset) { navigate(`league/${e.target.value}`); return; }
     const key = e.target.dataset.change;
     if (key) { state[key] = e.target.value; render(true); }
   });
   document.addEventListener('input', (e) => {
+    if ('teamInput' in e.target.dataset) { addTeam(e.target); return; }
     if (e.target.name === 'password' && authEl.contains(e.target)) { syncPassword(); return; }
     if (e.target.dataset.input !== 'q') return;
     state.q = e.target.value;
@@ -798,6 +885,7 @@
     $('#foot-meta').textContent = `Updated ${new Date(pred.generated).toLocaleString()} · model ${pred.version}`;
     renderSlip();
     renderNav();
+    document.body.insertAdjacentHTML('beforeend', `<datalist id="team-list">${[...allTeams()].sort((a, b) => a[0].localeCompare(b[0])).map(([t, l]) => `<option value="${esc(t)}">${esc(l)}</option>`).join('')}</datalist>`);
     render(false);
     initAuth();
     setInterval(() => { if (!detailEl.open && !document.activeElement?.matches('input, select')) render(true); }, 60000);

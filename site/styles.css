@@ -330,3 +330,15 @@ a.social:hover { border-color: var(--accent); color: var(--accent); }
 
 #auth-form label.check { display: flex; align-items: center; gap: 8px; font-weight: 500; cursor: pointer; }
 #auth-form label.check input { width: auto; }
+
+/* favourite teams */
+.team-picker { display: grid; gap: 10px; }
+.team-picker input { width: 100%; max-width: 360px; }
+.team-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.team-chip { display: inline-flex; align-items: center; gap: 6px; cursor: default; padding-right: 6px; }
+.team-chip button { border: 0; background: none; color: inherit; cursor: pointer; font-size: 16px; line-height: 1; padding: 0 4px; opacity: .7; }
+.team-chip button:hover { opacity: 1; }
+.pick-teams { display: grid; gap: 6px; font-size: 13px; font-weight: 650; color: var(--muted); }
+.pick-teams small { font-weight: 400; }
+.pick-teams .team-picker input { max-width: none; background: var(--bg); color: var(--text); font-weight: 400; }
+.follow { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
