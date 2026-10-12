@@ -26,3 +26,11 @@ window.GOALCAST_LINKS = {
 window.GOALCAST_ANALYTICS = {
   cloudflareToken: '33500c2d87a04aaa8e8c79ed8da33c0e',
 };
+
+/* Home page banner picture (optional).
+   Leave empty to show the built-in graphic. To use your own picture, upload it to site/assets/
+   and put its path here, e.g. 'assets/hero.jpg'. Only use pictures you have the rights to:
+   photos of real players and club badges need a licence. */
+window.GOALCAST_HOME = {
+  heroImage: '',
+};

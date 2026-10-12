@@ -77,8 +77,80 @@
     </article>`;
   };
 
+  /* ---------- home page: hero, feature strip, featured matches ---------- */
+  /* Team badge drawn from the name: initials on a colour derived from it. No club artwork is used. */
+  function crest(name, size = 44) {
+    const words = name.replace(/[^\p{L}\p{N} ]/gu, ' ').split(/\s+/).filter(Boolean);
+    const initials = (words.length > 1 ? words[0][0] + words[1][0] : (words[0] || '?').slice(0, 3)).toUpperCase();
+    let hash = 0;
+    for (const ch of name) hash = (hash * 31 + ch.codePointAt(0)) % 360;
+    return `<span class="crest" style="--h:${hash};width:${size}px;height:${size}px;font-size:${Math.round(size * (initials.length > 2 ? 0.3 : 0.38))}px" aria-hidden="true">${esc(initials)}</span>`;
+  }
+  const ICON = {
+    target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><path d="M12 12l7.5-7.5M19.5 4.5V8M19.5 4.5H16"/>',
+    bars: '<path d="M4 20V13M9.3 20V9M14.7 20V11M20 20V5"/><path d="M4 8l5-3.5 5 2.5 6-4.5"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>',
+    medal: '<path d="M12 3l7 2.5v6c0 4.5-3 7.5-7 9.5-4-2-7-5-7-9.5v-6z"/><path d="M12 8.2l1.2 2.5 2.7.3-2 1.9.6 2.7-2.5-1.4-2.5 1.4.6-2.7-2-1.9 2.7-.3z" fill="currentColor" stroke="none"/>',
+    shield: '<path d="M12 3l7 2.5v6c0 4.5-3 7.5-7 9.5-4-2-7-5-7-9.5v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+  };
+  const icon = (name) => `<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[name]}</svg>`;
+
+  /* The biggest matches of the next few days: strongest pairings first, one per competition where possible. */
+  function featuredMatches(all, n = 5) {
+    const soon = all.filter((m) => new Date(m.kickoff) - Date.now() < 5 * 864e5);
+    const ranked = (soon.length >= n ? soon : all).slice().sort((a, b) => (b.ctx.elo.h + b.ctx.elo.a) - (a.ctx.elo.h + a.ctx.elo.a));
+    const picked = [];
+    for (const m of ranked) if (picked.length < n && !picked.some((p) => p.div === m.div)) picked.push(m);
+    for (const m of ranked) if (picked.length < n && !picked.includes(m)) picked.push(m);
+    return picked.sort((a, b) => a.kickoff.localeCompare(b.kickoff));
+  }
+  const featureCard = (m) => {
+    const best = m.tips['1X2'].sel;
+    const box = (sel, p) => `<span class="${sel === best ? 'on' : ''}"><i>${sel}</i>${pct(p)}</span>`;
+    return `<article class="fcard" data-action="open" data-id="${m.id}" tabindex="0">
+      <div class="fcard-top"><strong>${esc(m.league)}</strong><span class="num">${fmtDay(dayKey(m.kickoff))} · ${fmtTime(m.kickoff)}</span></div>
+      <div class="fcard-teams"><div>${crest(m.home)}<span>${esc(m.home)}</span></div><em>VS</em><div>${crest(m.away)}<span>${esc(m.away)}</span></div></div>
+      <div class="fcard-odds" aria-label="Model probabilities: home ${pct(m.probs.h)}, draw ${pct(m.probs.d)}, away ${pct(m.probs.a)}">${box('1', m.probs.h)}${box('X', m.probs.d)}${box('2', m.probs.a)}</div>
+    </article>`;
+  };
+
+  function homeHero(all, tip) {
+    const photo = (window.GOALCAST_HOME || {}).heroImage;
+    const second = all.filter((m) => m !== tip).sort((a, b) => b.tips['1X2'].p - a.tips['1X2'].p)[0];
+    const art = photo ? `<img class="hero-photo" src="${esc(photo)}" alt="">` : `
+        ${second ? `<div class="hero-card back" aria-hidden="true"><span class="hc-tag">${esc(second.league)}</span><div class="hc-teams">${crest(second.home, 34)}<b>${esc(second.home)}</b><i>v</i><b>${esc(second.away)}</b>${crest(second.away, 34)}</div></div>` : ''}
+        ${tip ? `<div class="hero-card" data-action="open" data-id="${tip.id}" tabindex="0">
+          <span class="hc-tag">★ Strongest pick · ${fmtDay(dayKey(tip.kickoff))} ${fmtTime(tip.kickoff)}</span>
+          <div class="hc-teams">${crest(tip.home, 46)}<b>${esc(tip.home)}</b><i>v</i><b>${esc(tip.away)}</b>${crest(tip.away, 46)}</div>
+          <div class="hc-big"><b>${pct(tip.tips['1X2'].p)}</b><span><strong>${esc(label(tip.tips['1X2'].sel, tip))}</strong><br>${esc(tip.league)} · likeliest score ${tip.tips.CS.sel}</span></div>
+          ${probBar(tip.probs)}
+        </div>` : ''}`;
+    return `<section class="home-hero">
+      <div class="hero-bg" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="hero-in">
+        <div class="hero-copy">
+          <p class="hero-tags"><span>Football predictions</span><span>Real data</span><span>Better insights</span><span>Proven record</span></p>
+          <h1>Real football <em>predictions</em> that work.</h1>
+          <p class="hero-lede">AI-powered analysis. Real match data. Every result published.<br>Make better-informed picks with GoalCast.</p>
+          <div class="hero-cta"><button class="btn primary big" data-action="to-matches">View today's predictions <span aria-hidden="true">→</span></button><a class="btn big outline" href="#/premium">♛ Explore Premium</a></div>
+        </div>
+        <div class="hero-art">${art}<p class="hero-slogan" aria-hidden="true">Bet smart.<br><em>Check GoalCast.</em></p></div>
+      </div>
+    </section>
+    <section class="feature-strip">
+      <div>${icon('target')}<p><strong>Data-driven predictions</strong>${int(state.model.coverage.matches)} matches analysed</p></div>
+      <div>${icon('bars')}<p><strong>In-depth analysis</strong>Detailed match breakdowns</p></div>
+      <div>${icon('clock')}<p><strong>Updated daily</strong>Fresh predictions twice a day</p></div>
+      <a href="#/results">${icon('medal')}<p><strong>Proven results</strong>Track our performance</p></a>
+      <div>${icon('shield')}<p><strong>Secure &amp; reliable</strong>Your trust matters</p></div>
+    </section>
+    ${all.length ? `<div class="section-head featured-head"><h2>Upcoming matches <span class="live-dot">Upcoming</span></h2><button class="linkish strong" data-action="to-matches">View all matches →</button></div>
+      <div class="frow">${featuredMatches(all).map(featureCard).join('')}</div>` : ''}
+    ${adSlot('banner')}`;
+  }
+
   /* ---------- views ---------- */
-  function viewMatches() {
+  function viewMatches(day) {
     const all = upcoming();
     const safe = marketStat('SAFE'), x12 = marketStat('1X2');
     const soon = all.filter((m) => new Date(m.kickoff) - Date.now() < 48 * 36e5);
@@ -100,21 +172,7 @@
     else body = [...new Set(list.map((m) => dayKey(m.kickoff)))].map((d, i) => `<h3 class="day-label">${fmtDay(d)} · ${list.filter((m) => dayKey(m.kickoff) === d).length} matches</h3>
         <div class="grid">${feed(list.filter((m) => dayKey(m.kickoff) === d), i === 0)}</div>`).join('');
 
-    return `<section class="hero">
-      <div>
-        <span class="eyebrow">Open model · free · graded in public</span>
-        <h1>Football predictions that <em>show their working</em>.</h1>
-        <p class="lede">An XGBoost model trained on ${int(state.model.coverage.matches)} matches turns form, Elo ratings, shots and head-to-head records into one scoreline distribution per match. Every market is read from it — and every result is published, losses included.</p>
-        <div class="hero-cta"><button class="btn primary" data-action="to-matches">See ${all.length} predictions</button><a class="btn" href="#/results">Check our record</a></div>
-      </div>
-      ${tip ? `<div class="totd" data-action="open" data-id="${tip.id}" tabindex="0">
-        <span class="tag" style="background:none;padding:0">★ STRONGEST PICK · ${fmtDay(dayKey(tip.kickoff)).toUpperCase()} ${fmtTime(tip.kickoff)}</span>
-        <div class="teams">${esc(tip.home)} v ${esc(tip.away)}</div>
-        <div class="muted">${esc(tip.league)} · ${countdown(tip.kickoff)}</div>
-        <div class="big"><b>${pct(tip.tips['1X2'].p)}</b><span><strong>${esc(label(tip.tips['1X2'].sel, tip))}</strong><br><span class="muted">fair odds ${fair(tip.tips['1X2'].p)} · likeliest score ${tip.tips.CS.sel}</span></span></div>
-        <div style="margin-top:14px">${probBar(tip.probs)}</div>
-      </div>` : ''}
-    </section>
+    return `${day ? `<div class="page-head"><h1>Predictions for ${fmtDay(day)}</h1><p>Every match on this day, with the model's probabilities.</p></div>` : homeHero(all, tip)}
     <div class="stats">
       <div class="stat"><b>${all.length}</b><span>upcoming predictions</span></div>
       <div class="stat"><b>${pct(safe.rate)}</b><span>safe-tip hit rate, ${int(safe.n)} holdout picks</span></div>
@@ -122,7 +180,7 @@
       <div class="stat"><b>${state.model.coverage.leagues}</b><span>leagues, ${int(state.model.coverage.teams)} teams tracked</span></div>
     </div>
     ${favMatches().length ? `<div class="section-head"><h2>★ Your teams</h2><a class="btn small" href="#/my-teams">Manage teams</a></div><div class="grid">${favMatches().slice(0, 6).map(card).join('')}</div>` : ''}
-    <div class="section-head" id="matches"><h2>Upcoming matches</h2>
+    <div class="section-head" id="matches"><h2>${day ? 'Matches' : 'All predictions'}</h2>
       <div class="tabs"><button data-action="sort" data-v="time" class="${state.sort === 'time' ? 'on' : ''}">By kick-off</button><button data-action="sort" data-v="conf" class="${state.sort === 'conf' ? 'on' : ''}">By confidence</button></div>
     </div>
     <div class="filters">
@@ -620,7 +678,7 @@
     $('#account').innerHTML = routed(auth.user
       ? `<details class="dd right"><summary class="avatar" aria-label="Account menu">${esc(displayName()[0].toUpperCase())}</summary><div class="menu">
           <span class="muted" style="padding:6px 10px;display:block">${esc(auth.user.email)}</span><hr><a href="#/my-teams">My teams${favMatches().length ? ` · ${favMatches().length} upcoming` : ''}</a><a href="#/premium">★ Premium</a><button data-action="sign-out">Sign out</button></div></details>`
-      : `<button class="btn primary" data-action="auth-open" data-v="signin">Sign in</button>`);
+      : `<button class="btn outline btn-login" data-action="auth-open" data-v="signin">Log in</button><button class="btn primary" data-action="auth-open" data-v="signup">Sign up</button>`);
   }
 
   function openAuth(mode, keep = {}) {
@@ -773,7 +831,7 @@
     document.querySelectorAll('#nav > a').forEach((a) => a.classList.toggle('on', a.dataset.route === route));
     document.querySelectorAll('#nav details').forEach((d) => d.classList.toggle('on', d.dataset.group === GROUPS[route]));
     const y = scrollY;
-    app.innerHTML = routed(adSlot('banner') + routes[route](arg));
+    app.innerHTML = routed((route === '' ? '' : adSlot('banner')) + routes[route](arg));
     const title = pageTitle(route, arg);
     document.title = title ? `${title} | GoalCast` : 'GoalCast: football predictions, graded in public';
     scrollTo(0, keepScroll ? y : 0);

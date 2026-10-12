@@ -91,7 +91,7 @@ def page_home():
             "over/under, both teams to score and correct score, with every result published, wins and losses alike.")
     links = "".join(f'<li><a href="#/{r}">{t}</a></li>' for r, t in [("safe", "Safe tips"), ("results", "Results"), ("leagues", "Leagues and standings"),
                                                                     ("intl/europe", "International matches"), ("blog", "Blog"), ("model", "How the model performs")])
-    body = head("Football predictions that show their working", lede) + f"<ul>{links}</ul><h2>Upcoming matches</h2>" + fixtures(UPCOMING)
+    body = head("Real football predictions that work", lede) + f"<ul>{links}</ul><h2>Upcoming matches</h2>" + fixtures(UPCOMING)
     return "GoalCast: football predictions, graded in public", lede, body, ""
 
 
@@ -213,7 +213,7 @@ def render(template: str, route: str, page: tuple, prefix: str) -> str:
     out = out[:start] + meta + out[out.index(">", start) + 1:]
     start, end = out.index('<main class="wrap" id="app"'), out.index("</main>")
     out = out[:out.index(">", start) + 1] + body + out[end:]
-    for ref in ('href="styles.css"', 'href="assets/', 'src="assets/', 'src="config.js"', 'src="app.js"'):
+    for ref in ('href="styles.css"', 'href="assets/', 'src="assets/', 'src="config.js"', 'src="app.js"'):  # fonts load from styles.css
         out = out.replace(ref, ref.replace('="', f'="{prefix}'))
     return out.replace('href="#/', f'href="{prefix}')
 
