@@ -6644,26 +6644,31 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.5114
+    "p": 0.5114,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7221
+    "p": 0.7221,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5498
+    "p": 0.5498,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5505
+    "p": 0.5505,
+    "won": false
    },
    "CS": {
     "sel": "0-1",
-    "p": 0.1017
+    "p": 0.1017,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-2"
  },
  "20261013-sabahfk-slaviaprague": {
   "id": "20261013-sabahfk-slaviaprague",
@@ -6683,26 +6688,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.463
+    "p": 0.463,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.6691
+    "p": 0.6691,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.501
+    "p": 0.501,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5097
+    "p": 0.5097,
+    "won": false
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1112
+    "p": 0.1112,
+    "won": false
    }
   },
-  "score": null
+  "score": "2-0"
  },
  "20261013-arsenal-lille": {
   "id": "20261013-arsenal-lille",
@@ -17393,6 +17403,553 @@
    "CS": {
     "sel": "1-1",
     "p": 0.1463
+   }
+  },
+  "score": null
+ },
+ "20261023-petrodeluanda-scottlandmabvuku": {
+  "id": "20261023-petrodeluanda-scottlandmabvuku",
+  "published": "2026-10-13T19:57:58Z",
+  "version": "20261013T195712Z",
+  "kickoff": "2026-10-23T15:00:00Z",
+  "date": "2026-10-23",
+  "div": "caf.champions",
+  "league": "CAF Champions League",
+  "home": "Petro de Luanda",
+  "away": "Scottland Mabvuku",
+  "probs": [
+   0.5996,
+   0.2203,
+   0.1801
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5996
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8199
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5552
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5777
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1464
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8199
+   }
+  },
+  "score": null
+ },
+ "20261023-cdprimeirodeagosto-dcvirunga": {
+  "id": "20261023-cdprimeirodeagosto-dcvirunga",
+  "published": "2026-10-13T19:57:58Z",
+  "version": "20261013T195712Z",
+  "kickoff": "2026-10-23T15:00:00Z",
+  "date": "2026-10-23",
+  "div": "caf.confed",
+  "league": "CAF Confederation Cup",
+  "home": "CD Primeiro de Agosto",
+  "away": "DC Virunga",
+  "probs": [
+   0.6331,
+   0.2049,
+   0.162
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6331
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.838
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5476
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5855
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1534
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.838
+   }
+  },
+  "score": null
+ },
+ "20261023-kaizerchiefs-redarrows": {
+  "id": "20261023-kaizerchiefs-redarrows",
+  "published": "2026-10-13T19:57:58Z",
+  "version": "20261013T195712Z",
+  "kickoff": "2026-10-23T16:00:00Z",
+  "date": "2026-10-23",
+  "div": "caf.confed",
+  "league": "CAF Confederation Cup",
+  "home": "Kaizer Chiefs",
+  "away": "Red Arrows",
+  "probs": [
+   0.5443,
+   0.2679,
+   0.1878
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5443
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8122
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.6141
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5925
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1562
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8122
+   }
+  },
+  "score": null
+ },
+ "20261023-orlandopirates-africanstars": {
+  "id": "20261023-orlandopirates-africanstars",
+  "published": "2026-10-13T19:57:58Z",
+  "version": "20261013T195712Z",
+  "kickoff": "2026-10-23T17:30:00Z",
+  "date": "2026-10-23",
+  "div": "caf.champions",
+  "league": "CAF Champions League",
+  "home": "Orlando Pirates",
+  "away": "African Stars",
+  "probs": [
+   0.7195,
+   0.1578,
+   0.1226
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.7195
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8774
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5359
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5996
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1415
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8774
+   }
+  },
+  "score": null
+ },
+ "20261023-goaheadeagles-telstar": {
+  "id": "20261023-goaheadeagles-telstar",
+  "published": "2026-10-13T19:57:58Z",
+  "version": "20261013T195633Z",
+  "kickoff": "2026-10-23T18:00:00Z",
+  "date": "2026-10-23",
+  "div": "N1",
+  "league": "Eredivisie",
+  "home": "Go Ahead Eagles",
+  "away": "Telstar",
+  "probs": [
+   0.5197,
+   0.2646,
+   0.2157
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5197
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7843
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5699
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5877
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.123
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8044
+   }
+  },
+  "score": null
+ },
+ "20261023-mamelodisundowns-wilietesc": {
+  "id": "20261023-mamelodisundowns-wilietesc",
+  "published": "2026-10-13T19:57:58Z",
+  "version": "20261013T195712Z",
+  "kickoff": "2026-10-23T18:00:00Z",
+  "date": "2026-10-23",
+  "div": "caf.champions",
+  "league": "CAF Champions League",
+  "home": "Mamelodi Sundowns",
+  "away": "Wiliete SC",
+  "probs": [
+   0.7574,
+   0.1397,
+   0.103
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.7574
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.897
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5584
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5985
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1458
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.897
+   }
+  },
+  "score": null
+ },
+ "20261023-stuttgart-mgladbach": {
+  "id": "20261023-stuttgart-mgladbach",
+  "published": "2026-10-13T19:57:58Z",
+  "version": "20261013T195633Z",
+  "kickoff": "2026-10-23T18:30:00Z",
+  "date": "2026-10-23",
+  "div": "D1",
+  "league": "Bundesliga",
+  "home": "Stuttgart",
+  "away": "M'gladbach",
+  "probs": [
+   0.6922,
+   0.185,
+   0.1228
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6922
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8772
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.7141
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.6245
+   },
+   "CS": {
+    "sel": "2-1",
+    "p": 0.0896
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8874
+   }
+  },
+  "score": null
+ },
+ "20261023-brest-nice": {
+  "id": "20261023-brest-nice",
+  "published": "2026-10-13T19:57:58Z",
+  "version": "20261013T195633Z",
+  "kickoff": "2026-10-23T18:45:00Z",
+  "date": "2026-10-23",
+  "div": "F1",
+  "league": "Ligue 1",
+  "home": "Brest",
+  "away": "Nice",
+  "probs": [
+   0.4912,
+   0.2711,
+   0.2377
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4912
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7623
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5212
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5554
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1283
+   }
+  },
+  "score": null
+ },
+ "20261023-torino-monza": {
+  "id": "20261023-torino-monza",
+  "published": "2026-10-13T19:57:58Z",
+  "version": "20261013T195633Z",
+  "kickoff": "2026-10-23T18:45:00Z",
+  "date": "2026-10-23",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Torino",
+  "away": "Monza",
+  "probs": [
+   0.4409,
+   0.3136,
+   0.2455
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4409
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7545
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5178
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5504
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.149
+   }
+  },
+  "score": null
+ },
+ "20261023-ipswich-nottmforest": {
+  "id": "20261023-ipswich-nottmforest",
+  "published": "2026-10-13T19:57:58Z",
+  "version": "20261013T195633Z",
+  "kickoff": "2026-10-23T19:00:00Z",
+  "date": "2026-10-23",
+  "div": "E0",
+  "league": "Premier League",
+  "home": "Ipswich",
+  "away": "Nott'm Forest",
+  "probs": [
+   0.2688,
+   0.2834,
+   0.4478
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4478
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7312
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5656
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.6099
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1308
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8029
+   }
+  },
+  "score": null
+ },
+ "20261023-bolton-middlesbrough": {
+  "id": "20261023-bolton-middlesbrough",
+  "published": "2026-10-13T19:57:58Z",
+  "version": "20261013T195633Z",
+  "kickoff": "2026-10-23T19:00:00Z",
+  "date": "2026-10-23",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Bolton",
+  "away": "Middlesbrough",
+  "probs": [
+   0.277,
+   0.2274,
+   0.4956
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4956
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.723
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5272
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5423
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1078
+   }
+  },
+  "score": null
+ },
+ "20261023-mcalger-rangersinternational": {
+  "id": "20261023-mcalger-rangersinternational",
+  "published": "2026-10-13T19:57:58Z",
+  "version": "20261013T195712Z",
+  "kickoff": "2026-10-23T19:00:00Z",
+  "date": "2026-10-23",
+  "div": "caf.champions",
+  "league": "CAF Champions League",
+  "home": "MC Alger",
+  "away": "Rangers International",
+  "probs": [
+   0.6456,
+   0.2069,
+   0.1475
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6456
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8525
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5157
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5647
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1387
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8525
+   }
+  },
+  "score": null
+ },
+ "20261023-guimaraes-maritimo": {
+  "id": "20261023-guimaraes-maritimo",
+  "published": "2026-10-13T19:57:58Z",
+  "version": "20261013T195633Z",
+  "kickoff": "2026-10-23T19:45:00Z",
+  "date": "2026-10-23",
+  "div": "P1",
+  "league": "Primeira Liga",
+  "home": "Guimaraes",
+  "away": "Maritimo",
+  "probs": [
+   0.5617,
+   0.2582,
+   0.18
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5617
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.82
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5043
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5089
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1228
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.82
    }
   },
   "score": null
