@@ -39,9 +39,11 @@ window.GOALCAST_HOME = {
 };
 
 /* Premium plans shown on the Premium page. Change a price or note here and it updates everywhere.
-   "id" is what you type when switching a member's plan on (see content/README.md). */
+   "id" is what you type when switching a member's plan on (see content/README.md).
+   "payUrl" is the plan's payment page from your payment provider. When it is filled in, choosing the plan
+   goes straight to payment; when it is empty, the member is asked to message you instead. */
 window.GOALCAST_PLANS = [
-  { id: 'weekly', name: 'Weekly', price: '£9.99', per: 'week', note: 'Short-term access, no commitment.' },
-  { id: 'monthly', name: 'Monthly', price: '£29.99', per: 'month', note: 'Works out at £6.92 a week.', badge: '⭐ Most popular' },
-  { id: 'yearly', name: 'Yearly', price: '£249.99', per: 'year', note: 'Works out at £20.83 a month. Save 30%.', badge: '🔥 Best value' },
+  { id: 'weekly', name: 'Weekly', price: '£9.99', per: 'week', note: 'Short-term access, no commitment.', payUrl: '' },
+  { id: 'monthly', name: 'Monthly', price: '£29.99', per: 'month', note: 'Works out at £6.92 a week.', badge: '⭐ Most popular', payUrl: '' },
+  { id: 'yearly', name: 'Yearly', price: '£249.99', per: 'year', note: 'Works out at £20.83 a month. Save 30%.', badge: '🔥 Best value', payUrl: '' },
 ];

@@ -723,7 +723,8 @@
         <h3>${esc(p.name)}</h3><div class="plan-price"><b>${esc(p.price)}</b><span>/ ${esc(p.per)}</span></div>
         <p class="plan-note">${esc(p.note || ' ')}</p>
         <button class="btn ${p.badge ? 'primary' : 'outline'}" data-action="plan-choose" data-v="${esc(p.id)}">Choose ${esc(p.name.toLowerCase())}</button></div>`;
-    return `<div class="page-head premium-head"><span class="eyebrow">★ GoalCast Premium</span><h1>Go deeper on every match.</h1>
+    const paid = new URLSearchParams(location.search).has('paid');
+    return `${paid ? '<div class="note" style="margin-top:18px"><strong>Thank you. Your payment is being confirmed.</strong> Premium switches on for your account as soon as it clears. <button class="linkish" data-action="plan-refresh">Refresh my access</button></div>' : ''}<div class="page-head premium-head"><span class="eyebrow">★ GoalCast Premium</span><h1>Go deeper on every match.</h1>
         <p>Daily and weekend selections, accumulator analysis, a staking guide and alerts for your teams. No promises of guaranteed wins: you can check our full record, losses included, before you join.</p></div>
       <div class="plans">
         <div class="plan"><h3>Free</h3><div class="plan-price"><b>£0</b></div><p class="plan-note">Match-result predictions, league tables and results.</p>
@@ -734,7 +735,7 @@
       <div class="section-head"><h2>What members receive</h2></div>
       <div class="features">${FEATURES.map(([icon, title, text, live]) => `<div class="feature"><span class="feature-icon">${icon}</span><div><strong>${title}${live ? '' : ' <span class="badge pending">Coming soon</span>'}</strong><p>${text}</p></div></div>`).join('')}</div>
       <div class="two" style="margin-top:22px">
-        <div class="panel"><h3>How joining works</h3><ol class="steps-list"><li>Create a free account, or sign in.</li><li>Choose a plan and message us to arrange payment.</li><li>We switch Premium on for your account and you get full access.</li></ol>
+        <div class="panel"><h3>How joining works</h3><ol class="steps-list"><li>Create a free account, or sign in.</li><li>Choose a plan${PLANS.some((p) => p.payUrl) ? ' and pay securely online' : ' and message us to arrange payment'}.</li><li>Premium switches on for your account and you get full access.</li></ol>
           <p class="muted" style="margin-top:8px">Plans do not renew automatically. You decide whether to continue when yours ends.</p></div>
         <div class="panel"><h3>Straight answers</h3>
           <p><strong>Do you guarantee wins?</strong> No. Nobody honestly can. Safe tips landed ${pct(s.rate, 1)} of the time on a year of unseen matches, which still means some lose. <a href="#/results">See the record</a>.</p>
@@ -753,6 +754,15 @@
     const p = PLANS.find((x) => x.id === id);
     if (!p) return;
     if (!auth.user) { auth.msg = { text: `Create a free account first, then choose the ${p.name.toLowerCase()} plan.`, ok: true }; openAuth('signup'); return; }
+    if (p.payUrl) {
+      // straight to the payment page, carrying the account so the payment can be matched to it
+      const url = new URL(p.payUrl);
+      url.searchParams.set('prefilled_email', auth.user.email);
+      url.searchParams.set('email', auth.user.email);
+      url.searchParams.set('client_reference_id', auth.user.id || '');
+      location.href = url.toString();
+      return;
+    }
     const links = window.GOALCAST_LINKS || {}, email = (state.sponsors?.advertise || {}).email;
     const text = `Hello GoalCast, I would like the ${p.name} plan (${p.price} per ${p.per}). My account email is ${auth.user.email}.`;
     const options = [
