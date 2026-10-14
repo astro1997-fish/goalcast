@@ -735,7 +735,7 @@
       <div class="section-head"><h2>What members receive</h2></div>
       <div class="features">${FEATURES.map(([icon, title, text, live]) => `<div class="feature"><span class="feature-icon">${icon}</span><div><strong>${title}${live ? '' : ' <span class="badge pending">Coming soon</span>'}</strong><p>${text}</p></div></div>`).join('')}</div>
       <div class="two" style="margin-top:22px">
-        <div class="panel"><h3>How joining works</h3><ol class="steps-list"><li>Create a free account, or sign in.</li><li>Choose a plan${PLANS.some((p) => p.payUrl) ? ' and pay securely online' : ' and message us to arrange payment'}.</li><li>Premium switches on for your account and you get full access.</li></ol>
+        <div class="panel"><h3>How joining works</h3><ol class="steps-list"><li>Create a free account, or sign in.</li><li>Choose a plan${PAYMENTS.some((m) => m.address || Object.values(m.links || {}).some(Boolean)) ? ' and pay online' : ' and message us to arrange payment'}.</li><li>Premium switches on for your account and you get full access.</li></ol>
           <p class="muted" style="margin-top:8px">Plans do not renew automatically. You decide whether to continue when yours ends.</p></div>
         <div class="panel"><h3>Straight answers</h3>
           <p><strong>Do you guarantee wins?</strong> No. Nobody honestly can. Safe tips landed ${pct(s.rate, 1)} of the time on a year of unseen matches, which still means some lose. <a href="#/results">See the record</a>.</p>
@@ -750,32 +750,54 @@
   }
 
   /* Until card payments are connected, joining is arranged by message; the owner then switches the plan on. */
+  /* Ways to pay, from site/config.js. A method is offered for a plan once it has a payment link for that plan
+     (card and bank methods) or a wallet address (crypto). */
+  const PAYMENTS = window.GOALCAST_PAYMENTS || [];
+  const payMethods = (p) => PAYMENTS.filter((m) => m.links?.[p.id] || m.address);
+  function checkoutUrl(link) {
+    const url = new URL(link);  // carries the account so the payment can be matched to it
+    url.searchParams.set('prefilled_email', auth.user.email);
+    url.searchParams.set('email', auth.user.email);
+    url.searchParams.set('client_reference_id', auth.user.id || '');
+    return url.toString();
+  }
+  function contactOptions(text, subject) {
+    const links = window.GOALCAST_LINKS || {}, email = (state.sponsors?.advertise || {}).email;
+    return [
+      links.whatsapp && ['WhatsApp', `https://wa.me/${String(links.whatsapp).replace(/\D/g, '')}?text=${encodeURIComponent(text)}`],
+      links.telegramSupport && ['Telegram', linkFor.telegram(String(links.telegramSupport))],
+      email && ['Email', `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`],
+    ].filter(Boolean);
+  }
+  const contactButtons = (options) => `<div class="hero-cta">${options.map(([name, href], i) => `<a class="btn ${i ? '' : 'primary'}" href="${esc(href)}" target="_blank" rel="noopener">${name}</a>`).join('')}</div>`;
+
   function openPlan(id) {
     const p = PLANS.find((x) => x.id === id);
     if (!p) return;
     if (!auth.user) { auth.msg = { text: `Create a free account first, then choose the ${p.name.toLowerCase()} plan.`, ok: true }; openAuth('signup'); return; }
-    if (p.payUrl) {
-      // straight to the payment page, carrying the account so the payment can be matched to it
-      const url = new URL(p.payUrl);
-      url.searchParams.set('prefilled_email', auth.user.email);
-      url.searchParams.set('email', auth.user.email);
-      url.searchParams.set('client_reference_id', auth.user.id || '');
-      location.href = url.toString();
-      return;
+    const methods = payMethods(p);
+    if (methods.length === 1 && methods[0].links) { location.href = checkoutUrl(methods[0].links[p.id]); return; }
+
+    const head = `<div class="d-head"><div><div class="muted">GoalCast Premium · ${esc(auth.user.email)}</div><h2>${esc(p.name)} plan · ${esc(p.price)} per ${esc(p.per)}</h2></div><button class="x" data-action="close-detail" aria-label="Close">×</button></div>`;
+    const small = `<p class="muted" style="font-size:13px;margin:0">Predictions are probabilities, not guarantees, and some will lose. 18+ only. <a href="#/terms">Terms</a> · <a href="#/responsible-gambling">Responsible gambling</a></p>`;
+    let body;
+    if (!methods.length) {
+      const text = `Hello GoalCast, I would like the ${p.name} plan (${p.price} per ${p.per}). My account email is ${auth.user.email}.`;
+      body = `<div class="panel"><h3>Message us to join</h3>
+        <p>Online payment is being set up. For now, send us a message and we will arrange payment and switch Premium on for your account. Your plan and email are already filled in.</p>
+        ${contactButtons(contactOptions(text, `GoalCast ${p.name} plan`).map(([n, h]) => [`Message on ${n}`, h]))}</div>`;
+    } else {
+      const price = (m) => esc(m.prices?.[p.id] || p.price);
+      body = `<div class="panel"><h3>Choose how to pay</h3><div class="pay-list">${methods.map((m) => (m.links
+        ? `<a class="pay-method" href="${esc(checkoutUrl(m.links[p.id]))}"><span class="pay-icon">${esc(m.icon || '💳')}</span><span><strong>${esc(m.label)}</strong><small>${esc(m.sub || '')}</small></span><b>${price(m)} →</b></a>`
+        : `<details class="pay-method crypto"><summary><span class="pay-icon">${esc(m.icon || '🪙')}</span><span><strong>${esc(m.label)}</strong><small>${esc(m.sub || '')}</small></span><b>${price(m)}</b></summary>
+            <div class="pay-crypto"><p>Send exactly <strong>${price(m)}</strong> in <strong>${esc(m.asset)}</strong> on the <strong>${esc(m.network)}</strong> network to this address:</p>
+              <div class="pay-address"><code>${esc(m.address)}</code><button class="btn small" data-action="copy" data-v="${esc(m.address)}">Copy</button></div>
+              <p class="muted">Use only the ${esc(m.network)} network. Coins sent on another network cannot be recovered. Crypto payments cannot be reversed.</p>
+              <p><strong>After sending,</strong> tell us the transaction ID so we can switch Premium on:</p>
+              ${contactButtons(contactOptions(`Hello GoalCast, I have paid for the ${p.name} plan with ${m.asset} (${m.network}). My account email is ${auth.user.email}. Transaction ID: `, `GoalCast ${p.name} plan: crypto payment`))}</div></details>`)).join('')}</div></div>`;
     }
-    const links = window.GOALCAST_LINKS || {}, email = (state.sponsors?.advertise || {}).email;
-    const text = `Hello GoalCast, I would like the ${p.name} plan (${p.price} per ${p.per}). My account email is ${auth.user.email}.`;
-    const options = [
-      links.whatsapp && ['WhatsApp', `https://wa.me/${String(links.whatsapp).replace(/\D/g, '')}?text=${encodeURIComponent(text)}`],
-      links.telegramSupport && ['Telegram', linkFor.telegram(String(links.telegramSupport))],
-      email && ['Email', `mailto:${email}?subject=${encodeURIComponent(`GoalCast ${p.name} plan`)}&body=${encodeURIComponent(text)}`],
-    ].filter(Boolean);
-    detailEl.innerHTML = `<div class="d-head"><div><div class="muted">GoalCast Premium</div><h2>${esc(p.name)} plan · ${esc(p.price)} per ${esc(p.per)}</h2></div><button class="x" data-action="close-detail" aria-label="Close">×</button></div>
-      <div class="d-body"><div class="panel"><h3>Message us to join</h3>
-        <p>Send us a message and we will arrange payment and switch Premium on for <strong>${esc(auth.user.email)}</strong>. Your plan and account email are already filled in.</p>
-        <div class="hero-cta">${options.map(([name, href], i) => `<a class="btn ${i ? '' : 'primary'}" href="${esc(href)}" target="_blank" rel="noopener">Message on ${name}</a>`).join('')}</div>
-        <p class="muted" style="margin-top:12px">Telegram does not fill in the message for you, so please include your plan and account email there. Only pay through details we send you from these official contacts.</p></div>
-        <div class="panel"><h3>Before you join</h3><p>Predictions are probabilities, not guarantees, and some will lose. Only bet what you can afford to lose. 18+ only. <a href="#/terms">Terms of use</a> · <a href="#/responsible-gambling">Responsible gambling</a></p></div></div>`;
+    detailEl.innerHTML = `${head}<div class="d-body">${body}${small}</div>`;
     delete detailEl.dataset.id;
     if (!detailEl.open) detailEl.showModal();
   }
@@ -993,6 +1015,7 @@
         Notification.requestPermission().then((permission) => { store.set('gc-notify', permission === 'granted'); store.set('gc-notified', []); render(true); notifyFavs(); });
         break;
       case 'plan-choose': openPlan(v); break;
+      case 'copy': navigator.clipboard?.writeText(v).then(() => { el.textContent = 'Copied'; }); break;
       case 'plan-refresh':
         auth.client?.auth.refreshSession().then(() => { render(true); loadPremium(); if (!isPremium()) alert('Premium is not active on this account yet. If you have paid, please message us and we will switch it on.'); });
         break;

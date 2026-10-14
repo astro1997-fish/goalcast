@@ -51,6 +51,15 @@ Upload pictures to `site/assets/blog/` and refer to them as
 
 Plans and prices are set in `site/config.js` under `GOALCAST_PLANS`.
 
+### Taking payments
+
+Ways to pay are set in `site/config.js` under `GOALCAST_PAYMENTS`. For Paystack or another card provider, create a
+payment link (Paystack calls it a "payment page") for each plan and paste the three links into that method's `links`.
+For crypto, paste your wallet address into `address`. Put each method's own prices in `prices`, for example Naira
+amounts for Paystack. A method appears in the payment window as soon as it is filled in.
+
+Set each payment link to send people back to `https://astro1997-fish.github.io/goalcast/premium/?paid=1` after paying.
+
 ### One-time setup for special picks (Neon database)
 
 Special picks are kept in a Neon database table that only paying members can read. Sign-in stays with Supabase;

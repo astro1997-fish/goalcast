@@ -483,3 +483,19 @@ h1.with-crest { display: flex; gap: 14px; }
 .units i { width: 14px; height: 8px; border-radius: 3px; background: var(--line); }
 .units i.on { background: var(--accent); }
 .panel p a, .page-head p a { color: var(--accent); }
+
+/* payment window */
+.pay-list { display: grid; gap: 10px; margin-top: 10px; }
+.pay-method { display: block; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); color: var(--text); text-decoration: none; transition: border-color .15s; }
+a.pay-method, .pay-method > summary { display: flex; align-items: center; gap: 14px; padding: 14px 16px; cursor: pointer; }
+.pay-method > summary { list-style: none; }
+.pay-method > summary::-webkit-details-marker { display: none; }
+.pay-method:hover, .pay-method[open] { border-color: var(--accent); }
+.pay-method span:nth-child(2) { flex: 1; min-width: 0; display: grid; }
+.pay-method small { color: var(--muted); font-size: 13px; }
+.pay-method b { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pay-icon { font-size: 26px; line-height: 1; }
+.pay-crypto { padding: 0 16px 16px; display: grid; gap: 10px; font-size: 14px; }
+.pay-crypto p { margin: 0; }
+.pay-address { display: flex; gap: 10px; align-items: center; background: var(--bg); border: 1px dashed var(--line); border-radius: 10px; padding: 10px 12px; }
+.pay-address code { flex: 1; min-width: 0; overflow-wrap: anywhere; font-size: 13.5px; }

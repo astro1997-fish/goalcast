@@ -39,11 +39,24 @@ window.GOALCAST_HOME = {
 };
 
 /* Premium plans shown on the Premium page. Change a price or note here and it updates everywhere.
-   "id" is what you type when switching a member's plan on (see content/README.md).
-   "payUrl" is the plan's payment page from your payment provider. When it is filled in, choosing the plan
-   goes straight to payment; when it is empty, the member is asked to message you instead. */
+   "id" is what you type when switching a member's plan on (see content/README.md). */
 window.GOALCAST_PLANS = [
-  { id: 'weekly', name: 'Weekly', price: '£9.99', per: 'week', note: 'Short-term access, no commitment.', payUrl: '' },
-  { id: 'monthly', name: 'Monthly', price: '£29.99', per: 'month', note: 'Works out at £6.92 a week.', badge: '⭐ Most popular', payUrl: '' },
-  { id: 'yearly', name: 'Yearly', price: '£249.99', per: 'year', note: 'Works out at £20.83 a month. Save 30%.', badge: '🔥 Best value', payUrl: '' },
+  { id: 'weekly', name: 'Weekly', price: '£9.99', per: 'week', note: 'Short-term access, no commitment.' },
+  { id: 'monthly', name: 'Monthly', price: '£29.99', per: 'month', note: 'Works out at £6.92 a week.', badge: '⭐ Most popular' },
+  { id: 'yearly', name: 'Yearly', price: '£249.99', per: 'year', note: 'Works out at £20.83 a month. Save 30%.', badge: '🔥 Best value' },
+];
+
+/* Ways to pay. Each one appears in the payment window as soon as it is filled in:
+     - card and bank methods need a payment link per plan in "links" (from Paystack, Flutterwave, etc.)
+     - crypto needs a wallet "address"
+   "prices" is what that method charges for each plan, in its own currency; leave a price empty to show
+   the plan's main price. While nothing is filled in, members are asked to message you instead.
+   If only one card method is filled in, choosing a plan goes straight to its payment page. */
+window.GOALCAST_PAYMENTS = [
+  { id: 'naira', icon: '₦', label: 'Pay in Naira', sub: 'Card, bank transfer or USSD, through Paystack',
+    prices: { weekly: '', monthly: '', yearly: '' }, links: { weekly: '', monthly: '', yearly: '' } },
+  { id: 'card', icon: '💳', label: 'Pay by card', sub: 'Visa or Mastercard, from any country',
+    prices: { weekly: '', monthly: '', yearly: '' }, links: { weekly: '', monthly: '', yearly: '' } },
+  { id: 'crypto', icon: '🪙', label: 'Pay with crypto', sub: 'USDT on the Tron network (TRC20)', asset: 'USDT', network: 'Tron (TRC20)',
+    address: '', prices: { weekly: '', monthly: '', yearly: '' } },
 ];
