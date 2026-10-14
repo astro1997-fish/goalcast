@@ -22,6 +22,7 @@ We store:
 
 - your email address
 - the name you enter
+- the country you select, used to show prices and ways to pay for where you are
 - the favourite teams you choose, if any
 - your password, in a scrambled (hashed) form that we cannot read
 

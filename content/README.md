@@ -51,14 +51,22 @@ Upload pictures to `site/assets/blog/` and refer to them as
 
 Plans and prices are set in `site/config.js` under `GOALCAST_PLANS`.
 
-### Taking payments
+### Prices and taking payments
 
-Ways to pay are set in `site/config.js` under `GOALCAST_PAYMENTS`. For Paystack or another card provider, create a
-payment link (Paystack calls it a "payment page") for each plan and paste the three links into that method's `links`.
-For crypto, paste your wallet address into `address`. Put each method's own prices in `prices`, for example Naira
-amounts for Paystack. A method appears in the payment window as soon as it is filled in.
+Plan prices are in `site/config.js` under `GOALCAST_PLANS`, as `amounts`: `NGN` is shown to members in Nigeria and
+`USD` to everyone else. Members choose their country when they sign up and can change it in the payment window.
 
-Set each payment link to send people back to `https://astro1997-fish.github.io/goalcast/premium/?paid=1` after paying.
+Ways to pay are under `GOALCAST_PAYMENTS`:
+
+- **Paystack (Nigeria):** create a payment page for each plan at the Naira amount and paste the three links into the
+  `naira` method's `links`.
+- **International card:** create a payment link for each plan at the dollar amount and paste them into the `card`
+  method's `links`.
+- **Crypto (everyone):** paste your USDT wallet address on the Tron (TRC20) network into the `crypto` method's
+  `address`. Members are shown the dollar amount in USDT.
+
+A method appears in the payment window as soon as it is filled in. Set each payment link to send people back to
+`https://astro1997-fish.github.io/goalcast/premium/?paid=1` after paying.
 
 ### One-time setup for special picks (Neon database)
 

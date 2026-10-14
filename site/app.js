@@ -6,7 +6,7 @@
   const BASE = new URL('.', document.currentScript.src).pathname; // site root, wherever the site is hosted
   const app = $('#app'), slipEl = $('#slip'), detailEl = $('#detail');
   const state = {
-    pred: null, res: null, model: null, leagues: null, blog: null, sponsors: null, pages: null, logos: null, premium: null,
+    pred: null, res: null, model: null, leagues: null, blog: null, sponsors: null, pages: null, logos: null, premium: null, country: '',
     day: 'all', league: 'all', q: '', sort: 'time',
     resTab: 'backtest', resMarket: '1X2', resOutcome: 'all',
     slip: [],
@@ -616,6 +616,28 @@
     return 1 / p >= target ? { legs, p } : null;
   }
 
+  /* ---------- country and currency ---------- */
+  const COUNTRY_CODES = 'AF AL DZ AD AO AG AR AM AU AT AZ BS BH BD BB BY BE BZ BJ BT BO BA BW BR BN BG BF BI CV KH CM CA CF TD CL CN CO KM CG CD CR CI HR CU CY CZ DK DJ DM DO EC EG SV GQ ER EE SZ ET FJ FI FR GA GM GE DE GH GR GD GT GN GW GY HT HN HK HU IS IN ID IR IQ IE IL IT JM JP JO KZ KE KI KW KG LA LV LB LS LR LY LI LT LU MG MW MY MV ML MT MR MU MX MD MC MN ME MA MZ MM NA NP NL NZ NI NE NG MK NO OM PK PA PG PY PE PH PL PT QA RO RU RW KN LC VC WS SM ST SA SN RS SC SL SG SK SI SB SO ZA KR SS ES LK SD SR SE CH SY TW TJ TZ TH TL TG TO TT TN TR TM UG UA AE GB US UY UZ VU VE VN YE ZM ZW'.split(' ');
+  const regionName = new Intl.DisplayNames(['en'], { type: 'region' });
+  const COUNTRIES = COUNTRY_CODES.map((c) => [c, regionName.of(c)]).sort((a, b) => a[1].localeCompare(b[1]));
+  function guessCountry() {
+    try { if (Intl.DateTimeFormat().resolvedOptions().timeZone === 'Africa/Lagos') return 'NG'; } catch { /* no time zone available */ }
+    const region = (navigator.language || '').split('-')[1]?.toUpperCase();
+    return COUNTRY_CODES.includes(region) ? region : '';
+  }
+  /* The country a member chose (when signing up, or in the payment window); a guess for visitors. */
+  const myCountry = () => state.country || auth.user?.user_metadata?.country || store.get('gc-country', '') || guessCountry();
+  const currency = () => (myCountry() === 'NG' ? 'NGN' : 'USD');
+  const money = (amount, cur = currency()) => (cur === 'NGN' ? `₦${Math.round(amount).toLocaleString('en')}` : `$${Number.isInteger(amount) ? amount : amount.toFixed(2)}`);
+  const planPrice = (p, cur = currency()) => money(p.amounts[cur], cur);
+  const countrySelect = (attrs, selected) => `<select class="field" ${attrs}><option value="">Select your country</option>${COUNTRIES.map(([c, n]) => `<option value="${c}" ${c === selected ? 'selected' : ''}>${esc(n)}</option>`).join('')}</select>`;
+  function planNote(p) {
+    const cur = currency(), month = PLANS.find((x) => x.id === 'monthly');
+    if (p.id === 'monthly') return `Works out at ${money(p.amounts[cur] * 12 / 52, cur)} a week.`;
+    if (p.id === 'yearly' && month) return `Works out at ${money(p.amounts[cur] / 12, cur)} a month. Save ${Math.round((1 - p.amounts[cur] / (month.amounts[cur] * 12)) * 100)}%.`;
+    return p.note || '';
+  }
+
   /* ---------- premium membership ---------- */
   const PLANS = window.GOALCAST_PLANS || [];
   /* A member's plan lives in their account's protected settings, which only the site owner can change. */
@@ -720,14 +742,14 @@
   function premiumSales() {
     const s = marketStat('SAFE');
     const card = (p) => `<div class="plan ${p.badge ? 'featured' : ''}">${p.badge ? `<span class="plan-badge">${esc(p.badge)}</span>` : ''}
-        <h3>${esc(p.name)}</h3><div class="plan-price"><b>${esc(p.price)}</b><span>/ ${esc(p.per)}</span></div>
-        <p class="plan-note">${esc(p.note || ' ')}</p>
+        <h3>${esc(p.name)}</h3><div class="plan-price"><b>${planPrice(p)}</b><span>/ ${esc(p.per)}</span></div>
+        <p class="plan-note">${esc(planNote(p) || ' ')}</p>
         <button class="btn ${p.badge ? 'primary' : 'outline'}" data-action="plan-choose" data-v="${esc(p.id)}">Choose ${esc(p.name.toLowerCase())}</button></div>`;
     const paid = new URLSearchParams(location.search).has('paid');
     return `${paid ? '<div class="note" style="margin-top:18px"><strong>Thank you. Your payment is being confirmed.</strong> Premium switches on for your account as soon as it clears. <button class="linkish" data-action="plan-refresh">Refresh my access</button></div>' : ''}<div class="page-head premium-head"><span class="eyebrow">★ GoalCast Premium</span><h1>Go deeper on every match.</h1>
         <p>Daily and weekend selections, accumulator analysis, a staking guide and alerts for your teams. No promises of guaranteed wins: you can check our full record, losses included, before you join.</p></div>
       <div class="plans">
-        <div class="plan"><h3>Free</h3><div class="plan-price"><b>£0</b></div><p class="plan-note">Match-result predictions, league tables and results.</p>
+        <div class="plan"><h3>Free</h3><div class="plan-price"><b>${money(0)}</b></div><p class="plan-note">Match-result predictions, league tables and results.</p>
           ${auth.user ? '<button class="btn" disabled>Your current plan</button>' : '<button class="btn outline" data-action="auth-open" data-v="signup">Create free account</button>'}</div>
         ${PLANS.map(card).join('')}
       </div>
@@ -735,7 +757,7 @@
       <div class="section-head"><h2>What members receive</h2></div>
       <div class="features">${FEATURES.map(([icon, title, text, live]) => `<div class="feature"><span class="feature-icon">${icon}</span><div><strong>${title}${live ? '' : ' <span class="badge pending">Coming soon</span>'}</strong><p>${text}</p></div></div>`).join('')}</div>
       <div class="two" style="margin-top:22px">
-        <div class="panel"><h3>How joining works</h3><ol class="steps-list"><li>Create a free account, or sign in.</li><li>Choose a plan${PAYMENTS.some((m) => m.address || Object.values(m.links || {}).some(Boolean)) ? ' and pay online' : ' and message us to arrange payment'}.</li><li>Premium switches on for your account and you get full access.</li></ol>
+        <div class="panel"><h3>How joining works</h3><ol class="steps-list"><li>Create a free account, or sign in.</li><li>Choose a plan${PAYMENTS.some((m) => payHere(m) && (m.address || Object.values(m.links || {}).some(Boolean))) ? ' and pay online' : ' and message us to arrange payment'}.</li><li>Premium switches on for your account and you get full access.</li></ol>
           <p class="muted" style="margin-top:8px">Plans do not renew automatically. You decide whether to continue when yours ends.</p></div>
         <div class="panel"><h3>Straight answers</h3>
           <p><strong>Do you guarantee wins?</strong> No. Nobody honestly can. Safe tips landed ${pct(s.rate, 1)} of the time on a year of unseen matches, which still means some lose. <a href="#/results">See the record</a>.</p>
@@ -750,10 +772,13 @@
   }
 
   /* Until card payments are connected, joining is arranged by message; the owner then switches the plan on. */
-  /* Ways to pay, from site/config.js. A method is offered for a plan once it has a payment link for that plan
-     (card and bank methods) or a wallet address (crypto). */
+  /* Ways to pay, from site/config.js. A method is offered once it has a payment link for the plan (card and
+     bank methods) or a wallet address (crypto), and only in the countries it is meant for. */
   const PAYMENTS = window.GOALCAST_PAYMENTS || [];
-  const payMethods = (p) => PAYMENTS.filter((m) => m.links?.[p.id] || m.address);
+  const payReady = (m, p) => Boolean(m.links?.[p.id] || m.address);
+  const payHere = (m) => { const c = myCountry(); return (!m.only || m.only.includes(c)) && (!m.except || !m.except.includes(c)); };
+  const payMethods = (p) => PAYMENTS.filter((m) => payHere(m) && payReady(m, p));
+  const payPrice = (m, p) => (m.currency === 'USDT' ? `${p.amounts.USD.toFixed(2)} USDT` : money(p.amounts[m.currency], m.currency));
   function checkoutUrl(link) {
     const url = new URL(link);  // carries the account so the payment can be matched to it
     url.searchParams.set('prefilled_email', auth.user.email);
@@ -776,30 +801,38 @@
     if (!p) return;
     if (!auth.user) { auth.msg = { text: `Create a free account first, then choose the ${p.name.toLowerCase()} plan.`, ok: true }; openAuth('signup'); return; }
     const methods = payMethods(p);
-    if (methods.length === 1 && methods[0].links) { location.href = checkoutUrl(methods[0].links[p.id]); return; }
-
-    const head = `<div class="d-head"><div><div class="muted">GoalCast Premium · ${esc(auth.user.email)}</div><h2>${esc(p.name)} plan · ${esc(p.price)} per ${esc(p.per)}</h2></div><button class="x" data-action="close-detail" aria-label="Close">×</button></div>`;
+    const head = `<div class="d-head"><div><div class="muted">GoalCast Premium · ${esc(auth.user.email)}</div><h2>${esc(p.name)} plan · ${planPrice(p)} per ${esc(p.per)}</h2></div><button class="x" data-action="close-detail" aria-label="Close">×</button></div>`;
+    const where = `<label class="pay-country">Paying from ${countrySelect('data-change-country aria-label="Country you are paying from"', myCountry())}</label>`;
     const small = `<p class="muted" style="font-size:13px;margin:0">Predictions are probabilities, not guarantees, and some will lose. 18+ only. <a href="#/terms">Terms</a> · <a href="#/responsible-gambling">Responsible gambling</a></p>`;
     let body;
-    if (!methods.length) {
-      const text = `Hello GoalCast, I would like the ${p.name} plan (${p.price} per ${p.per}). My account email is ${auth.user.email}.`;
-      body = `<div class="panel"><h3>Message us to join</h3>
-        <p>Online payment is being set up. For now, send us a message and we will arrange payment and switch Premium on for your account. Your plan and email are already filled in.</p>
+    if (!myCountry()) body = `<div class="panel"><h3>Where are you paying from?</h3><p>Choose your country to see the ways to pay there.</p>${where}</div>`;
+    else if (!methods.length) {
+      const text = `Hello GoalCast, I would like the ${p.name} plan (${planPrice(p)} per ${p.per}). My account email is ${auth.user.email}.`;
+      body = `<div class="panel"><h3>Message us to join</h3>${where}
+        <p style="margin-top:12px">Online payment is being set up for your country. For now, send us a message and we will arrange payment and switch Premium on for your account. Your plan and email are already filled in.</p>
         ${contactButtons(contactOptions(text, `GoalCast ${p.name} plan`).map(([n, h]) => [`Message on ${n}`, h]))}</div>`;
     } else {
-      const price = (m) => esc(m.prices?.[p.id] || p.price);
-      body = `<div class="panel"><h3>Choose how to pay</h3><div class="pay-list">${methods.map((m) => (m.links
-        ? `<a class="pay-method" href="${esc(checkoutUrl(m.links[p.id]))}"><span class="pay-icon">${esc(m.icon || '💳')}</span><span><strong>${esc(m.label)}</strong><small>${esc(m.sub || '')}</small></span><b>${price(m)} →</b></a>`
-        : `<details class="pay-method crypto"><summary><span class="pay-icon">${esc(m.icon || '🪙')}</span><span><strong>${esc(m.label)}</strong><small>${esc(m.sub || '')}</small></span><b>${price(m)}</b></summary>
-            <div class="pay-crypto"><p>Send exactly <strong>${price(m)}</strong> in <strong>${esc(m.asset)}</strong> on the <strong>${esc(m.network)}</strong> network to this address:</p>
+      body = `<div class="panel"><h3>Choose how to pay</h3>${where}<div class="pay-list">${methods.map((m) => (m.links
+        ? `<a class="pay-method" href="${esc(checkoutUrl(m.links[p.id]))}"><span class="pay-icon">${esc(m.icon || '💳')}</span><span><strong>${esc(m.label)}</strong><small>${esc(m.sub || '')}</small></span><b>${payPrice(m, p)} →</b></a>`
+        : `<details class="pay-method crypto"><summary><span class="pay-icon">${esc(m.icon || '🪙')}</span><span><strong>${esc(m.label)}</strong><small>${esc(m.sub || '')}</small></span><b>${payPrice(m, p)}</b></summary>
+            <div class="pay-crypto"><p>Send exactly <strong>${payPrice(m, p)}</strong> on the <strong>${esc(m.network)}</strong> network to this address:</p>
               <div class="pay-address"><code>${esc(m.address)}</code><button class="btn small" data-action="copy" data-v="${esc(m.address)}">Copy</button></div>
               <p class="muted">Use only the ${esc(m.network)} network. Coins sent on another network cannot be recovered. Crypto payments cannot be reversed.</p>
               <p><strong>After sending,</strong> tell us the transaction ID so we can switch Premium on:</p>
-              ${contactButtons(contactOptions(`Hello GoalCast, I have paid for the ${p.name} plan with ${m.asset} (${m.network}). My account email is ${auth.user.email}. Transaction ID: `, `GoalCast ${p.name} plan: crypto payment`))}</div></details>`)).join('')}</div></div>`;
+              ${contactButtons(contactOptions(`Hello GoalCast, I have paid ${payPrice(m, p)} for the ${p.name} plan (${m.network}). My account email is ${auth.user.email}. Transaction ID: `, `GoalCast ${p.name} plan: crypto payment`))}</div></details>`)).join('')}</div></div>`;
     }
     detailEl.innerHTML = `${head}<div class="d-body">${body}${small}</div>`;
     delete detailEl.dataset.id;
+    detailEl.dataset.plan = id;
     if (!detailEl.open) detailEl.showModal();
+  }
+  /* Changing country updates the prices and the ways to pay at once, and is remembered on the account. */
+  function setCountry(code) {
+    state.country = code;
+    store.set('gc-country', code);
+    if (auth.user && auth.client) auth.client.auth.updateUser({ data: { country: code } });
+    render(true);
+    if (detailEl.open && detailEl.dataset.plan) openPlan(detailEl.dataset.plan);
   }
 
   /* ---------- navigation ---------- */
@@ -845,6 +878,7 @@
       <div class="d-head" style="position:static;border:0;padding:0 0 4px;background:none"><h2>${titles[m]}</h2><button type="button" class="x" data-action="auth-close" aria-label="Close">×</button></div>
       ${m === 'signin' || m === 'signup' ? `<div class="tabs" style="margin-bottom:6px"><button type="button" data-action="auth-open" data-v="signin" class="${m === 'signin' ? 'on' : ''}">Sign in</button><button type="button" data-action="auth-open" data-v="signup" class="${m === 'signup' ? 'on' : ''}">Create account</button></div>` : ''}
       ${m === 'signup' ? field('name', 'Name', 'text', 'autocomplete="name" maxlength="60"') : ''}
+      ${m === 'signup' ? `<label>Country${countrySelect('name="country" required autocomplete="country"', keep.country || myCountry())}</label>` : ''}
       ${m !== 'newpass' ? field('email', 'Email', 'email', 'autocomplete="email"') : ''}
       ${m !== 'reset' ? field('password', m === 'newpass' ? 'New password' : 'Password', 'password', `autocomplete="${m === 'signin' ? 'current-password' : 'new-password'}"`) : ''}
       ${m !== 'reset' ? `<label class="check"><input type="checkbox" data-show-password ${auth.showPassword ? 'checked' : ''}> Show password</label>` : ''}
@@ -876,15 +910,18 @@
     const valid = form.checkValidity();
     const say = (text, ok = false) => { auth.msg = { text, ok }; auth.busy = false; openAuth(auth.mode, v); };
     if (!auth.client) return say('Accounts are not switched on yet. The site owner needs to add the sign-in settings in config.js.');
+    if (auth.mode === 'signup' && !v.country) return say('Please select your country.');
     if ((auth.mode === 'signup' || auth.mode === 'newpass') && v.password.length < 8) return say(`Passwords need at least 8 characters. Yours has ${v.password.length}.`);
     if (!valid) return say('Please fill in every field with a valid value.');
     auth.busy = true; auth.msg = null; openAuth(auth.mode, v);
     const a = auth.client.auth;
     try {
       if (auth.mode === 'signup') {
-        const { data, error } = await a.signUp({ email: v.email, password: v.password, options: { data: { display_name: v.name.trim(), favorite_teams: auth.pickTeams }, emailRedirectTo: redirectTo() } });
+        const { data, error } = await a.signUp({ email: v.email, password: v.password, options: { data: { display_name: v.name.trim(), country: v.country, favorite_teams: auth.pickTeams }, emailRedirectTo: redirectTo() } });
         if (error) throw error;
         auth.pickTeams = [];
+        state.country = v.country;
+        store.set('gc-country', v.country);
         if (!data.session) return say('Almost there: we sent a confirmation link to your email. Open it to finish creating your account.', true);
       } else if (auth.mode === 'signin') {
         const { error } = await a.signInWithPassword({ email: v.email, password: v.password });
@@ -1051,6 +1088,7 @@
     submitAuth(e.target);
   });
   document.addEventListener('change', (e) => {
+    if ('changeCountry' in e.target.dataset) { setCountry(e.target.value); return; }
     if ('teamInput' in e.target.dataset) { addTeam(e.target); return; }
     if ('showPassword' in e.target.dataset) { auth.showPassword = e.target.checked; syncPassword(); return; }
     if ('changeLeague' in e.target.dataset) { navigate(`league/${e.target.value}`); return; }

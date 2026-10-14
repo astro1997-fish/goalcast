@@ -34,7 +34,7 @@ If you create an account, keep your password private and tell us if you think so
 
 ## Premium membership
 
-Premium plans and their prices are listed on the [Premium page](page:premium). Payment is arranged directly with us through the contacts shown on the site, and we then switch Premium on for your account for the period you paid for. Plans do not renew automatically.
+Premium plans and their prices are listed on the [Premium page](page:premium). Prices are shown in Naira for members in Nigeria and in US dollars elsewhere. You can pay by the methods offered for your country, which may include card, bank transfer and cryptocurrency. Once your payment is confirmed we switch Premium on for your account for the period you paid for. Plans do not renew automatically. Cryptocurrency payments cannot be reversed, so check the amount, address and network before sending.
 
 Premium gives access to additional selections and analysis. It does not guarantee winning bets or profit, and the points under "Predictions are not guarantees" apply to it in full.
 
