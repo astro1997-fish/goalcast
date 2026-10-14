@@ -59,5 +59,5 @@ window.GOALCAST_PAYMENTS = [
   { id: 'card', icon: '💳', label: 'Pay by card', sub: 'Visa or Mastercard, charged in US dollars', currency: 'USD', except: ['NG'],
     links: { weekly: '', monthly: '', yearly: '' } },
   { id: 'crypto', icon: '🪙', label: 'Pay with crypto', sub: 'USDT on the Tron network (TRC20)', currency: 'USDT', network: 'Tron (TRC20)',
-    address: '' },
+    address: 'TSj8RfoFZsz5oj3kjnwGW62HeXXfVL6i83' },
 ];
