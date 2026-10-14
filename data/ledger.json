@@ -18037,5 +18037,1520 @@
    }
   },
   "score": null
+ },
+ "20261024-sheffieldunited-derby": {
+  "id": "20261024-sheffieldunited-derby",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T11:30:00Z",
+  "date": "2026-10-24",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Sheffield United",
+  "away": "Derby",
+  "probs": [
+   0.4144,
+   0.2899,
+   0.2957
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4144
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7043
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5577
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5041
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1375
+   }
+  },
+  "score": null
+ },
+ "20261024-portsmouth-millwall": {
+  "id": "20261024-portsmouth-millwall",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T11:30:00Z",
+  "date": "2026-10-24",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Portsmouth",
+  "away": "Millwall",
+  "probs": [
+   0.417,
+   0.2825,
+   0.3006
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.417
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6994
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5085
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5486
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1342
+   }
+  },
+  "score": null
+ },
+ "20261024-astonvilla-mancity": {
+  "id": "20261024-astonvilla-mancity",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T11:30:00Z",
+  "date": "2026-10-24",
+  "div": "E0",
+  "league": "Premier League",
+  "home": "Aston Villa",
+  "away": "Man City",
+  "probs": [
+   0.2462,
+   0.2386,
+   0.5153
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.5153
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7538
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5825
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5906
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1104
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8067
+   }
+  },
+  "score": null
+ },
+ "20261024-charlton-norwich": {
+  "id": "20261024-charlton-norwich",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T11:30:00Z",
+  "date": "2026-10-24",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Charlton",
+  "away": "Norwich",
+  "probs": [
+   0.3193,
+   0.2894,
+   0.3913
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.3913
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6807
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5168
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5425
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1376
+   }
+  },
+  "score": null
+ },
+ "20261024-cagliari-bologna": {
+  "id": "20261024-cagliari-bologna",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T13:00:00Z",
+  "date": "2026-10-24",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Cagliari",
+  "away": "Bologna",
+  "probs": [
+   0.3036,
+   0.3347,
+   0.3617
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.3617
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6964
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5721
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5176
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1587
+   }
+  },
+  "score": null
+ },
+ "20261024-como-sassuolo": {
+  "id": "20261024-como-sassuolo",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T13:00:00Z",
+  "date": "2026-10-24",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Como",
+  "away": "Sassuolo",
+  "probs": [
+   0.6268,
+   0.2359,
+   0.1373
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6268
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8627
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5754
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5546
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1107
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8627
+   }
+  },
+  "score": null
+ },
+ "20261024-azamfc-zedfc": {
+  "id": "20261024-azamfc-zedfc",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180357Z",
+  "kickoff": "2026-10-24T13:00:00Z",
+  "date": "2026-10-24",
+  "div": "caf.confed",
+  "league": "CAF Confederation Cup",
+  "home": "Azam FC",
+  "away": "ZED FC",
+  "probs": [
+   0.4742,
+   0.2636,
+   0.2622
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4742
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7378
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.6118
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5736
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1424
+   },
+   "SAFE": {
+    "sel": "U3.5",
+    "p": 0.8142
+   }
+  },
+  "score": null
+ },
+ "20261024-rbleipzig-elversberg": {
+  "id": "20261024-rbleipzig-elversberg",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T13:30:00Z",
+  "date": "2026-10-24",
+  "div": "D1",
+  "league": "Bundesliga",
+  "home": "RB Leipzig",
+  "away": "Elversberg",
+  "probs": [
+   0.7367,
+   0.1537,
+   0.1096
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.7367
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8904
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.7062
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5839
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.0934
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8904
+   }
+  },
+  "score": null
+ },
+ "20261024-paderborn-hamburg": {
+  "id": "20261024-paderborn-hamburg",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T13:30:00Z",
+  "date": "2026-10-24",
+  "div": "D1",
+  "league": "Bundesliga",
+  "home": "Paderborn",
+  "away": "Hamburg",
+  "probs": [
+   0.4252,
+   0.2719,
+   0.3028
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4252
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6972
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5513
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5946
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1267
+   }
+  },
+  "score": null
+ },
+ "20261024-mainz-werderbremen": {
+  "id": "20261024-mainz-werderbremen",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T13:30:00Z",
+  "date": "2026-10-24",
+  "div": "D1",
+  "league": "Bundesliga",
+  "home": "Mainz",
+  "away": "Werder Bremen",
+  "probs": [
+   0.5224,
+   0.2697,
+   0.2079
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5224
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7921
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5703
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5934
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1251
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8058
+   }
+  },
+  "score": null
+ },
+ "20261024-fckoln-schalke04": {
+  "id": "20261024-fckoln-schalke04",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T13:30:00Z",
+  "date": "2026-10-24",
+  "div": "D1",
+  "league": "Bundesliga",
+  "home": "FC Koln",
+  "away": "Schalke 04",
+  "probs": [
+   0.4969,
+   0.263,
+   0.24
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4969
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.76
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5569
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.585
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1228
+   }
+  },
+  "score": null
+ },
+ "20261024-augsburg-unionberlin": {
+  "id": "20261024-augsburg-unionberlin",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T13:30:00Z",
+  "date": "2026-10-24",
+  "div": "D1",
+  "league": "Bundesliga",
+  "home": "Augsburg",
+  "away": "Union Berlin",
+  "probs": [
+   0.5429,
+   0.2673,
+   0.1897
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5429
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8103
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.6356
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.6489
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1172
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.849
+   }
+  },
+  "score": null
+ },
+ "20261024-westham-southampton": {
+  "id": "20261024-westham-southampton",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T14:00:00Z",
+  "date": "2026-10-24",
+  "div": "E1",
+  "league": "Championship",
+  "home": "West Ham",
+  "away": "Southampton",
+  "probs": [
+   0.5536,
+   0.2583,
+   0.1881
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5536
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8119
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5492
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5634
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1216
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8119
+   }
+  },
+  "score": null
+ },
+ "20261024-wolves-watford": {
+  "id": "20261024-wolves-watford",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T14:00:00Z",
+  "date": "2026-10-24",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Wolves",
+  "away": "Watford",
+  "probs": [
+   0.707,
+   0.1768,
+   0.1162
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.707
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8838
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.56
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.523
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1277
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8838
+   }
+  },
+  "score": null
+ },
+ "20261024-preston-westbrom": {
+  "id": "20261024-preston-westbrom",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T14:00:00Z",
+  "date": "2026-10-24",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Preston",
+  "away": "West Brom",
+  "probs": [
+   0.3428,
+   0.2751,
+   0.3821
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.3821
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6572
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5495
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5062
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1306
+   }
+  },
+  "score": null
+ },
+ "20261024-lincoln-burnley": {
+  "id": "20261024-lincoln-burnley",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T14:00:00Z",
+  "date": "2026-10-24",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Lincoln",
+  "away": "Burnley",
+  "probs": [
+   0.4074,
+   0.2837,
+   0.309
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4074
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.691
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5087
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5471
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1348
+   }
+  },
+  "score": null
+ },
+ "20261024-cardiff-birmingham": {
+  "id": "20261024-cardiff-birmingham",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T14:00:00Z",
+  "date": "2026-10-24",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Cardiff",
+  "away": "Birmingham",
+  "probs": [
+   0.3755,
+   0.2823,
+   0.3423
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.3755
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6577
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5268
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5802
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1328
+   }
+  },
+  "score": null
+ },
+ "20261024-blackburn-wrexham": {
+  "id": "20261024-blackburn-wrexham",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T14:00:00Z",
+  "date": "2026-10-24",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Blackburn",
+  "away": "Wrexham",
+  "probs": [
+   0.4247,
+   0.2806,
+   0.2948
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4247
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7052
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5221
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5324
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1334
+   }
+  },
+  "score": null
+ },
+ "20261024-coventry-fulham": {
+  "id": "20261024-coventry-fulham",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T14:00:00Z",
+  "date": "2026-10-24",
+  "div": "E0",
+  "league": "Premier League",
+  "home": "Coventry",
+  "away": "Fulham",
+  "probs": [
+   0.3476,
+   0.3082,
+   0.3441
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.3476
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6559
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5152
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5842
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1452
+   }
+  },
+  "score": null
+ },
+ "20261024-arsenal-everton": {
+  "id": "20261024-arsenal-everton",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T14:00:00Z",
+  "date": "2026-10-24",
+  "div": "E0",
+  "league": "Premier League",
+  "home": "Arsenal",
+  "away": "Everton",
+  "probs": [
+   0.6768,
+   0.2123,
+   0.1108
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6768
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8892
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.6034
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5396
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1076
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8892
+   }
+  },
+  "score": null
+ },
+ "20261024-stoke-bristolcity": {
+  "id": "20261024-stoke-bristolcity",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T14:00:00Z",
+  "date": "2026-10-24",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Stoke",
+  "away": "Bristol City",
+  "probs": [
+   0.3349,
+   0.294,
+   0.3711
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.3711
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6651
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5157
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5767
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1387
+   }
+  },
+  "score": null
+ },
+ "20261024-estrela-casapia": {
+  "id": "20261024-estrela-casapia",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T14:30:00Z",
+  "date": "2026-10-24",
+  "div": "P1",
+  "league": "Primeira Liga",
+  "home": "Estrela",
+  "away": "Casa Pia",
+  "probs": [
+   0.5036,
+   0.2617,
+   0.2347
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5036
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7653
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5484
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5147
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1277
+   }
+  },
+  "score": null
+ },
+ "20261024-utrecht-zwolle": {
+  "id": "20261024-utrecht-zwolle",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T14:30:00Z",
+  "date": "2026-10-24",
+  "div": "N1",
+  "league": "Eredivisie",
+  "home": "Utrecht",
+  "away": "Zwolle",
+  "probs": [
+   0.5805,
+   0.236,
+   0.1835
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5805
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8165
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5926
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5797
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1094
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8165
+   }
+  },
+  "score": null
+ },
+ "20261024-toulouse-troyes": {
+  "id": "20261024-toulouse-troyes",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T15:15:00Z",
+  "date": "2026-10-24",
+  "div": "F1",
+  "league": "Ligue 1",
+  "home": "Toulouse",
+  "away": "Troyes",
+  "probs": [
+   0.5373,
+   0.2398,
+   0.2229
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5373
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7771
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5456
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5519
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1132
+   }
+  },
+  "score": null
+ },
+ "20261024-napoli-roma": {
+  "id": "20261024-napoli-roma",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T16:00:00Z",
+  "date": "2026-10-24",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Napoli",
+  "away": "Roma",
+  "probs": [
+   0.3281,
+   0.3184,
+   0.3535
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.3535
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6719
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5384
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.6101
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1481
+   }
+  },
+  "score": null
+ },
+ "20261024-esperancesportivedetunis-asswehlysc": {
+  "id": "20261024-esperancesportivedetunis-asswehlysc",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180357Z",
+  "kickoff": "2026-10-24T16:00:00Z",
+  "date": "2026-10-24",
+  "div": "caf.champions",
+  "league": "CAF Champions League",
+  "home": "Esperance Sportive de Tunis",
+  "away": "Asswehly SC",
+  "probs": [
+   0.7239,
+   0.1634,
+   0.1126
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.7239
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8874
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5383
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5821
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1407
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8874
+   }
+  },
+  "score": null
+ },
+ "20261024-ralbamako-esperencesportivedezarzis": {
+  "id": "20261024-ralbamako-esperencesportivedezarzis",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180357Z",
+  "kickoff": "2026-10-24T16:00:00Z",
+  "date": "2026-10-24",
+  "div": "caf.confed",
+  "league": "CAF Confederation Cup",
+  "home": "R\u00e9al Bamako",
+  "away": "Esperence Sportive de Zarzis",
+  "probs": [
+   0.4743,
+   0.2402,
+   0.2855
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4743
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7145
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5972
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5694
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1413
+   },
+   "SAFE": {
+    "sel": "U3.5",
+    "p": 0.808
+   }
+  },
+  "score": null
+ },
+ "20261024-dortmund-einfrankfurt": {
+  "id": "20261024-dortmund-einfrankfurt",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T16:30:00Z",
+  "date": "2026-10-24",
+  "div": "D1",
+  "league": "Bundesliga",
+  "home": "Dortmund",
+  "away": "Ein Frankfurt",
+  "probs": [
+   0.7458,
+   0.1484,
+   0.1058
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.7458
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8942
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.7163
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5929
+   },
+   "CS": {
+    "sel": "2-1",
+    "p": 0.0948
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8942
+   }
+  },
+  "score": null
+ },
+ "20261024-chelsea-tottenham": {
+  "id": "20261024-chelsea-tottenham",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T16:30:00Z",
+  "date": "2026-10-24",
+  "div": "E0",
+  "league": "Premier League",
+  "home": "Chelsea",
+  "away": "Tottenham",
+  "probs": [
+   0.573,
+   0.2502,
+   0.1768
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.573
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8232
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.564
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5677
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1173
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8232
+   }
+  },
+  "score": null
+ },
+ "20261024-willemii-cambuur": {
+  "id": "20261024-willemii-cambuur",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T16:45:00Z",
+  "date": "2026-10-24",
+  "div": "N1",
+  "league": "Eredivisie",
+  "home": "Willem II",
+  "away": "Cambuur",
+  "probs": [
+   0.3841,
+   0.2831,
+   0.3328
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.3841
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6672
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5372
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5892
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1326
+   }
+  },
+  "score": null
+ },
+ "20261024-alverca-arouca": {
+  "id": "20261024-alverca-arouca",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180325Z",
+  "kickoff": "2026-10-24T17:00:00Z",
+  "date": "2026-10-24",
+  "div": "P1",
+  "league": "Primeira Liga",
+  "home": "Alverca",
+  "away": "Arouca",
+  "probs": [
+   0.4019,
+   0.2868,
+   0.3113
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4019
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6887
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.529
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5303
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1364
+   }
+  },
+  "score": null
+ },
+ "20261024-al-merrikh-horoya": {
+  "id": "20261024-al-merrikh-horoya",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180357Z",
+  "kickoff": "2026-10-24T17:00:00Z",
+  "date": "2026-10-24",
+  "div": "caf.champions",
+  "league": "CAF Champions League",
+  "home": "Al-Merrikh",
+  "away": "Horoya",
+  "probs": [
+   0.363,
+   0.3129,
+   0.3241
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.363
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6759
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5824
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5046
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1477
+   }
+  },
+  "score": null
+ },
+ "20261024-pyramidsfc-elmerriekhbentiu": {
+  "id": "20261024-pyramidsfc-elmerriekhbentiu",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180357Z",
+  "kickoff": "2026-10-24T17:00:00Z",
+  "date": "2026-10-24",
+  "div": "caf.champions",
+  "league": "CAF Champions League",
+  "home": "Pyramids FC",
+  "away": "El Merriekh Bentiu",
+  "probs": [
+   0.7733,
+   0.1404,
+   0.0863
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.7733
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.9137
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5691
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.61
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1471
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.9137
+   }
+  },
+  "score": null
+ },
+ "20261024-zamalek-aprfc": {
+  "id": "20261024-zamalek-aprfc",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180357Z",
+  "kickoff": "2026-10-24T17:00:00Z",
+  "date": "2026-10-24",
+  "div": "caf.champions",
+  "league": "CAF Champions League",
+  "home": "Zamalek",
+  "away": "APR FC",
+  "probs": [
+   0.7679,
+   0.1481,
+   0.0841
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.7679
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.9159
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5334
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.6392
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1565
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.9159
+   }
+  },
+  "score": null
+ },
+ "20261024-alahlitripoli-welwaloadigrat": {
+  "id": "20261024-alahlitripoli-welwaloadigrat",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180357Z",
+  "kickoff": "2026-10-24T17:00:00Z",
+  "date": "2026-10-24",
+  "div": "caf.confed",
+  "league": "CAF Confederation Cup",
+  "home": "Al Ahli Tripoli",
+  "away": "Welwalo Adigrat",
+  "probs": [
+   0.6967,
+   0.1834,
+   0.1199
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6967
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8801
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5281
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5912
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1362
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8801
+   }
+  },
+  "score": null
+ },
+ "20261024-associaoblackbulls-rayonsport": {
+  "id": "20261024-associaoblackbulls-rayonsport",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180357Z",
+  "kickoff": "2026-10-24T17:00:00Z",
+  "date": "2026-10-24",
+  "div": "caf.confed",
+  "league": "CAF Confederation Cup",
+  "home": "Associa\u00e7\u00e3o Black Bulls",
+  "away": "Rayon Sport",
+  "probs": [
+   0.4238,
+   0.2618,
+   0.3143
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4238
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6857
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5627
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5157
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1237
+   }
+  },
+  "score": null
+ },
+ "20261024-clubsportifsfaxien-afadplateau": {
+  "id": "20261024-clubsportifsfaxien-afadplateau",
+  "published": "2026-10-14T18:04:35Z",
+  "version": "20261014T180357Z",
+  "kickoff": "2026-10-24T17:00:00Z",
+  "date": "2026-10-24",
+  "div": "caf.confed",
+  "league": "CAF Confederation Cup",
+  "home": "Club Sportif Sfaxien",
+  "away": "AFAD Plateau",
+  "probs": [
+   0.6126,
+   0.1979,
+   0.1895
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6126
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8105
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.537
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5711
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1461
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8105
+   }
+  },
+  "score": null
  }
 }
