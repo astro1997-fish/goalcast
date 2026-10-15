@@ -3,8 +3,8 @@
    Project Settings -> API. Both are safe to publish: the "publishable" (or "anon") key
    is the public browser key. Never put a "secret" or "service_role" key here. */
 window.GOALCAST_CONFIG = {
-  supabaseUrl: 'https://szoowwutahefnjnsevkc.supabase.co',
-  supabaseAnonKey: 'sb_publishable_h2e1dTKIX2xeBNvVAPy66A_iViVyud8',
+  supabaseUrl: 'https://rutiffsubtqqgrotwava.supabase.co',
+  supabaseAnonKey: 'sb_publishable_KCqkjXTta39rfMKgfsUoUg_Ey5bXFtE',
   /* Neon Data API address for members-only content (Neon console -> Data API). Safe to publish:
      the database only answers accounts with an active plan. */
   neonDataApi: 'https://ep-fancy-snow-b9vpwv3d.apirest.c-7.eu-central-1.aws.neon.tech/neondb/rest/v1',
