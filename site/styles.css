@@ -503,3 +503,5 @@ a.pay-method, .pay-method > summary { display: flex; align-items: center; gap: 1
 .pay-country { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13.5px; color: var(--muted); font-weight: 600; margin-top: 6px; }
 .pay-country select { flex: 1; min-width: 180px; max-width: 320px; background: var(--bg); color: var(--text); font-weight: 400; }
 #auth-form select { width: 100%; background: var(--bg); color: var(--text); font-weight: 400; }
+
+button.pay-method { display: flex; align-items: center; gap: 14px; padding: 14px 16px; width: 100%; text-align: left; cursor: pointer; font: inherit; }

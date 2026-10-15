@@ -757,7 +757,7 @@
       <div class="section-head"><h2>What members receive</h2></div>
       <div class="features">${FEATURES.map(([icon, title, text, live]) => `<div class="feature"><span class="feature-icon">${icon}</span><div><strong>${title}${live ? '' : ' <span class="badge pending">Coming soon</span>'}</strong><p>${text}</p></div></div>`).join('')}</div>
       <div class="two" style="margin-top:22px">
-        <div class="panel"><h3>How joining works</h3><ol class="steps-list"><li>Create a free account, or sign in.</li><li>Choose a plan${PAYMENTS.some((m) => payHere(m) && (m.address || Object.values(m.links || {}).some(Boolean))) ? ' and pay online' : ' and message us to arrange payment'}.</li><li>Premium switches on for your account and you get full access.</li></ol>
+        <div class="panel"><h3>How joining works</h3><ol class="steps-list"><li>Create a free account, or sign in.</li><li>Choose a plan${PAYMENTS.some((m) => payHere(m) && (viaPaystack(m) || m.address || Object.values(m.links || {}).some(Boolean))) ? ' and pay online' : ' and message us to arrange payment'}.</li><li>Premium switches on for your account and you get full access.</li></ol>
           <p class="muted" style="margin-top:8px">Plans do not renew automatically. You decide whether to continue when yours ends.</p></div>
         <div class="panel"><h3>Straight answers</h3>
           <p><strong>Do you guarantee wins?</strong> No. Nobody honestly can. Safe tips landed ${pct(s.rate, 1)} of the time on a year of unseen matches, which still means some lose. <a href="#/results">See the record</a>.</p>
@@ -775,7 +775,9 @@
   /* Ways to pay, from site/config.js. A method is offered once it has a payment link for the plan (card and
      bank methods) or a wallet address (crypto), and only in the countries it is meant for. */
   const PAYMENTS = window.GOALCAST_PAYMENTS || [];
-  const payReady = (m, p) => Boolean(m.links?.[p.id] || m.address);
+  const PAYSTACK = window.GOALCAST_PAYSTACK || {};
+  const viaPaystack = (m) => m.provider === 'paystack' && Boolean(PAYSTACK.publicKey) && (PAYSTACK.currencies || ['NGN']).includes(m.currency);
+  const payReady = (m, p) => viaPaystack(m) || Boolean(m.links?.[p.id] || m.address);
   const payHere = (m) => { const c = myCountry(); return (!m.only || m.only.includes(c)) && (!m.except || !m.except.includes(c)); };
   const payMethods = (p) => PAYMENTS.filter((m) => payHere(m) && payReady(m, p));
   const payPrice = (m, p) => (m.currency === 'USDT' ? `${p.amounts.USD.toFixed(2)} USDT` : money(p.amounts[m.currency], m.currency));
@@ -796,6 +798,55 @@
   }
   const contactButtons = (options) => `<div class="hero-cta">${options.map(([name, href], i) => `<a class="btn ${i ? '' : 'primary'}" href="${esc(href)}" target="_blank" rel="noopener">${name}</a>`).join('')}</div>`;
 
+  /* Paystack checkout opens over the page. Its webhook (supabase/functions/paystack-webhook) switches the plan on,
+     so after paying we refresh the account until Premium appears. */
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      if (document.querySelector(`script[src="${src}"]`)) return resolve();
+      const s = document.createElement('script');
+      s.src = src; s.onload = resolve; s.onerror = () => reject(new Error('could not load the payment window'));
+      document.head.append(s);
+    });
+  }
+  async function payWithPaystack(methodId) {
+    const p = PLANS.find((x) => x.id === detailEl.dataset.plan), m = PAYMENTS.find((x) => x.id === methodId);
+    if (!p || !m || !auth.user) return;
+    try {
+      await loadScript('https://js.paystack.co/v2/inline.js');
+    } catch (err) {
+      alert(`${err.message}. Please try again, or choose another way to pay.`);
+      return;
+    }
+    detailEl.close();
+    new window.PaystackPop().newTransaction({
+      key: PAYSTACK.publicKey,
+      email: auth.user.email,
+      amount: Math.round(p.amounts[m.currency] * 100),
+      currency: m.currency,
+      metadata: { user_id: auth.user.id, plan: p.id, custom_fields: [{ display_name: 'Plan', variable_name: 'plan', value: `${p.name} (${planPrice(p, m.currency)})` }] },
+      onSuccess: () => awaitPremium(p),
+      onCancel: () => openPlan(p.id),
+    });
+  }
+  async function awaitPremium(p) {
+    detailEl.innerHTML = `<div class="d-head"><div><div class="muted">GoalCast Premium</div><h2>Payment received</h2></div><button class="x" data-action="close-detail" aria-label="Close">×</button></div>
+      <div class="d-body"><div class="panel"><h3>Switching Premium on…</h3><p id="activation">Thank you. Your ${esc(p.name.toLowerCase())} plan is being switched on. This usually takes a few seconds.</p></div></div>`;
+    delete detailEl.dataset.id;
+    if (!detailEl.open) detailEl.showModal();
+    for (let i = 0; i < 20; i += 1) {
+      await new Promise((r) => setTimeout(r, 3000));
+      await auth.client?.auth.refreshSession();
+      if (isPremium()) {
+        detailEl.close();
+        navigate('premium');
+        loadPremium();
+        return;
+      }
+    }
+    const note = $('#activation', detailEl);
+    if (note) note.innerHTML = 'Your payment went through, but switching Premium on is taking longer than usual. Refresh this page in a few minutes. If it still has not switched on, message us with your payment receipt and we will sort it out straight away.';
+  }
+
   function openPlan(id) {
     const p = PLANS.find((x) => x.id === id);
     if (!p) return;
@@ -812,7 +863,9 @@
         <p style="margin-top:12px">Online payment is being set up for your country. For now, send us a message and we will arrange payment and switch Premium on for your account. Your plan and email are already filled in.</p>
         ${contactButtons(contactOptions(text, `GoalCast ${p.name} plan`).map(([n, h]) => [`Message on ${n}`, h]))}</div>`;
     } else {
-      body = `<div class="panel"><h3>Choose how to pay</h3>${where}<div class="pay-list">${methods.map((m) => (m.links
+      body = `<div class="panel"><h3>Choose how to pay</h3>${where}<div class="pay-list">${methods.map((m) => (viaPaystack(m)
+        ? `<button class="pay-method" data-action="paystack" data-v="${esc(m.id)}"><span class="pay-icon">${esc(m.icon || '💳')}</span><span><strong>${esc(m.label)}</strong><small>${esc(m.sub || '')}</small></span><b>${payPrice(m, p)} →</b></button>`
+        : m.links
         ? `<a class="pay-method" href="${esc(checkoutUrl(m.links[p.id]))}"><span class="pay-icon">${esc(m.icon || '💳')}</span><span><strong>${esc(m.label)}</strong><small>${esc(m.sub || '')}</small></span><b>${payPrice(m, p)} →</b></a>`
         : `<details class="pay-method crypto"><summary><span class="pay-icon">${esc(m.icon || '🪙')}</span><span><strong>${esc(m.label)}</strong><small>${esc(m.sub || '')}</small></span><b>${payPrice(m, p)}</b></summary>
             <div class="pay-crypto"><p>Send exactly <strong>${payPrice(m, p)}</strong> on the <strong>${esc(m.network)}</strong> network to this address:</p>
@@ -1052,6 +1105,7 @@
         Notification.requestPermission().then((permission) => { store.set('gc-notify', permission === 'granted'); store.set('gc-notified', []); render(true); notifyFavs(); });
         break;
       case 'plan-choose': openPlan(v); break;
+      case 'paystack': payWithPaystack(v); break;
       case 'copy': navigator.clipboard?.writeText(v).then(() => { el.textContent = 'Copied'; }); break;
       case 'plan-refresh':
         auth.client?.auth.refreshSession().then(() => { render(true); loadPremium(); if (!isPremium()) alert('Premium is not active on this account yet. If you have paid, please message us and we will switch it on.'); });

@@ -68,6 +68,21 @@ Ways to pay are under `GOALCAST_PAYMENTS`:
 A method appears in the payment window as soon as it is filled in. Set each payment link to send people back to
 `https://astro1997-fish.github.io/goalcast/premium/?paid=1` after paying.
 
+### Automatic Paystack payments
+
+Members pay in a Paystack window on the site, and Premium switches on by itself when Paystack confirms the payment.
+
+1. **Back end (once):** in Supabase open **Edge Functions**, create a function named `paystack-webhook`, paste the
+   contents of `supabase/functions/paystack-webhook/index.ts` and deploy it. In the function's settings turn **Verify
+   JWT** off. Under **Edge Functions -> Secrets** add `PAYSTACK_SECRET_KEY` with your Paystack **secret** key.
+2. **Paystack:** under **Settings -> API Keys & Webhooks**, set the webhook URL to
+   `https://rutiffsubtqqgrotwava.supabase.co/functions/v1/paystack-webhook`.
+3. **Site:** put your Paystack **public** key in `site/config.js` under `GOALCAST_PAYSTACK.publicKey`.
+
+Do it all with Paystack's test keys first (`pk_test_` / `sk_test_`), pay with a Paystack test card, and check Premium
+switches on. Then swap both keys for the live ones. If you change a price, change it in `site/config.js` and in
+the `PLANS` list at the top of the function: a payment that does not match the function's price is ignored.
+
 ### One-time setup for special picks (Neon database)
 
 Special picks are kept in a Neon database table that only paying members can read. Sign-in stays with Supabase;

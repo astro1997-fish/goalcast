@@ -47,17 +47,27 @@ window.GOALCAST_PLANS = [
   { id: 'yearly', name: 'Yearly', per: 'year', amounts: { USD: 119.99, NGN: 60000 }, badge: '🔥 Best value' },
 ];
 
-/* Ways to pay. Each one appears in the payment window as soon as it is filled in:
-     - card and bank methods need a payment link per plan in "links" (from Paystack, Flutterwave, etc.)
+/* Paystack checkout on the site. "publicKey" is the PUBLIC key from Paystack (Settings -> API Keys & Webhooks),
+   starting pk_test_ while testing and pk_live_ when taking real money. Never put the secret key here.
+   "currencies" lists what your Paystack account accepts: add 'USD' once Paystack enables dollars for you, and the
+   international card option will use Paystack too. */
+window.GOALCAST_PAYSTACK = {
+  publicKey: '',
+  currencies: ['NGN'],
+};
+
+/* Ways to pay. Each one appears in the payment window as soon as it is ready:
+     - provider 'paystack' methods need the Paystack public key above, in a currency Paystack accepts for you
+     - other card methods need a payment link per plan in "links" (from Flutterwave, etc.)
      - crypto needs a wallet "address"
    "only" / "except" choose the countries a method is offered in (two-letter country codes), and "currency"
    is what it charges in, using the plan amounts above. While nothing is filled in for a member's country,
    they are asked to message you instead. */
 window.GOALCAST_PAYMENTS = [
   { id: 'naira', icon: '₦', label: 'Pay in Naira', sub: 'Card, bank transfer or USSD, through Paystack', currency: 'NGN', only: ['NG'],
-    links: { weekly: '', monthly: '', yearly: '' } },
+    provider: 'paystack' },
   { id: 'card', icon: '💳', label: 'Pay by card', sub: 'Visa or Mastercard, charged in US dollars', currency: 'USD', except: ['NG'],
-    links: { weekly: '', monthly: '', yearly: '' } },
+    provider: 'paystack', links: { weekly: '', monthly: '', yearly: '' } },
   { id: 'crypto', icon: '🪙', label: 'Pay with crypto', sub: 'USDT on the Tron network (TRC20)', currency: 'USDT', network: 'Tron (TRC20)',
     address: 'TSj8RfoFZsz5oj3kjnwGW62HeXXfVL6i83' },
 ];
