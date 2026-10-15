@@ -42,9 +42,9 @@ window.GOALCAST_HOME = {
    "id" is what you type when switching a member's plan on (see content/README.md).
    "amounts" are the prices: NGN is shown to members in Nigeria, USD to everyone else. */
 window.GOALCAST_PLANS = [
-  { id: 'weekly', name: 'Weekly', per: 'week', amounts: { USD: 12.99, NGN: 17500 }, note: 'Short-term access, no commitment.' },
-  { id: 'monthly', name: 'Monthly', per: 'month', amounts: { USD: 39.99, NGN: 52500 }, badge: '⭐ Most popular' },
-  { id: 'yearly', name: 'Yearly', per: 'year', amounts: { USD: 329.99, NGN: 440000 }, badge: '🔥 Best value' },
+  { id: 'weekly', name: 'Weekly', per: 'week', amounts: { USD: 4.99, NGN: 2500 }, note: 'Short-term access, no commitment.' },
+  { id: 'monthly', name: 'Monthly', per: 'month', amounts: { USD: 14.99, NGN: 7500 }, badge: '⭐ Most popular' },
+  { id: 'yearly', name: 'Yearly', per: 'year', amounts: { USD: 119.99, NGN: 60000 }, badge: '🔥 Best value' },
 ];
 
 /* Ways to pay. Each one appears in the payment window as soon as it is filled in:

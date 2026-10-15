@@ -135,7 +135,7 @@ def page_model():
 
 def page_premium():
     lede = ("GoalCast Premium: daily and weekend selections, accumulator analysis, a staking guide and alerts for your teams. "
-            "From $12.99 a week, $39.99 a month or $329.99 a year, with Naira prices in Nigeria. No guaranteed wins; every result is published.")
+            "From $4.99 a week, $14.99 a month or $119.99 a year, with Naira prices in Nigeria. No guaranteed wins; every result is published.")
     return "GoalCast Premium: plans and prices", lede, head("GoalCast Premium", lede), ""
 
 
