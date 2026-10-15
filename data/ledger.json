@@ -3575,26 +3575,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4942
+    "p": 0.4942,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7722
+    "p": 0.7722,
+    "won": false
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5162
+    "p": 0.5162,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5258
+    "p": 0.5258,
+    "won": false
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1322
+    "p": 0.1322,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-1"
  },
  "20261013-burnley-charlton": {
   "id": "20261013-burnley-charlton",
@@ -3614,30 +3619,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5192
+    "p": 0.5192,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.8219
+    "p": 0.8219,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5509
+    "p": 0.5509,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5061
+    "p": 0.5061,
+    "won": false
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1433
+    "p": 0.1433,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.8219
+    "p": 0.8219,
+    "won": true
    }
   },
-  "score": null
+  "score": "2-2"
  },
  "20261013-cardiff-watford": {
   "id": "20261013-cardiff-watford",
@@ -3657,26 +3668,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5337
+    "p": 0.5337,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7998
+    "p": 0.7998,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5118
+    "p": 0.5118,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5338
+    "p": 0.5338,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1264
+    "p": 0.1264,
+    "won": false
    }
   },
-  "score": null
+  "score": "5-1"
  },
  "20261013-millwall-swansea": {
   "id": "20261013-millwall-swansea",
@@ -3696,26 +3712,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.3968
+    "p": 0.3968,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.6682
+    "p": 0.6682,
+    "won": false
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5132
+    "p": 0.5132,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5597
+    "p": 0.5597,
+    "won": false
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1285
+    "p": 0.1285,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-1"
  },
  "20261013-wolves-bolton": {
   "id": "20261013-wolves-bolton",
@@ -3735,30 +3756,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.6993
+    "p": 0.6993,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.8662
+    "p": 0.8662,
+    "won": false
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.6003
+    "p": 0.6003,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5052
+    "p": 0.5052,
+    "won": true
    },
    "CS": {
     "sel": "2-0",
-    "p": 0.1165
+    "p": 0.1165,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.8662
+    "p": 0.8662,
+    "won": false
    }
   },
-  "score": null
+  "score": "1-3"
  },
  "20261013-wrexham-westbrom": {
   "id": "20261013-wrexham-westbrom",
@@ -3778,30 +3805,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4119
+    "p": 0.4119,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7108
+    "p": 0.7108,
+    "won": false
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.6025
+    "p": 0.6025,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5335
+    "p": 0.5335,
+    "won": false
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1394
+    "p": 0.1394,
+    "won": false
    },
    "SAFE": {
     "sel": "U3.5",
-    "p": 0.8007
+    "p": 0.8007,
+    "won": true
    }
   },
-  "score": null
+  "score": "1-2"
  },
  "20261013-stoke-middlesbrough": {
   "id": "20261013-stoke-middlesbrough",
@@ -3821,26 +3854,31 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.4682
+    "p": 0.4682,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7341
+    "p": 0.7341,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5185
+    "p": 0.5185,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5591
+    "p": 0.5591,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1258
+    "p": 0.1258,
+    "won": false
    }
   },
-  "score": null
+  "score": "2-3"
  },
  "20261013-birmingham-preston": {
   "id": "20261013-birmingham-preston",
@@ -3860,30 +3898,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5703
+    "p": 0.5703,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.8221
+    "p": 0.8221,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5577
+    "p": 0.5577,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5587
+    "p": 0.5587,
+    "won": false
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1185
+    "p": 0.1185,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.8221
+    "p": 0.8221,
+    "won": true
    }
   },
-  "score": null
+  "score": "4-0"
  },
  "20261014-norwich-southampton": {
   "id": "20261014-norwich-southampton",
@@ -3903,26 +3947,31 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.3968
+    "p": 0.3968,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.6611
+    "p": 0.6611,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5292
+    "p": 0.5292,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5725
+    "p": 0.5725,
+    "won": false
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1245
+    "p": 0.1245,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-1"
  },
  "20261014-portsmouth-sheffieldunited": {
   "id": "20261014-portsmouth-sheffieldunited",
@@ -3942,26 +3991,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4625
+    "p": 0.4625,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7513
+    "p": 0.7513,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.533
+    "p": 0.533,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5209
+    "p": 0.5209,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1373
+    "p": 0.1373,
+    "won": false
    }
   },
-  "score": null
+  "score": "3-2"
  },
  "20261014-lincoln-westham": {
   "id": "20261014-lincoln-westham",
@@ -3981,26 +4035,31 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.5035
+    "p": 0.5035,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7459
+    "p": 0.7459,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5331
+    "p": 0.5331,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5552
+    "p": 0.5552,
+    "won": false
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1146
+    "p": 0.1146,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-6"
  },
  "20261016-heerenveen-excelsior": {
   "id": "20261016-heerenveen-excelsior",
@@ -7070,30 +7129,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5321
+    "p": 0.5321,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7307
+    "p": 0.7307,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5057
+    "p": 0.5057,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5008
+    "p": 0.5008,
+    "won": true
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1222
+    "p": 0.1222,
+    "won": false
    },
    "SAFE": {
     "sel": "12",
-    "p": 0.8014
+    "p": 0.8014,
+    "won": true
    }
   },
-  "score": null
+  "score": "3-2"
  },
  "20261014-lasklinz-liverpool": {
   "id": "20261014-lasklinz-liverpool",
@@ -7113,30 +7178,36 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.7129
+    "p": 0.7129,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.8409
+    "p": 0.8409,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.7339
+    "p": 0.7339,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.6192
+    "p": 0.6192,
+    "won": true
    },
    "CS": {
     "sel": "1-2",
-    "p": 0.095
+    "p": 0.095,
+    "won": false
    },
    "SAFE": {
     "sel": "O1.5",
-    "p": 0.888
+    "p": 0.888,
+    "won": true
    }
   },
-  "score": null
+  "score": "3-6"
  },
  "20261014-slovanbratislava-vfbstuttgart": {
   "id": "20261014-slovanbratislava-vfbstuttgart",
@@ -7156,26 +7227,31 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.4848
+    "p": 0.4848,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7074
+    "p": 0.7074,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5216
+    "p": 0.5216,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5363
+    "p": 0.5363,
+    "won": false
    },
    "CS": {
     "sel": "0-1",
-    "p": 0.1076
+    "p": 0.1076,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-3"
  },
  "20261014-shakhtardonetsk-aekathens": {
   "id": "20261014-shakhtardonetsk-aekathens",
@@ -7195,30 +7271,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5606
+    "p": 0.5606,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7686
+    "p": 0.7686,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5876
+    "p": 0.5876,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5711
+    "p": 0.5711,
+    "won": true
    },
    "CS": {
     "sel": "2-1",
-    "p": 0.0998
+    "p": 0.0998,
+    "won": false
    },
    "SAFE": {
     "sel": "O1.5",
-    "p": 0.8049
+    "p": 0.8049,
+    "won": true
    }
   },
-  "score": null
+  "score": "3-1"
  },
  "20261014-realbetis-fcporto": {
   "id": "20261014-realbetis-fcporto",
@@ -7238,26 +7320,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5194
+    "p": 0.5194,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7442
+    "p": 0.7442,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5386
+    "p": 0.5386,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5457
+    "p": 0.5457,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1063
+    "p": 0.1063,
+    "won": false
    }
   },
-  "score": null
+  "score": "3-2"
  },
  "20261014-bodoglimt-borussiadortmund": {
   "id": "20261014-bodoglimt-borussiadortmund",
@@ -7277,30 +7364,36 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.5178
+    "p": 0.5178,
+    "won": false
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7263
+    "p": 0.7263,
+    "won": false
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.6316
+    "p": 0.6316,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.6236
+    "p": 0.6236,
+    "won": false
    },
    "CS": {
     "sel": "1-2",
-    "p": 0.0985
+    "p": 0.0985,
+    "won": false
    },
    "SAFE": {
     "sel": "O1.5",
-    "p": 0.833
+    "p": 0.833,
+    "won": false
    }
   },
-  "score": null
+  "score": "1-0"
  },
  "20261014-astonvilla-fenerbahce": {
   "id": "20261014-astonvilla-fenerbahce",
@@ -7320,30 +7413,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.7418
+    "p": 0.7418,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.9082
+    "p": 0.9082,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.553
+    "p": 0.553,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5639
+    "p": 0.5639,
+    "won": true
    },
    "CS": {
     "sel": "2-0",
-    "p": 0.14
+    "p": 0.14,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.9082
+    "p": 0.9082,
+    "won": true
    }
   },
-  "score": null
+  "score": "6-0"
  },
  "20261014-asroma-realmadrid": {
   "id": "20261014-asroma-realmadrid",
@@ -7363,30 +7462,36 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.4955
+    "p": 0.4955,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.6516
+    "p": 0.6516,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.6433
+    "p": 0.6433,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.6078
+    "p": 0.6078,
+    "won": true
    },
    "CS": {
     "sel": "1-2",
-    "p": 0.0928
+    "p": 0.0928,
+    "won": false
    },
    "SAFE": {
     "sel": "12",
-    "p": 0.844
+    "p": 0.844,
+    "won": true
    }
   },
-  "score": null
+  "score": "3-4"
  },
  "20261014-manchestercity-parissaint-germain": {
   "id": "20261014-manchestercity-parissaint-germain",
@@ -7406,30 +7511,36 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.5497
+    "p": 0.5497,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.705
+    "p": 0.705,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.6725
+    "p": 0.6725,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.6225
+    "p": 0.6225,
+    "won": true
    },
    "CS": {
     "sel": "1-2",
-    "p": 0.093
+    "p": 0.093,
+    "won": false
    },
    "SAFE": {
     "sel": "O1.5",
-    "p": 0.8495
+    "p": 0.8495,
+    "won": true
    }
   },
-  "score": null
+  "score": "2-4"
  },
  "20261015-egnatia-fcmidtjylland": {
   "id": "20261015-egnatia-fcmidtjylland",
@@ -17343,32 +17454,38 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4521
+    "p": 0.4521,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7306
+    "p": 0.7306,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5465
+    "p": 0.5465,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5054
+    "p": 0.5054,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1322
+    "p": 0.1322,
+    "won": false
    },
    "VALUE": {
     "sel": "2",
     "p": 0.2694,
     "odds": 4.57,
-    "edge": 0.2314
+    "edge": 0.2314,
+    "won": false
    }
   },
-  "score": null
+  "score": "4-1"
  },
  "20261015-mansfield-oxford": {
   "id": "20261015-mansfield-oxford",
@@ -19549,6 +19666,264 @@
    "SAFE": {
     "sel": "1X",
     "p": 0.8105
+   }
+  },
+  "score": null
+ },
+ "20261024-lens-parisfc": {
+  "id": "20261024-lens-parisfc",
+  "published": "2026-10-15T00:41:35Z",
+  "version": "20261015T003930Z",
+  "kickoff": "2026-10-24T18:45:00Z",
+  "date": "2026-10-24",
+  "div": "F1",
+  "league": "Ligue 1",
+  "home": "Lens",
+  "away": "Paris FC",
+  "probs": [
+   0.5512,
+   0.2568,
+   0.192
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5512
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.808
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5728
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5841
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1195
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.808
+   }
+  },
+  "score": null
+ },
+ "20261024-lazio-parma": {
+  "id": "20261024-lazio-parma",
+  "published": "2026-10-15T00:41:35Z",
+  "version": "20261015T003930Z",
+  "kickoff": "2026-10-24T18:45:00Z",
+  "date": "2026-10-24",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Lazio",
+  "away": "Parma",
+  "probs": [
+   0.694,
+   0.1888,
+   0.1172
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.694
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8828
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5681
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.504
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1217
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8828
+   }
+  },
+  "score": null
+ },
+ "20261024-denhaag-heerenveen": {
+  "id": "20261024-denhaag-heerenveen",
+  "published": "2026-10-15T00:41:35Z",
+  "version": "20261015T003930Z",
+  "kickoff": "2026-10-24T19:00:00Z",
+  "date": "2026-10-24",
+  "div": "N1",
+  "league": "Eredivisie",
+  "home": "Den Haag",
+  "away": "Heerenveen",
+  "probs": [
+   0.1823,
+   0.2328,
+   0.5848
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.5848
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8177
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.6413
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.6173
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1039
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.848
+   }
+  },
+  "score": null
+ },
+ "20261024-rsbberkane-starsportacademy": {
+  "id": "20261024-rsbberkane-starsportacademy",
+  "published": "2026-10-15T00:41:35Z",
+  "version": "20261015T004028Z",
+  "kickoff": "2026-10-24T19:00:00Z",
+  "date": "2026-10-24",
+  "div": "caf.champions",
+  "league": "CAF Champions League",
+  "home": "RSB Berkane",
+  "away": "Star Sport Academy",
+  "probs": [
+   0.8003,
+   0.1315,
+   0.0682
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.8003
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.9318
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5559
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.6403
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1595
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.9318
+   }
+  },
+  "score": null
+ },
+ "20261024-crbelouizdad-douanes": {
+  "id": "20261024-crbelouizdad-douanes",
+  "published": "2026-10-15T00:41:35Z",
+  "version": "20261015T004028Z",
+  "kickoff": "2026-10-24T19:00:00Z",
+  "date": "2026-10-24",
+  "div": "caf.confed",
+  "league": "CAF Confederation Cup",
+  "home": "CR Belouizdad",
+  "away": "Douanes",
+  "probs": [
+   0.7072,
+   0.1671,
+   0.1256
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.7072
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8744
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5179
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.6068
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1427
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8744
+   }
+  },
+  "score": null
+ },
+ "20261024-gilvicente-porto": {
+  "id": "20261024-gilvicente-porto",
+  "published": "2026-10-15T00:41:35Z",
+  "version": "20261015T003930Z",
+  "kickoff": "2026-10-24T19:30:00Z",
+  "date": "2026-10-24",
+  "div": "P1",
+  "league": "Primeira Liga",
+  "home": "Gil Vicente",
+  "away": "Porto",
+  "probs": [
+   0.1387,
+   0.1984,
+   0.663
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.663
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8613
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.53
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5149
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.1302
+   },
+   "SAFE": {
+    "sel": "X2",
+    "p": 0.8613
    }
   },
   "score": null
