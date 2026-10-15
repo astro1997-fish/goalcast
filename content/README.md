@@ -76,7 +76,7 @@ Members pay in a Paystack window on the site, and Premium switches on by itself 
    contents of `supabase/functions/paystack-webhook/index.ts` and deploy it. In the function's settings turn **Verify
    JWT** off. Under **Edge Functions -> Secrets** add `PAYSTACK_SECRET_KEY` with your Paystack **secret** key.
 2. **Paystack:** under **Settings -> API Keys & Webhooks**, set the webhook URL to
-   `https://rutiffsubtqqgrotwava.supabase.co/functions/v1/paystack-webhook`.
+   `https://szoowwutahefnjnsevkc.supabase.co/functions/v1/paystack-webhook`.
 3. **Site:** put your Paystack **public** key in `site/config.js` under `GOALCAST_PAYSTACK.publicKey`.
 
 Do it all with Paystack's test keys first (`pk_test_` / `sk_test_`), pay with a Paystack test card, and check Premium
@@ -90,7 +90,7 @@ Neon is told to trust those sign-ins.
 
 1. In the Neon console, create a project, then open **Data API** and enable it.
    - Authentication provider: **Other provider**
-   - JWKS URL: `https://rutiffsubtqqgrotwava.supabase.co/auth/v1/.well-known/jwks.json`
+   - JWKS URL: `https://szoowwutahefnjnsevkc.supabase.co/auth/v1/.well-known/jwks.json`
    - JWT audience: `authenticated`
 2. Copy the Data API address it shows and put it in `site/config.js` as `neonDataApi`.
 3. In the Neon console, press **Connect** and copy the connection string. In GitHub, open the repository's
