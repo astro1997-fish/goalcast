@@ -45,6 +45,7 @@ def load(name: str) -> dict:
 PRED, RES, MODEL, LEAGUES, BLOG = load("predictions"), load("results"), load("model"), load("leagues").get("leagues", {}), load("blog")
 STATIC_PAGES = load("pages").get("pages", [])
 NOW = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+BUILD_ID = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
 UPCOMING = [m for m in PRED.get("matches", []) if m["kickoff"] > NOW]
 POSTS = [p for p in BLOG.get("posts", []) if p["date"] <= date.today().isoformat()]
 LABELS = PRED.get("labels", {})
@@ -216,6 +217,9 @@ def render(template: str, route: str, page: tuple, prefix: str) -> str:
     out = out[:out.index(">", start) + 1] + body + out[end:]
     for ref in ('href="styles.css"', 'href="assets/', 'src="assets/', 'src="config.js"', 'src="app.js"'):  # fonts load from styles.css
         out = out.replace(ref, ref.replace('="', f'="{prefix}'))
+    # a new address on every build, so browsers fetch the new settings, code and styles instead of a saved copy
+    for name in ("styles.css", "config.js", "app.js"):
+        out = out.replace(f'{prefix}{name}"', f'{prefix}{name}?v={BUILD_ID}"')
     return out.replace('href="#/', f'href="{prefix}')
 
 
