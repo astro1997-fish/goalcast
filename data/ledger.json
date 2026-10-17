@@ -9477,30 +9477,36 @@
   "tips": {
    "1X2": {
     "sel": "X",
-    "p": 0.3679
+    "p": 0.3679,
+    "won": false
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7114
+    "p": 0.7114,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.6397
+    "p": 0.6397,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5298
+    "p": 0.5298,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1701
+    "p": 0.1701,
+    "won": false
    },
    "SAFE": {
     "sel": "U3.5",
-    "p": 0.8162
+    "p": 0.8162,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-4"
  },
  "20261017-africanstars-orlandopirates": {
   "id": "20261017-africanstars-orlandopirates",
@@ -9520,26 +9526,31 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.3744
+    "p": 0.3744,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7287
+    "p": 0.7287,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.615
+    "p": 0.615,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5141
+    "p": 0.5141,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1657
+    "p": 0.1657,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-1"
  },
  "20261017-tpmazembe-clubafricain": {
   "id": "20261017-tpmazembe-clubafricain",
@@ -9559,26 +9570,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5628
+    "p": 0.5628,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7891
+    "p": 0.7891,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5037
+    "p": 0.5037,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.501
+    "p": 0.501,
+    "won": true
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1206
+    "p": 0.1206,
+    "won": false
    }
   },
-  "score": null
+  "score": "1-1"
  },
  "20261017-kitarafc-alahly": {
   "id": "20261017-kitarafc-alahly",
@@ -9598,26 +9614,31 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.4805
+    "p": 0.4805,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7523
+    "p": 0.7523,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5707
+    "p": 0.5707,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5227
+    "p": 0.5227,
+    "won": false
    },
    "CS": {
     "sel": "0-1",
-    "p": 0.1348
+    "p": 0.1348,
+    "won": false
    }
   },
-  "score": null
+  "score": "1-2"
  },
  "20261017-redarrows-kaizerchiefs": {
   "id": "20261017-redarrows-kaizerchiefs",
@@ -9637,26 +9658,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4384
+    "p": 0.4384,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7132
+    "p": 0.7132,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5633
+    "p": 0.5633,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5107
+    "p": 0.5107,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1299
+    "p": 0.1299,
+    "won": false
    }
   },
-  "score": null
+  "score": "1-0"
  },
  "20261017-esperencesportivedezarzis-ralbamako": {
   "id": "20261017-esperencesportivedezarzis-ralbamako",
