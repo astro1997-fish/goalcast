@@ -9214,30 +9214,36 @@
   "tips": {
    "1X2": {
     "sel": "X",
-    "p": 0.3927
+    "p": 0.3927,
+    "won": false
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7042
+    "p": 0.7042,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.6559
+    "p": 0.6559,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5321
+    "p": 0.5321,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1805
+    "p": 0.1805,
+    "won": false
    },
    "SAFE": {
     "sel": "U3.5",
-    "p": 0.824
+    "p": 0.824,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-4"
  },
  "20261016-elmerriekhbentiu-pyramidsfc": {
   "id": "20261016-elmerriekhbentiu-pyramidsfc",
@@ -9301,26 +9307,31 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.3876
+    "p": 0.3876,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7297
+    "p": 0.7297,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.6091
+    "p": 0.6091,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5153
+    "p": 0.5153,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1602
+    "p": 0.1602,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-1"
  },
  "20261016-starsportacademy-rsbberkane": {
   "id": "20261016-starsportacademy-rsbberkane",
@@ -9379,26 +9390,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4451
+    "p": 0.4451,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7156
+    "p": 0.7156,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5471
+    "p": 0.5471,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5001
+    "p": 0.5001,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1283
+    "p": 0.1283,
+    "won": true
    }
   },
-  "score": null
+  "score": "1-1"
  },
  "20261016-15deagosto-simbasc": {
   "id": "20261016-15deagosto-simbasc",
@@ -25968,6 +25984,49 @@
    "SAFE": {
     "sel": "U3.5",
     "p": 0.8018
+   }
+  },
+  "score": null
+ },
+ "20261026-santaclara-benfica": {
+  "id": "20261026-santaclara-benfica",
+  "published": "2026-10-17T09:25:56Z",
+  "version": "20261017T092350Z",
+  "kickoff": "2026-10-26T18:45:00Z",
+  "date": "2026-10-26",
+  "div": "P1",
+  "league": "Primeira Liga",
+  "home": "Santa Clara",
+  "away": "Benfica",
+  "probs": [
+   0.1847,
+   0.2373,
+   0.578
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.578
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8153
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5265
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5231
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1127
+   },
+   "SAFE": {
+    "sel": "X2",
+    "p": 0.8153
    }
   },
   "score": null
