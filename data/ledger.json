@@ -9975,26 +9975,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.376
+    "p": 0.376,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.627
+    "p": 0.627,
+    "won": false
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5463
+    "p": 0.5463,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5043
+    "p": 0.5043,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.119
+    "p": 0.119,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-1"
  },
  "20261018-sidamacoffee-alhilalomdurman": {
   "id": "20261018-sidamacoffee-alhilalomdurman",
@@ -10014,26 +10019,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4092
+    "p": 0.4092,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.679
+    "p": 0.679,
+    "won": false
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5542
+    "p": 0.5542,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5018
+    "p": 0.5018,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1279
+    "p": 0.1279,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-2"
  },
  "20261018-durbancity-aspl2000": {
   "id": "20261018-durbancity-aspl2000",
@@ -10053,26 +10063,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5304
+    "p": 0.5304,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7547
+    "p": 0.7547,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.53
+    "p": 0.53,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5246
+    "p": 0.5246,
+    "won": false
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1279
+    "p": 0.1279,
+    "won": false
    }
   },
-  "score": null
+  "score": "3-1"
  },
  "20261018-rangersinternational-mcalger": {
   "id": "20261018-rangersinternational-mcalger",
@@ -10092,30 +10107,36 @@
   "tips": {
    "1X2": {
     "sel": "X",
-    "p": 0.3695
+    "p": 0.3695,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7154
+    "p": 0.7154,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.6581
+    "p": 0.6581,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5491
+    "p": 0.5491,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1683
+    "p": 0.1683,
+    "won": false
    },
    "SAFE": {
     "sel": "U3.5",
-    "p": 0.8306
+    "p": 0.8306,
+    "won": true
    }
   },
-  "score": null
+  "score": "2-0"
  },
  "20261018-scottlandmabvuku-petrodeluanda": {
   "id": "20261018-scottlandmabvuku-petrodeluanda",
@@ -10135,26 +10156,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4031
+    "p": 0.4031,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.6551
+    "p": 0.6551,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5525
+    "p": 0.5525,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5103
+    "p": 0.5103,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1193
+    "p": 0.1193,
+    "won": false
    }
   },
-  "score": null
+  "score": "2-0"
  },
  "20261018-dcvirunga-cdprimeirodeagosto": {
   "id": "20261018-dcvirunga-cdprimeirodeagosto",
@@ -10174,26 +10200,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4162
+    "p": 0.4162,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.6759
+    "p": 0.6759,
+    "won": false
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.564
+    "p": 0.564,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5176
+    "p": 0.5176,
+    "won": false
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1226
+    "p": 0.1226,
+    "won": false
    }
   },
-  "score": null
+  "score": "1-2"
  },
  "20261018-wilietesc-mamelodisundowns": {
   "id": "20261018-wilietesc-mamelodisundowns",
