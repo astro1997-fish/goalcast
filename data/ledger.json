@@ -26544,5 +26544,44 @@
    }
   },
   "score": null
+ },
+ "20261029-frosinone-lecce": {
+  "id": "20261029-frosinone-lecce",
+  "published": "2026-10-19T19:45:10Z",
+  "version": "20261019T194306Z",
+  "kickoff": "2026-10-29T17:30:00Z",
+  "date": "2026-10-29",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Frosinone",
+  "away": "Lecce",
+  "probs": [
+   0.5265,
+   0.2676,
+   0.2059
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5265
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7941
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5541
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5698
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1256
+   }
+  },
+  "score": null
  }
 }
