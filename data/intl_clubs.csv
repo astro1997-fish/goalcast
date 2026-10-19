@@ -8157,8 +8157,8 @@ uefa.champions,2026-09-08T19:00:00Z,FC Porto,Manchester City,0.0,2.0,False
 uefa.champions,2026-09-08T19:00:00Z,Lille,Real Betis,2.0,3.0,False
 uefa.champions,2026-09-08T19:00:00Z,Real Madrid,Internazionale,2.0,1.0,False
 uefa.champions,2026-09-09T16:45:00Z,Barcelona,Feyenoord Rotterdam,5.0,1.0,False
-uefa.champions,2026-09-09T16:45:00Z,VfB Stuttgart,Viking FK,3.0,1.0,False
 uefa.champions,2026-09-09T16:45:00Z,VfB Stuttgart,VIKING FK,3.0,1.0,False
+uefa.champions,2026-09-09T16:45:00Z,VfB Stuttgart,Viking FK,3.0,1.0,False
 uefa.champions,2026-09-09T19:00:00Z,Liverpool,Atlético Madrid,2.0,1.0,False
 uefa.champions,2026-09-09T19:00:00Z,Napoli,Arsenal,0.0,1.0,False
 uefa.champions,2026-09-09T19:00:00Z,Paris Saint-Germain,Slovan Bratislava,6.0,1.0,False
@@ -8318,3 +8318,11 @@ caf.champions,2026-10-18T13:00:00Z,Scottland Mabvuku,Petro de Luanda,2.0,0.0,Fal
 caf.champions,2026-10-18T13:00:00Z,Sidama Coffee,Al Hilal Omdurman,0.0,2.0,False
 caf.confed,2026-10-18T13:00:00Z,Durban City,ASPL 2000,3.0,1.0,False
 caf.confed,2026-10-18T14:00:00Z,DC Virunga,CD Primeiro de Agosto,1.0,2.0,False
+caf.champions,2026-10-18T15:00:00Z,Wiliete SC,Mamelodi Sundowns,0.0,0.0,False
+caf.confed,2026-10-18T15:00:00Z,El Kanemi Warriors,Raja Casablanca,2.0,2.0,False
+caf.confed,2026-10-18T15:00:00Z,Kabuscorp,AS Maniema Union,1.0,4.0,False
+caf.champions,2026-10-18T16:00:00Z,Horoya,Al-Merrikh,1.0,0.0,False
+caf.confed,2026-10-18T16:30:00Z,Diarra,ASKO Kara,3.0,2.0,False
+caf.champions,2026-10-18T17:00:00Z,Asswehly SC,Esperance Sportive de Tunis,1.0,0.0,False
+caf.champions,2026-10-18T17:00:00Z,Teungueth,Colombe Sportiv Du Dja Et Lobo,0.0,2.0,False
+caf.champions,2026-10-18T18:00:00Z,Maghreb As De Fès,ASEC Mimosas,1.0,1.0,False

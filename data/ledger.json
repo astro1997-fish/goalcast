@@ -10244,26 +10244,31 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.4013
+    "p": 0.4013,
+    "won": false
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7384
+    "p": 0.7384,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.6091
+    "p": 0.6091,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5193
+    "p": 0.5193,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1577
+    "p": 0.1577,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-0"
  },
  "20261018-elkanemiwarriors-rajacasablanca": {
   "id": "20261018-elkanemiwarriors-rajacasablanca",
@@ -10283,26 +10288,31 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.472
+    "p": 0.472,
+    "won": false
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7695
+    "p": 0.7695,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5836
+    "p": 0.5836,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5205
+    "p": 0.5205,
+    "won": false
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1399
+    "p": 0.1399,
+    "won": false
    }
   },
-  "score": null
+  "score": "2-2"
  },
  "20261018-kabuscorp-asmaniemaunion": {
   "id": "20261018-kabuscorp-asmaniemaunion",
@@ -10322,26 +10332,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4432
+    "p": 0.4432,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.732
+    "p": 0.732,
+    "won": false
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5665
+    "p": 0.5665,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.507
+    "p": 0.507,
+    "won": false
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1366
+    "p": 0.1366,
+    "won": false
    }
   },
-  "score": null
+  "score": "1-4"
  },
  "20261018-thepanthersfc-usmalger": {
   "id": "20261018-thepanthersfc-usmalger",
@@ -10404,26 +10419,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5513
+    "p": 0.5513,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7749
+    "p": 0.7749,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5235
+    "p": 0.5235,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.52
+    "p": 0.52,
+    "won": false
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1113
+    "p": 0.1113,
+    "won": true
    }
   },
-  "score": null
+  "score": "1-0"
  },
  "20261018-diarra-askokara": {
   "id": "20261018-diarra-askokara",
@@ -10443,26 +10463,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4544
+    "p": 0.4544,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.6931
+    "p": 0.6931,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5107
+    "p": 0.5107,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5148
+    "p": 0.5148,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1135
+    "p": 0.1135,
+    "won": false
    }
   },
-  "score": null
+  "score": "3-2"
  },
  "20261018-teungueth-colombesportivdudjaetlobo": {
   "id": "20261018-teungueth-colombesportivdudjaetlobo",
@@ -10482,30 +10507,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5195
+    "p": 0.5195,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7745
+    "p": 0.7745,
+    "won": false
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.6091
+    "p": 0.6091,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5839
+    "p": 0.5839,
+    "won": true
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1528
+    "p": 0.1528,
+    "won": false
    },
    "SAFE": {
     "sel": "U3.5",
-    "p": 0.8123
+    "p": 0.8123,
+    "won": true
    }
   },
-  "score": null
+  "score": "0-2"
  },
  "20261018-asswehlysc-esperancesportivedetunis": {
   "id": "20261018-asswehlysc-esperancesportivedetunis",
@@ -10525,30 +10556,36 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.3887
+    "p": 0.3887,
+    "won": false
    },
    "DC": {
     "sel": "X2",
-    "p": 0.736
+    "p": 0.736,
+    "won": false
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.6188
+    "p": 0.6188,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5229
+    "p": 0.5229,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1619
+    "p": 0.1619,
+    "won": false
    },
    "SAFE": {
     "sel": "U3.5",
-    "p": 0.803
+    "p": 0.803,
+    "won": true
    }
   },
-  "score": null
+  "score": "1-0"
  },
  "20261018-maghrebasdefs-asecmimosas": {
   "id": "20261018-maghrebasdefs-asecmimosas",
@@ -10568,26 +10605,31 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.3801
+    "p": 0.3801,
+    "won": false
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7016
+    "p": 0.7016,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5809
+    "p": 0.5809,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.503
+    "p": 0.503,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.152
+    "p": 0.152,
+    "won": true
    }
   },
-  "score": null
+  "score": "1-1"
  },
  "20261009-braunschweig-holsteinkiel": {
   "id": "20261009-braunschweig-holsteinkiel",
@@ -26288,6 +26330,217 @@
    "SAFE": {
     "sel": "X2",
     "p": 0.8063
+   }
+  },
+  "score": null
+ },
+ "20261028-parma-udinese": {
+  "id": "20261028-parma-udinese",
+  "published": "2026-10-19T11:01:14Z",
+  "version": "20261019T105903Z",
+  "kickoff": "2026-10-28T17:30:00Z",
+  "date": "2026-10-28",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Parma",
+  "away": "Udinese",
+  "probs": [
+   0.2862,
+   0.3,
+   0.4137
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4137
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7138
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5537
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5153
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1425
+   }
+  },
+  "score": null
+ },
+ "20261028-milan-bologna": {
+  "id": "20261028-milan-bologna",
+  "published": "2026-10-19T11:01:14Z",
+  "version": "20261019T105903Z",
+  "kickoff": "2026-10-28T17:30:00Z",
+  "date": "2026-10-28",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Milan",
+  "away": "Bologna",
+  "probs": [
+   0.5715,
+   0.2492,
+   0.1793
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5715
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8207
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5226
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5175
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1276
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8207
+   }
+  },
+  "score": null
+ },
+ "20261028-venezia-inter": {
+  "id": "20261028-venezia-inter",
+  "published": "2026-10-19T11:01:14Z",
+  "version": "20261019T105903Z",
+  "kickoff": "2026-10-28T17:30:00Z",
+  "date": "2026-10-28",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Venezia",
+  "away": "Inter",
+  "probs": [
+   0.0971,
+   0.176,
+   0.727
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.727
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.9029
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.6763
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5745
+   },
+   "CS": {
+    "sel": "0-2",
+    "p": 0.099
+   },
+   "SAFE": {
+    "sel": "X2",
+    "p": 0.9029
+   }
+  },
+  "score": null
+ },
+ "20261028-genoa-juventus": {
+  "id": "20261028-genoa-juventus",
+  "published": "2026-10-19T11:01:14Z",
+  "version": "20261019T105903Z",
+  "kickoff": "2026-10-28T19:45:00Z",
+  "date": "2026-10-28",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Genoa",
+  "away": "Juventus",
+  "probs": [
+   0.1459,
+   0.2004,
+   0.6537
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.6537
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8541
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5349
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5028
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.1279
+   },
+   "SAFE": {
+    "sel": "X2",
+    "p": 0.8541
+   }
+  },
+  "score": null
+ },
+ "20261028-monza-napoli": {
+  "id": "20261028-monza-napoli",
+  "published": "2026-10-19T11:01:14Z",
+  "version": "20261019T105903Z",
+  "kickoff": "2026-10-28T19:45:00Z",
+  "date": "2026-10-28",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Monza",
+  "away": "Napoli",
+  "probs": [
+   0.1993,
+   0.2307,
+   0.57
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.57
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8007
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5964
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5933
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1062
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8163
    }
   },
   "score": null
