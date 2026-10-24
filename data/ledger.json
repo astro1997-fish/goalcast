@@ -19494,30 +19494,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4742
+    "p": 0.4742,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7378
+    "p": 0.7378,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.6118
+    "p": 0.6118,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5736
+    "p": 0.5736,
+    "won": true
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1424
+    "p": 0.1424,
+    "won": true
    },
    "SAFE": {
     "sel": "U3.5",
-    "p": 0.8142
+    "p": 0.8142,
+    "won": true
    }
   },
-  "score": null
+  "score": "1-0"
  },
  "20261024-rbleipzig-elversberg": {
   "id": "20261024-rbleipzig-elversberg",
