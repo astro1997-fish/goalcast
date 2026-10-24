@@ -18669,30 +18669,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.6331
+    "p": 0.6331,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.838
+    "p": 0.838,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5476
+    "p": 0.5476,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5855
+    "p": 0.5855,
+    "won": true
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1534
+    "p": 0.1534,
+    "won": true
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.838
+    "p": 0.838,
+    "won": true
    }
   },
-  "score": null
+  "score": "1-0"
  },
  "20261023-kaizerchiefs-redarrows": {
   "id": "20261023-kaizerchiefs-redarrows",
@@ -18712,30 +18718,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5443
+    "p": 0.5443,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.8122
+    "p": 0.8122,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.6141
+    "p": 0.6141,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5925
+    "p": 0.5925,
+    "won": true
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1562
+    "p": 0.1562,
+    "won": true
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.8122
+    "p": 0.8122,
+    "won": true
    }
   },
-  "score": null
+  "score": "1-0"
  },
  "20261023-orlandopirates-africanstars": {
   "id": "20261023-orlandopirates-africanstars",
@@ -18755,30 +18767,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.7195
+    "p": 0.7195,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.8774
+    "p": 0.8774,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5359
+    "p": 0.5359,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5996
+    "p": 0.5996,
+    "won": true
    },
    "CS": {
     "sel": "2-0",
-    "p": 0.1415
+    "p": 0.1415,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.8774
+    "p": 0.8774,
+    "won": true
    }
   },
-  "score": null
+  "score": "4-0"
  },
  "20261023-goaheadeagles-telstar": {
   "id": "20261023-goaheadeagles-telstar",
@@ -18841,30 +18859,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.7574
+    "p": 0.7574,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.897
+    "p": 0.897,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5584
+    "p": 0.5584,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5985
+    "p": 0.5985,
+    "won": false
    },
    "CS": {
     "sel": "2-0",
-    "p": 0.1458
+    "p": 0.1458,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.897
+    "p": 0.897,
+    "won": true
    }
   },
-  "score": null
+  "score": "1-1"
  },
  "20261023-stuttgart-mgladbach": {
   "id": "20261023-stuttgart-mgladbach",
@@ -19087,30 +19111,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.6456
+    "p": 0.6456,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.8525
+    "p": 0.8525,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5157
+    "p": 0.5157,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5647
+    "p": 0.5647,
+    "won": true
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1387
+    "p": 0.1387,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.8525
+    "p": 0.8525,
+    "won": true
    }
   },
-  "score": null
+  "score": "3-0"
  },
  "20261023-guimaraes-maritimo": {
   "id": "20261023-guimaraes-maritimo",
@@ -19173,30 +19203,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.8002
+    "p": 0.8002,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.9318
+    "p": 0.9318,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5481
+    "p": 0.5481,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.6469
+    "p": 0.6469,
+    "won": true
    },
    "CS": {
     "sel": "2-0",
-    "p": 0.1621
+    "p": 0.1621,
+    "won": true
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.9318
+    "p": 0.9318,
+    "won": true
    }
   },
-  "score": null
+  "score": "2-0"
  },
  "20261024-sheffieldunited-derby": {
   "id": "20261024-sheffieldunited-derby",
@@ -36422,6 +36458,170 @@
    "CS": {
     "sel": "1-1",
     "p": 0.148
+   }
+  },
+  "score": null
+ },
+ "20261102-atalanta-parma": {
+  "id": "20261102-atalanta-parma",
+  "published": "2026-10-24T09:36:44Z",
+  "version": "20261024T093437Z",
+  "kickoff": "2026-11-02T19:45:00Z",
+  "date": "2026-11-02",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Atalanta",
+  "away": "Parma",
+  "probs": [
+   0.6322,
+   0.2114,
+   0.1564
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6322
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.8436
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5572
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5199
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1102
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.8436
+   }
+  },
+  "score": null
+ },
+ "20261102-newcastle-everton": {
+  "id": "20261102-newcastle-everton",
+  "published": "2026-10-24T09:36:44Z",
+  "version": "20261024T093437Z",
+  "kickoff": "2026-11-02T20:00:00Z",
+  "date": "2026-11-02",
+  "div": "E0",
+  "league": "Premier League",
+  "home": "Newcastle",
+  "away": "Everton",
+  "probs": [
+   0.3875,
+   0.2819,
+   0.3307
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.3875
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6693
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5215
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5744
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1329
+   }
+  },
+  "score": null
+ },
+ "20261102-benfica-alverca": {
+  "id": "20261102-benfica-alverca",
+  "published": "2026-10-24T09:36:44Z",
+  "version": "20261024T093437Z",
+  "kickoff": "2026-11-02T20:15:00Z",
+  "date": "2026-11-02",
+  "div": "P1",
+  "league": "Primeira Liga",
+  "home": "Benfica",
+  "away": "Alverca",
+  "probs": [
+   0.8074,
+   0.1327,
+   0.0599
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.8074
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.9401
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.6839
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5164
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1155
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.9401
+   }
+  },
+  "score": null
+ },
+ "20261102-gilvicente-guimaraes": {
+  "id": "20261102-gilvicente-guimaraes",
+  "published": "2026-10-24T09:36:44Z",
+  "version": "20261024T093437Z",
+  "kickoff": "2026-11-02T20:15:00Z",
+  "date": "2026-11-02",
+  "div": "P1",
+  "league": "Primeira Liga",
+  "home": "Gil Vicente",
+  "away": "Guimaraes",
+  "probs": [
+   0.4422,
+   0.2992,
+   0.2585
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4422
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7415
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5169
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5457
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1422
    }
   },
   "score": null
