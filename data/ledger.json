@@ -21169,26 +21169,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4589
+    "p": 0.4589,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.6784
+    "p": 0.6784,
+    "won": false
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5401
+    "p": 0.5401,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5211
+    "p": 0.5211,
+    "won": true
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1226
+    "p": 0.1226,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-3"
  },
  "20261025-simbasc-15deagosto": {
   "id": "20261025-simbasc-15deagosto",
@@ -21208,30 +21213,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.6975
+    "p": 0.6975,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.8708
+    "p": 0.8708,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5495
+    "p": 0.5495,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5472
+    "p": 0.5472,
+    "won": true
    },
    "CS": {
     "sel": "2-0",
-    "p": 0.1299
+    "p": 0.1299,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.8708
+    "p": 0.8708,
+    "won": true
    }
   },
-  "score": null
+  "score": "3-0"
  },
  "20261025-asmaniemaunion-kabuscorp": {
   "id": "20261025-asmaniemaunion-kabuscorp",
@@ -21251,30 +21262,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5624
+    "p": 0.5624,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7957
+    "p": 0.7957,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.6236
+    "p": 0.6236,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.6174
+    "p": 0.6174,
+    "won": false
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1732
+    "p": 0.1732,
+    "won": false
    },
    "SAFE": {
     "sel": "U3.5",
-    "p": 0.8268
+    "p": 0.8268,
+    "won": false
    }
   },
-  "score": null
+  "score": "4-1"
  },
  "20261025-psveindhoven-feyenoord": {
   "id": "20261025-psveindhoven-feyenoord",
@@ -22106,26 +22123,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4612
+    "p": 0.4612,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7004
+    "p": 0.7004,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5518
+    "p": 0.5518,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5212
+    "p": 0.5212,
+    "won": true
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.126
+    "p": 0.126,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-0"
  },
  "20261025-estoril-moreirense": {
   "id": "20261025-estoril-moreirense",
