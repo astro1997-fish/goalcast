@@ -22206,26 +22206,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4774
+    "p": 0.4774,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.6986
+    "p": 0.6986,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5016
+    "p": 0.5016,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5136
+    "p": 0.5136,
+    "won": false
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1127
+    "p": 0.1127,
+    "won": true
    }
   },
-  "score": null
+  "score": "1-0"
  },
  "20261025-spartarotterdam-ajax": {
   "id": "20261025-spartarotterdam-ajax",
@@ -22288,30 +22293,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.8017
+    "p": 0.8017,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.9218
+    "p": 0.9218,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5594
+    "p": 0.5594,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.636
+    "p": 0.636,
+    "won": true
    },
    "CS": {
     "sel": "2-0",
-    "p": 0.1594
+    "p": 0.1594,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.9218
+    "p": 0.9218,
+    "won": true
    }
   },
-  "score": null
+  "score": "4-0"
  },
  "20261025-alhilalomdurman-sidamacoffee": {
   "id": "20261025-alhilalomdurman-sidamacoffee",
@@ -22331,30 +22342,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5909
+    "p": 0.5909,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.8208
+    "p": 0.8208,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5403
+    "p": 0.5403,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5645
+    "p": 0.5645,
+    "won": true
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.133
+    "p": 0.133,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.8208
+    "p": 0.8208,
+    "won": true
    }
   },
-  "score": null
+  "score": "2-0"
  },
  "20261025-asecmimosas-maghrebasdefs": {
   "id": "20261025-asecmimosas-maghrebasdefs",
@@ -22374,30 +22391,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.665
+    "p": 0.665,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.8581
+    "p": 0.8581,
+    "won": false
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5272
+    "p": 0.5272,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5515
+    "p": 0.5515,
+    "won": false
    },
    "CS": {
     "sel": "2-0",
-    "p": 0.1269
+    "p": 0.1269,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.8581
+    "p": 0.8581,
+    "won": false
    }
   },
-  "score": null
+  "score": "1-2"
  },
  "20261025-singidablackstars-tuskerfc": {
   "id": "20261025-singidablackstars-tuskerfc",
@@ -22417,30 +22440,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.6562
+    "p": 0.6562,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.8457
+    "p": 0.8457,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5128
+    "p": 0.5128,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5741
+    "p": 0.5741,
+    "won": false
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1416
+    "p": 0.1416,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.8457
+    "p": 0.8457,
+    "won": true
    }
   },
-  "score": null
+  "score": "1-1"
  },
  "20261025-rennes-strasbourg": {
   "id": "20261025-rennes-strasbourg",
@@ -22753,26 +22782,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4835
+    "p": 0.4835,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7364
+    "p": 0.7364,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5856
+    "p": 0.5856,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5509
+    "p": 0.5509,
+    "won": true
    },
    "CS": {
     "sel": "1-0",
-    "p": 0.1397
+    "p": 0.1397,
+    "won": true
    }
   },
-  "score": null
+  "score": "1-0"
  },
  "20261025-fcnouadhibou-sanpdro": {
   "id": "20261025-fcnouadhibou-sanpdro",
@@ -22792,26 +22826,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5046
+    "p": 0.5046,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7706
+    "p": 0.7706,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5294
+    "p": 0.5294,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.5003
+    "p": 0.5003,
+    "won": true
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1263
+    "p": 0.1263,
+    "won": false
    }
   },
-  "score": null
+  "score": "2-0"
  },
  "20261016-cottbus-nurnberg": {
   "id": "20261016-cottbus-nurnberg",
@@ -27155,30 +27194,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.6931
+    "p": 0.6931,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.8845
+    "p": 0.8845,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5088
+    "p": 0.5088,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.6017
+    "p": 0.6017,
+    "won": false
    },
    "CS": {
     "sel": "2-0",
-    "p": 0.14
+    "p": 0.14,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.8845
+    "p": 0.8845,
+    "won": true
    }
   },
-  "score": null
+  "score": "2-1"
  },
  "20261025-usmalger-thepanthersfc": {
   "id": "20261025-usmalger-thepanthersfc",
@@ -27198,30 +27243,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.7286
+    "p": 0.7286,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.8831
+    "p": 0.8831,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5294
+    "p": 0.5294,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-N",
-    "p": 0.6121
+    "p": 0.6121,
+    "won": true
    },
    "CS": {
     "sel": "2-0",
-    "p": 0.146
+    "p": 0.146,
+    "won": false
    },
    "SAFE": {
     "sel": "1X",
-    "p": 0.8831
+    "p": 0.8831,
+    "won": true
    }
   },
-  "score": null
+  "score": "3-0"
  },
  "20261025-parissg-lyon": {
   "id": "20261025-parissg-lyon",
@@ -37393,6 +37444,502 @@
    "SAFE": {
     "sel": "O1.5",
     "p": 0.9227
+   }
+  },
+  "score": null
+ },
+ "20261104-aekathens-realmadrid": {
+  "id": "20261104-aekathens-realmadrid",
+  "published": "2026-10-26T11:08:42Z",
+  "version": "20261026T110736Z",
+  "kickoff": "2026-11-04T17:45:00Z",
+  "date": "2026-11-04",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "AEK Athens",
+  "away": "Real Madrid",
+  "probs": [
+   0.2266,
+   0.1363,
+   0.6371
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.6371
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7734
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.7514
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.658
+   },
+   "CS": {
+    "sel": "1-2",
+    "p": 0.0841
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8961
+   }
+  },
+  "score": null
+ },
+ "20261104-fenerbahce-liverpool": {
+  "id": "20261104-fenerbahce-liverpool",
+  "published": "2026-10-26T11:08:42Z",
+  "version": "20261026T110736Z",
+  "kickoff": "2026-11-04T17:45:00Z",
+  "date": "2026-11-04",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Fenerbahce",
+  "away": "Liverpool",
+  "probs": [
+   0.2247,
+   0.126,
+   0.6494
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.6494
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7753
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.7463
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.6459
+   },
+   "CS": {
+    "sel": "1-2",
+    "p": 0.0868
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8918
+   }
+  },
+  "score": null
+ },
+ "20261104-wrexham-middlesbrough": {
+  "id": "20261104-wrexham-middlesbrough",
+  "published": "2026-10-26T11:08:42Z",
+  "version": "20261026T110639Z",
+  "kickoff": "2026-11-04T19:45:00Z",
+  "date": "2026-11-04",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Wrexham",
+  "away": "Middlesbrough",
+  "probs": [
+   0.2882,
+   0.2895,
+   0.4223
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4223
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7118
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5078
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5482
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1375
+   }
+  },
+  "score": null
+ },
+ "20261104-cardiff-westham": {
+  "id": "20261104-cardiff-westham",
+  "published": "2026-10-26T11:08:42Z",
+  "version": "20261026T110639Z",
+  "kickoff": "2026-11-04T19:45:00Z",
+  "date": "2026-11-04",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Cardiff",
+  "away": "West Ham",
+  "probs": [
+   0.1716,
+   0.2261,
+   0.6023
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.6023
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8284
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.644
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.6109
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1012
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8492
+   }
+  },
+  "score": null
+ },
+ "20261104-bristolcity-wolves": {
+  "id": "20261104-bristolcity-wolves",
+  "published": "2026-10-26T11:08:42Z",
+  "version": "20261026T110639Z",
+  "kickoff": "2026-11-04T20:00:00Z",
+  "date": "2026-11-04",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Bristol City",
+  "away": "Wolves",
+  "probs": [
+   0.3322,
+   0.2933,
+   0.3746
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.3746
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6678
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5292
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5351
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1395
+   }
+  },
+  "score": null
+ },
+ "20261104-slaviaprague-arsenal": {
+  "id": "20261104-slaviaprague-arsenal",
+  "published": "2026-10-26T11:08:42Z",
+  "version": "20261026T110736Z",
+  "kickoff": "2026-11-04T20:00:00Z",
+  "date": "2026-11-04",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Slavia Prague",
+  "away": "Arsenal",
+  "probs": [
+   0.1981,
+   0.1782,
+   0.6237
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.6237
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8019
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.6528
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.593
+   },
+   "CS": {
+    "sel": "1-2",
+    "p": 0.0964
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8451
+   }
+  },
+  "score": null
+ },
+ "20261104-borussiadortmund-realbetis": {
+  "id": "20261104-borussiadortmund-realbetis",
+  "published": "2026-10-26T11:08:42Z",
+  "version": "20261026T110736Z",
+  "kickoff": "2026-11-04T20:00:00Z",
+  "date": "2026-11-04",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Borussia Dortmund",
+  "away": "Real Betis",
+  "probs": [
+   0.5949,
+   0.1875,
+   0.2177
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5949
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7823
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.6431
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.6121
+   },
+   "CS": {
+    "sel": "2-1",
+    "p": 0.1068
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8385
+   }
+  },
+  "score": null
+ },
+ "20261104-fcporto-napoli": {
+  "id": "20261104-fcporto-napoli",
+  "published": "2026-10-26T11:08:42Z",
+  "version": "20261026T110736Z",
+  "kickoff": "2026-11-04T20:00:00Z",
+  "date": "2026-11-04",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "FC Porto",
+  "away": "Napoli",
+  "probs": [
+   0.3971,
+   0.2075,
+   0.3954
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.3971
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6046
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5792
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5864
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.0962
+   }
+  },
+  "score": null
+ },
+ "20261104-lens-como": {
+  "id": "20261104-lens-como",
+  "published": "2026-10-26T11:08:42Z",
+  "version": "20261026T110736Z",
+  "kickoff": "2026-11-04T20:00:00Z",
+  "date": "2026-11-04",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Lens",
+  "away": "Como",
+  "probs": [
+   0.3277,
+   0.2782,
+   0.3941
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.3941
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6723
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5536
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.6018
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1292
+   }
+  },
+  "score": null
+ },
+ "20261104-psveindhoven-clubbrugge": {
+  "id": "20261104-psveindhoven-clubbrugge",
+  "published": "2026-10-26T11:08:42Z",
+  "version": "20261026T110736Z",
+  "kickoff": "2026-11-04T20:00:00Z",
+  "date": "2026-11-04",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "PSV Eindhoven",
+  "away": "Club Brugge",
+  "probs": [
+   0.5204,
+   0.1995,
+   0.2801
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5204
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7199
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5955
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5874
+   },
+   "CS": {
+    "sel": "2-1",
+    "p": 0.1018
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8065
+   }
+  },
+  "score": null
+ },
+ "20261104-rbleipzig-manchestercity": {
+  "id": "20261104-rbleipzig-manchestercity",
+  "published": "2026-10-26T11:08:42Z",
+  "version": "20261026T110736Z",
+  "kickoff": "2026-11-04T20:00:00Z",
+  "date": "2026-11-04",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "RB Leipzig",
+  "away": "Manchester City",
+  "probs": [
+   0.24,
+   0.1618,
+   0.5982
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.5982
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.76
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.667
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.615
+   },
+   "CS": {
+    "sel": "1-2",
+    "p": 0.1012
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8489
+   }
+  },
+  "score": null
+ },
+ "20261104-vikingfk-sabahfk": {
+  "id": "20261104-vikingfk-sabahfk",
+  "published": "2026-10-26T11:08:42Z",
+  "version": "20261026T110736Z",
+  "kickoff": "2026-11-04T20:00:00Z",
+  "date": "2026-11-04",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Viking FK",
+  "away": "Sabah FK",
+  "probs": [
+   0.4208,
+   0.2309,
+   0.3483
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4208
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6517
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5446
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5159
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.115
    }
   },
   "score": null
