@@ -41332,5 +41332,247 @@
    }
   },
   "score": null
+ },
+ "20261106-willemii-zwolle": {
+  "id": "20261106-willemii-zwolle",
+  "published": "2026-10-28T11:24:15Z",
+  "version": "20261028T112226Z",
+  "kickoff": "2026-11-06T19:00:00Z",
+  "date": "2026-11-06",
+  "div": "N1",
+  "league": "Eredivisie",
+  "home": "Willem II",
+  "away": "Zwolle",
+  "probs": [
+   0.2717,
+   0.2889,
+   0.4394
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4394
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7283
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.6192
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.6557
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1272
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8403
+   }
+  },
+  "score": null
+ },
+ "20261106-hamburg-mgladbach": {
+  "id": "20261106-hamburg-mgladbach",
+  "published": "2026-10-28T11:24:15Z",
+  "version": "20261028T112226Z",
+  "kickoff": "2026-11-06T19:30:00Z",
+  "date": "2026-11-06",
+  "div": "D1",
+  "league": "Bundesliga",
+  "home": "Hamburg",
+  "away": "M'gladbach",
+  "probs": [
+   0.4171,
+   0.2928,
+   0.2901
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4171
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7099
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5755
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.6262
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1337
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8114
+   }
+  },
+  "score": null
+ },
+ "20261106-toulouse-strasbourg": {
+  "id": "20261106-toulouse-strasbourg",
+  "published": "2026-10-28T11:24:15Z",
+  "version": "20261028T112226Z",
+  "kickoff": "2026-11-06T19:45:00Z",
+  "date": "2026-11-06",
+  "div": "F1",
+  "league": "Ligue 1",
+  "home": "Toulouse",
+  "away": "Strasbourg",
+  "probs": [
+   0.4087,
+   0.2834,
+   0.3079
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4087
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6921
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5199
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5365
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1348
+   }
+  },
+  "score": null
+ },
+ "20261106-venezia-udinese": {
+  "id": "20261106-venezia-udinese",
+  "published": "2026-10-28T11:24:15Z",
+  "version": "20261028T112226Z",
+  "kickoff": "2026-11-06T19:45:00Z",
+  "date": "2026-11-06",
+  "div": "I1",
+  "league": "Serie A",
+  "home": "Venezia",
+  "away": "Udinese",
+  "probs": [
+   0.4058,
+   0.3038,
+   0.2904
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4058
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7096
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.505
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5621
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.144
+   }
+  },
+  "score": null
+ },
+ "20261106-derby-bolton": {
+  "id": "20261106-derby-bolton",
+  "published": "2026-10-28T11:24:15Z",
+  "version": "20261028T112226Z",
+  "kickoff": "2026-11-06T20:00:00Z",
+  "date": "2026-11-06",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Derby",
+  "away": "Bolton",
+  "probs": [
+   0.4784,
+   0.2728,
+   0.2488
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4784
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7512
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.517
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5591
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1291
+   }
+  },
+  "score": null
+ },
+ "20261106-famalicao-arouca": {
+  "id": "20261106-famalicao-arouca",
+  "published": "2026-10-28T11:24:15Z",
+  "version": "20261028T112226Z",
+  "kickoff": "2026-11-06T20:45:00Z",
+  "date": "2026-11-06",
+  "div": "P1",
+  "league": "Primeira Liga",
+  "home": "Famalicao",
+  "away": "Arouca",
+  "probs": [
+   0.4446,
+   0.2779,
+   0.2775
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4446
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7225
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5456
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5066
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1319
+   }
+  },
+  "score": null
  }
 }
