@@ -38672,30 +38672,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.555
+    "p": 0.555,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7409
+    "p": 0.7409,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.6779
+    "p": 0.6779,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.6421
+    "p": 0.6421,
+    "won": true
    },
    "CS": {
     "sel": "2-1",
-    "p": 0.0929
+    "p": 0.0929,
+    "won": false
    },
    "SAFE": {
     "sel": "O1.5",
-    "p": 0.8594
+    "p": 0.8594,
+    "won": true
    }
   },
-  "score": null
+  "score": "3-2"
  },
  "20261103-atlticomadrid-bayernmunich": {
   "id": "20261103-atlticomadrid-bayernmunich",
@@ -38715,30 +38721,36 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.5231
+    "p": 0.5231,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.6951
+    "p": 0.6951,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.6755
+    "p": 0.6755,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.637
+    "p": 0.637,
+    "won": false
    },
    "CS": {
     "sel": "1-2",
-    "p": 0.0887
+    "p": 0.0887,
+    "won": false
    },
    "SAFE": {
     "sel": "O1.5",
-    "p": 0.8541
+    "p": 0.8541,
+    "won": true
    }
   },
-  "score": null
+  "score": "0-2"
  },
  "20261103-barcelona-astonvilla": {
   "id": "20261103-barcelona-astonvilla",
@@ -38758,30 +38770,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.4562
+    "p": 0.4562,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.6477
+    "p": 0.6477,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.7226
+    "p": 0.7226,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.7049
+    "p": 0.7049,
+    "won": false
    },
    "CS": {
     "sel": "2-1",
-    "p": 0.0879
+    "p": 0.0879,
+    "won": false
    },
    "SAFE": {
     "sel": "O1.5",
-    "p": 0.8846
+    "p": 0.8846,
+    "won": true
    }
   },
-  "score": null
+  "score": "3-0"
  },
  "20261103-bodoglimt-lille": {
   "id": "20261103-bodoglimt-lille",
@@ -38801,30 +38819,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5074
+    "p": 0.5074,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7175
+    "p": 0.7175,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5862
+    "p": 0.5862,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5741
+    "p": 0.5741,
+    "won": false
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.0978
+    "p": 0.0978,
+    "won": false
    },
    "SAFE": {
     "sel": "O1.5",
-    "p": 0.8025
+    "p": 0.8025,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-0"
  },
  "20261103-feyenoordrotterdam-internazionale": {
   "id": "20261103-feyenoordrotterdam-internazionale",
@@ -38844,30 +38868,36 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.4832
+    "p": 0.4832,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.6521
+    "p": 0.6521,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.6128
+    "p": 0.6128,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5915
+    "p": 0.5915,
+    "won": false
    },
    "CS": {
     "sel": "1-2",
-    "p": 0.0975
+    "p": 0.0975,
+    "won": false
    },
    "SAFE": {
     "sel": "12",
-    "p": 0.831
+    "p": 0.831,
+    "won": true
    }
   },
-  "score": null
+  "score": "0-3"
  },
  "20261103-lasklinz-slovanbratislava": {
   "id": "20261103-lasklinz-slovanbratislava",
@@ -38887,30 +38917,36 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.7155
+    "p": 0.7155,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.8321
+    "p": 0.8321,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.6329
+    "p": 0.6329,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5306
+    "p": 0.5306,
+    "won": false
    },
    "CS": {
     "sel": "2-1",
-    "p": 0.1135
+    "p": 0.1135,
+    "won": false
    },
    "SAFE": {
     "sel": "12",
-    "p": 0.8833
+    "p": 0.8833,
+    "won": true
    }
   },
-  "score": null
+  "score": "4-0"
  },
  "20261103-villarreal-parissaint-germain": {
   "id": "20261103-villarreal-parissaint-germain",
@@ -38930,30 +38966,36 @@
   "tips": {
    "1X2": {
     "sel": "2",
-    "p": 0.6862
+    "p": 0.6862,
+    "won": true
    },
    "DC": {
     "sel": "X2",
-    "p": 0.7833
+    "p": 0.7833,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.8098
+    "p": 0.8098,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.6841
+    "p": 0.6841,
+    "won": false
    },
    "CS": {
     "sel": "1-2",
-    "p": 0.0771
+    "p": 0.0771,
+    "won": false
    },
    "SAFE": {
     "sel": "O1.5",
-    "p": 0.9227
+    "p": 0.9227,
+    "won": true
    }
   },
-  "score": null
+  "score": "0-6"
  },
  "20261104-aekathens-realmadrid": {
   "id": "20261104-aekathens-realmadrid",
@@ -52484,6 +52526,123 @@
    "CS": {
     "sel": "1-1",
     "p": 0.1289
+   }
+  },
+  "score": null
+ },
+ "20261113-saintmartin-elsalvador": {
+  "id": "20261113-saintmartin-elsalvador",
+  "published": "2026-11-04T13:03:41Z",
+  "version": "20261104T130236Z",
+  "kickoff": "2026-11-13T23:00:00Z",
+  "date": "2026-11-13",
+  "div": "concacaf.nations.league",
+  "league": "Concacaf Nations League",
+  "home": "Saint Martin",
+  "away": "El Salvador",
+  "probs": [
+   0.3642,
+   0.2093,
+   0.4265
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4265
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6358
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5124
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5036
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.112
+   }
+  },
+  "score": null
+ },
+ "20261114-montserrat-nicaragua": {
+  "id": "20261114-montserrat-nicaragua",
+  "published": "2026-11-04T13:03:41Z",
+  "version": "20261104T130236Z",
+  "kickoff": "2026-11-14T00:00:00Z",
+  "date": "2026-11-14",
+  "div": "concacaf.nations.league",
+  "league": "Concacaf Nations League",
+  "home": "Montserrat",
+  "away": "Nicaragua",
+  "probs": [
+   0.3937,
+   0.219,
+   0.3873
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.3937
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.6127
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5001
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.521
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1043
+   }
+  },
+  "score": null
+ },
+ "20261114-guatemala-canada": {
+  "id": "20261114-guatemala-canada",
+  "published": "2026-11-04T13:03:41Z",
+  "version": "20261104T130236Z",
+  "kickoff": "2026-11-14T02:00:00Z",
+  "date": "2026-11-14",
+  "div": "concacaf.nations.league",
+  "league": "Concacaf Nations League",
+  "home": "Guatemala",
+  "away": "Canada",
+  "probs": [
+   0.252,
+   0.2662,
+   0.4819
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4819
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.748
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5694
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5268
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.1329
    }
   },
   "score": null
