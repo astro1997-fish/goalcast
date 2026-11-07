@@ -58352,5 +58352,505 @@
    }
   },
   "score": null
+ },
+ "20261117-burundi-zambia": {
+  "id": "20261117-burundi-zambia",
+  "published": "2026-11-07T18:07:04Z",
+  "version": "20261107T180553Z",
+  "kickoff": "2026-11-17T13:00:00Z",
+  "date": "2026-11-17",
+  "div": "caf.nations_qual",
+  "league": "Africa Cup of Nations Qualifying",
+  "home": "Burundi",
+  "away": "Zambia",
+  "probs": [
+   0.3616,
+   0.2739,
+   0.3645
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.3645
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6384
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5835
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5264
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1286
+   }
+  },
+  "score": null
+ },
+ "20261117-ethiopia-mozambique": {
+  "id": "20261117-ethiopia-mozambique",
+  "published": "2026-11-07T18:07:04Z",
+  "version": "20261107T180553Z",
+  "kickoff": "2026-11-17T13:00:00Z",
+  "date": "2026-11-17",
+  "div": "caf.nations_qual",
+  "league": "Africa Cup of Nations Qualifying",
+  "home": "Ethiopia",
+  "away": "Mozambique",
+  "probs": [
+   0.4104,
+   0.2446,
+   0.345
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4104
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.655
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5952
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5542
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1342
+   },
+   "SAFE": {
+    "sel": "U3.5",
+    "p": 0.8074
+   }
+  },
+  "score": null
+ },
+ "20261117-lesotho-gabon": {
+  "id": "20261117-lesotho-gabon",
+  "published": "2026-11-07T18:07:04Z",
+  "version": "20261107T180553Z",
+  "kickoff": "2026-11-17T13:00:00Z",
+  "date": "2026-11-17",
+  "div": "caf.nations_qual",
+  "league": "Africa Cup of Nations Qualifying",
+  "home": "Lesotho",
+  "away": "Gabon",
+  "probs": [
+   0.2823,
+   0.287,
+   0.4307
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4307
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7177
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5751
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5152
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1353
+   }
+  },
+  "score": null
+ },
+ "20261117-malawi-egypt": {
+  "id": "20261117-malawi-egypt",
+  "published": "2026-11-07T18:07:04Z",
+  "version": "20261107T180553Z",
+  "kickoff": "2026-11-17T13:00:00Z",
+  "date": "2026-11-17",
+  "div": "caf.nations_qual",
+  "league": "Africa Cup of Nations Qualifying",
+  "home": "Malawi",
+  "away": "Egypt",
+  "probs": [
+   0.1367,
+   0.2328,
+   0.6305
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.6305
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8633
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5878
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.6057
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.17
+   },
+   "SAFE": {
+    "sel": "X2",
+    "p": 0.8633
+   }
+  },
+  "score": null
+ },
+ "20261117-southsudan-angola": {
+  "id": "20261117-southsudan-angola",
+  "published": "2026-11-07T18:07:04Z",
+  "version": "20261107T180553Z",
+  "kickoff": "2026-11-17T13:00:00Z",
+  "date": "2026-11-17",
+  "div": "caf.nations_qual",
+  "league": "Africa Cup of Nations Qualifying",
+  "home": "South Sudan",
+  "away": "Angola",
+  "probs": [
+   0.1321,
+   0.1868,
+   0.6811
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.6811
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8679
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.502
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5827
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.1389
+   },
+   "SAFE": {
+    "sel": "X2",
+    "p": 0.8679
+   }
+  },
+  "score": null
+ },
+ "20261117-tanzania-nigeria": {
+  "id": "20261117-tanzania-nigeria",
+  "published": "2026-11-07T18:07:04Z",
+  "version": "20261107T180553Z",
+  "kickoff": "2026-11-17T13:00:00Z",
+  "date": "2026-11-17",
+  "div": "caf.nations_qual",
+  "league": "Africa Cup of Nations Qualifying",
+  "home": "Tanzania",
+  "away": "Nigeria",
+  "probs": [
+   0.1242,
+   0.2174,
+   0.6584
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.6584
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8758
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5348
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5808
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.149
+   },
+   "SAFE": {
+    "sel": "X2",
+    "p": 0.8758
+   }
+  },
+  "score": null
+ },
+ "20261117-libya-tunisia": {
+  "id": "20261117-libya-tunisia",
+  "published": "2026-11-07T18:07:04Z",
+  "version": "20261107T180553Z",
+  "kickoff": "2026-11-17T16:00:00Z",
+  "date": "2026-11-17",
+  "div": "caf.nations_qual",
+  "league": "Africa Cup of Nations Qualifying",
+  "home": "Libya",
+  "away": "Tunisia",
+  "probs": [
+   0.3082,
+   0.2986,
+   0.3932
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.3932
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6918
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5959
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5261
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1398
+   }
+  },
+  "score": null
+ },
+ "20261117-kenya-southafrica": {
+  "id": "20261117-kenya-southafrica",
+  "published": "2026-11-07T18:07:04Z",
+  "version": "20261107T180553Z",
+  "kickoff": "2026-11-17T16:00:00Z",
+  "date": "2026-11-17",
+  "div": "caf.nations_qual",
+  "league": "Africa Cup of Nations Qualifying",
+  "home": "Kenya",
+  "away": "South Africa",
+  "probs": [
+   0.2398,
+   0.3207,
+   0.4395
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4395
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7602
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.6544
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5788
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.1475
+   },
+   "SAFE": {
+    "sel": "U3.5",
+    "p": 0.8367
+   }
+  },
+  "score": null
+ },
+ "20261117-sierraleone-drcongo": {
+  "id": "20261117-sierraleone-drcongo",
+  "published": "2026-11-07T18:07:04Z",
+  "version": "20261107T180553Z",
+  "kickoff": "2026-11-17T16:00:00Z",
+  "date": "2026-11-17",
+  "div": "caf.nations_qual",
+  "league": "Africa Cup of Nations Qualifying",
+  "home": "Sierra Leone",
+  "away": "DR Congo",
+  "probs": [
+   0.1325,
+   0.2396,
+   0.6279
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.6279
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8675
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.572
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5836
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.1622
+   },
+   "SAFE": {
+    "sel": "X2",
+    "p": 0.8675
+   }
+  },
+  "score": null
+ },
+ "20261117-gambia-ivorycoast": {
+  "id": "20261117-gambia-ivorycoast",
+  "published": "2026-11-07T18:07:04Z",
+  "version": "20261107T180553Z",
+  "kickoff": "2026-11-17T16:00:00Z",
+  "date": "2026-11-17",
+  "div": "caf.nations_qual",
+  "league": "Africa Cup of Nations Qualifying",
+  "home": "Gambia",
+  "away": "Ivory Coast",
+  "probs": [
+   0.1678,
+   0.2176,
+   0.6145
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.6145
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8322
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5012
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5208
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.1304
+   },
+   "SAFE": {
+    "sel": "X2",
+    "p": 0.8322
+   }
+  },
+  "score": null
+ },
+ "20261117-guinea-bissau-madagascar": {
+  "id": "20261117-guinea-bissau-madagascar",
+  "published": "2026-11-07T18:07:04Z",
+  "version": "20261107T180553Z",
+  "kickoff": "2026-11-17T16:00:00Z",
+  "date": "2026-11-17",
+  "div": "caf.nations_qual",
+  "league": "Africa Cup of Nations Qualifying",
+  "home": "Guinea-Bissau",
+  "away": "Madagascar",
+  "probs": [
+   0.4805,
+   0.2639,
+   0.2556
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4805
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7444
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5565
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5149
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1287
+   }
+  },
+  "score": null
+ },
+ "20261117-togo-algeria": {
+  "id": "20261117-togo-algeria",
+  "published": "2026-11-07T18:07:04Z",
+  "version": "20261107T180553Z",
+  "kickoff": "2026-11-17T16:00:00Z",
+  "date": "2026-11-17",
+  "div": "caf.nations_qual",
+  "league": "Africa Cup of Nations Qualifying",
+  "home": "Togo",
+  "away": "Algeria",
+  "probs": [
+   0.1532,
+   0.2358,
+   0.611
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.611
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8468
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5706
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.584
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.1559
+   },
+   "SAFE": {
+    "sel": "X2",
+    "p": 0.8468
+   }
+  },
+  "score": null
  }
 }
