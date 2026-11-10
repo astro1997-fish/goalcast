@@ -57931,26 +57931,31 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.473
+    "p": 0.473,
+    "won": true
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7637
+    "p": 0.7637,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "U2.5",
-    "p": 0.5086
+    "p": 0.5086,
+    "won": true
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5389
+    "p": 0.5389,
+    "won": false
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1382
+    "p": 0.1382,
+    "won": false
    }
   },
-  "score": null
+  "score": "2-0"
  },
  "20261108-stgilloise-genk": {
   "id": "20261108-stgilloise-genk",
@@ -58224,32 +58229,38 @@
   "tips": {
    "1X2": {
     "sel": "1",
-    "p": 0.5076
+    "p": 0.5076,
+    "won": false
    },
    "DC": {
     "sel": "1X",
-    "p": 0.7768
+    "p": 0.7768,
+    "won": true
    },
    "O/U 2.5": {
     "sel": "O2.5",
-    "p": 0.5143
+    "p": 0.5143,
+    "won": false
    },
    "BTTS": {
     "sel": "BTTS-Y",
-    "p": 0.5446
+    "p": 0.5446,
+    "won": false
    },
    "CS": {
     "sel": "1-1",
-    "p": 0.1277
+    "p": 0.1277,
+    "won": false
    },
    "VALUE": {
     "sel": "2",
     "p": 0.2232,
     "odds": 4.72,
-    "edge": 0.0535
+    "edge": 0.0535,
+    "won": false
    }
   },
-  "score": null
+  "score": "0-0"
  },
  "20261115-panama-curaao": {
   "id": "20261115-panama-curaao",
