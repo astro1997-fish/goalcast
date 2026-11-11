@@ -60695,5 +60695,173 @@
    }
   },
   "score": null
+ },
+ "20261120-bayernmunich-fckoln": {
+  "id": "20261120-bayernmunich-fckoln",
+  "published": "2026-11-11T12:48:19Z",
+  "version": "20261111T124610Z",
+  "kickoff": "2026-11-20T19:30:00Z",
+  "date": "2026-11-20",
+  "div": "D1",
+  "league": "Bundesliga",
+  "home": "Bayern Munich",
+  "away": "FC Koln",
+  "probs": [
+   0.7932,
+   0.1603,
+   0.0465
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.7932
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.9535
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.7601
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5786
+   },
+   "CS": {
+    "sel": "3-0",
+    "p": 0.0884
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.9535
+   }
+  },
+  "score": null
+ },
+ "20261120-troyes-lehavre": {
+  "id": "20261120-troyes-lehavre",
+  "published": "2026-11-11T12:48:19Z",
+  "version": "20261111T124610Z",
+  "kickoff": "2026-11-20T19:45:00Z",
+  "date": "2026-11-20",
+  "div": "F1",
+  "league": "Ligue 1",
+  "home": "Troyes",
+  "away": "Le Havre",
+  "probs": [
+   0.4071,
+   0.3146,
+   0.2783
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.4071
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7217
+   },
+   "O/U 2.5": {
+    "sel": "U2.5",
+    "p": 0.5771
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.5005
+   },
+   "CS": {
+    "sel": "1-1",
+    "p": 0.1487
+   }
+  },
+  "score": null
+ },
+ "20261121-sheffieldunited-watford": {
+  "id": "20261121-sheffieldunited-watford",
+  "published": "2026-11-11T12:48:19Z",
+  "version": "20261111T124610Z",
+  "kickoff": "2026-11-21T12:30:00Z",
+  "date": "2026-11-21",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Sheffield United",
+  "away": "Watford",
+  "probs": [
+   0.6338,
+   0.2262,
+   0.14
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.6338
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.86
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5266
+   },
+   "BTTS": {
+    "sel": "BTTS-N",
+    "p": 0.503
+   },
+   "CS": {
+    "sel": "1-0",
+    "p": 0.1201
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.86
+   }
+  },
+  "score": null
+ },
+ "20261121-southampton-derby": {
+  "id": "20261121-southampton-derby",
+  "published": "2026-11-11T12:48:19Z",
+  "version": "20261111T124610Z",
+  "kickoff": "2026-11-21T12:30:00Z",
+  "date": "2026-11-21",
+  "div": "E1",
+  "league": "Championship",
+  "home": "Southampton",
+  "away": "Derby",
+  "probs": [
+   0.7311,
+   0.1549,
+   0.114
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.7311
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.886
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.6478
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5372
+   },
+   "CS": {
+    "sel": "2-0",
+    "p": 0.1101
+   },
+   "SAFE": {
+    "sel": "1X",
+    "p": 0.886
+   }
+  },
+  "score": null
  }
 }
