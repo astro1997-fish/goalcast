@@ -64649,5 +64649,91 @@
    }
   },
   "score": null
+ },
+ "20261124-bodoglimt-lasklinz": {
+  "id": "20261124-bodoglimt-lasklinz",
+  "published": "2026-11-14T18:48:59Z",
+  "version": "20261114T184810Z",
+  "kickoff": "2026-11-24T17:45:00Z",
+  "date": "2026-11-24",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Bodo/Glimt",
+  "away": "LASK Linz",
+  "probs": [
+   0.5387,
+   0.207,
+   0.2543
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "1",
+    "p": 0.5387
+   },
+   "DC": {
+    "sel": "1X",
+    "p": 0.7457
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5918
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.577
+   },
+   "CS": {
+    "sel": "2-1",
+    "p": 0.0962
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.8068
+   }
+  },
+  "score": null
+ },
+ "20261124-galatasaray-astonvilla": {
+  "id": "20261124-galatasaray-astonvilla",
+  "published": "2026-11-14T18:48:59Z",
+  "version": "20261114T184810Z",
+  "kickoff": "2026-11-24T17:45:00Z",
+  "date": "2026-11-24",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Galatasaray",
+  "away": "Aston Villa",
+  "probs": [
+   0.2097,
+   0.1515,
+   0.6388
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.6388
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.7903
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.72
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.6443
+   },
+   "CS": {
+    "sel": "1-2",
+    "p": 0.0946
+   },
+   "SAFE": {
+    "sel": "O1.5",
+    "p": 0.881
+   }
+  },
+  "score": null
  }
 }
