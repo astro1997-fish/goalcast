@@ -65321,5 +65321,91 @@
    }
   },
   "score": null
+ },
+ "20261125-sabahfk-barcelona": {
+  "id": "20261125-sabahfk-barcelona",
+  "published": "2026-11-15T19:29:01Z",
+  "version": "20261115T192820Z",
+  "kickoff": "2026-11-25T17:45:00Z",
+  "date": "2026-11-25",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Sabah FK",
+  "away": "Barcelona",
+  "probs": [
+   0.1735,
+   0.0875,
+   0.739
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.739
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.8265
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.7457
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.6088
+   },
+   "CS": {
+    "sel": "1-2",
+    "p": 0.0995
+   },
+   "SAFE": {
+    "sel": "12",
+    "p": 0.9125
+   }
+  },
+  "score": null
+ },
+ "20261125-slaviaprague-villarreal": {
+  "id": "20261125-slaviaprague-villarreal",
+  "published": "2026-11-15T19:29:01Z",
+  "version": "20261115T192820Z",
+  "kickoff": "2026-11-25T17:45:00Z",
+  "date": "2026-11-25",
+  "div": "uefa.champions",
+  "league": "UEFA Champions League",
+  "home": "Slavia Prague",
+  "away": "Villarreal",
+  "probs": [
+   0.3275,
+   0.1846,
+   0.4879
+  ],
+  "tips": {
+   "1X2": {
+    "sel": "2",
+    "p": 0.4879
+   },
+   "DC": {
+    "sel": "X2",
+    "p": 0.6725
+   },
+   "O/U 2.5": {
+    "sel": "O2.5",
+    "p": 0.5488
+   },
+   "BTTS": {
+    "sel": "BTTS-Y",
+    "p": 0.5439
+   },
+   "CS": {
+    "sel": "0-1",
+    "p": 0.1073
+   },
+   "SAFE": {
+    "sel": "12",
+    "p": 0.8154
+   }
+  },
+  "score": null
  }
 }
