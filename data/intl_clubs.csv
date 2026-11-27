@@ -8279,6 +8279,7 @@ uefa.europa.conf,2026-10-15T16:45:00Z,KuPS Kuopio,Trabzonspor,2.0,4.0,False
 uefa.europa.conf,2026-10-15T16:45:00Z,Mjällby AIF,Inter D'Escaldes,2.0,0.0,False
 uefa.europa.conf,2026-10-15T16:45:00Z,Panathinaikos,Borac Banja Luka,2.0,1.0,False
 uefa.europa.conf,2026-10-15T16:45:00Z,Riga FC,Kairat Almaty,1.0,1.0,False
+uefa.europa.conf,2026-10-15T16:45:00Z,Universitatea Craiova,Getafe,1.0,1.0,False
 uefa.europa,2026-10-15T19:00:00Z,AFC Bournemouth,SK Sturm Graz,3.0,0.0,False
 uefa.europa,2026-10-15T19:00:00Z,Benfica,Celtic,4.0,1.0,False
 uefa.europa,2026-10-15T19:00:00Z,Celta Vigo,Juventus,1.0,2.0,False
@@ -8359,6 +8360,7 @@ uefa.europa.conf,2026-10-22T16:45:00Z,FC Nordsjælland,CSKA Sofia,2.0,2.0,False
 uefa.europa.conf,2026-10-22T16:45:00Z,Getafe,FC Lugano,2.0,5.0,False
 uefa.europa.conf,2026-10-22T16:45:00Z,Iberia 1999,Mjällby AIF,1.0,1.0,False
 uefa.europa.conf,2026-10-22T16:45:00Z,Inter D'Escaldes,CSU Craiova,1.0,3.0,False
+uefa.europa.conf,2026-10-22T16:45:00Z,Inter D'Escaldes,Universitatea Craiova,1.0,3.0,False
 uefa.europa.conf,2026-10-22T16:45:00Z,Jablonec,Brighton & Hove Albion,0.0,0.0,False
 uefa.europa.conf,2026-10-22T16:45:00Z,Kauno Zalgiris,SK Brann,1.0,4.0,False
 uefa.europa.conf,2026-10-22T16:45:00Z,Pafos,Riga FC,1.0,1.0,False
@@ -8466,6 +8468,7 @@ uefa.europa.conf,2026-11-05T20:00:00Z,Getafe,Brighton & Hove Albion,0.0,1.0,Fals
 uefa.europa.conf,2026-11-05T20:00:00Z,Panathinaikos,CSKA Sofia,2.0,1.0,False
 uefa.europa.conf,2026-11-05T20:00:00Z,Riga FC,Jablonec,1.0,1.0,False
 uefa.europa.conf,2026-11-05T20:00:00Z,Sint-Truidense,SK Brann,1.0,1.0,False
+uefa.europa.conf,2026-11-05T20:00:00Z,Universitatea Craiova,Egnatia,2.0,0.0,False
 caf.confed,2026-11-23T17:00:00Z,Douanes,CR Belouizdad,0.0,0.0,False
 uefa.champions,2026-11-24T17:45:00Z,Bodo/Glimt,LASK Linz,1.0,0.0,False
 uefa.champions,2026-11-24T17:45:00Z,Galatasaray,Aston Villa,1.0,0.0,False
@@ -8485,3 +8488,40 @@ uefa.champions,2026-11-25T20:00:00Z,Lille,Bayern Munich,2.0,1.0,False
 uefa.champions,2026-11-25T20:00:00Z,Paris Saint-Germain,AS Roma,2.0,2.0,False
 uefa.champions,2026-11-25T20:00:00Z,Shakhtar Donetsk,Fenerbahce,0.0,1.0,False
 uefa.champions,2026-11-25T20:00:00Z,Sporting CP,Manchester United,2.0,2.0,False
+uefa.europa.conf,2026-11-26T15:30:00Z,Kairat Almaty,Mjällby AIF,1.0,0.0,False
+uefa.europa,2026-11-26T17:45:00Z,Besiktas,Hapoel Be'er,2.0,1.0,False
+uefa.europa,2026-11-26T17:45:00Z,Celta Vigo,AFC Bournemouth,1.0,2.0,False
+uefa.europa,2026-11-26T17:45:00Z,Dinamo Zagreb,Bayer Leverkusen,0.0,2.0,False
+uefa.europa,2026-11-26T17:45:00Z,Marseille,Levski Sofia,1.0,0.0,False
+uefa.europa,2026-11-26T17:45:00Z,Olympiacos,AC Milan,2.0,4.0,False
+uefa.europa,2026-11-26T17:45:00Z,RB Salzburg,Ararat-Armenia,2.0,0.0,False
+uefa.europa,2026-11-26T17:45:00Z,Union St.-Gilloise,Lech Poznan,2.0,2.0,False
+uefa.europa,2026-11-26T17:45:00Z,Viktoria Plzen,Benfica,4.0,0.0,False
+uefa.europa.conf,2026-11-26T17:45:00Z,Ajax Amsterdam,FC Thun,4.0,0.0,False
+uefa.europa.conf,2026-11-26T17:45:00Z,Brighton & Hove Albion,Universitatea Craiova,4.0,0.0,False
+uefa.europa.conf,2026-11-26T17:45:00Z,Egnatia,Lincoln Red Imps,2.0,1.0,False
+uefa.europa.conf,2026-11-26T17:45:00Z,Heart of Midlothian,AS Monaco,2.0,3.0,False
+uefa.europa.conf,2026-11-26T17:45:00Z,Iberia 1999,Getafe,1.0,0.0,False
+uefa.europa.conf,2026-11-26T17:45:00Z,Jablonec,FC Lugano,2.0,0.0,False
+uefa.europa.conf,2026-11-26T17:45:00Z,Kauno Zalgiris,Riga FC,2.0,0.0,False
+uefa.europa.conf,2026-11-26T17:45:00Z,Pafos,FC Midtjylland,0.0,2.0,False
+uefa.europa.conf,2026-11-26T17:45:00Z,SK Brann,AGF,1.0,4.0,False
+uefa.europa,2026-11-26T20:00:00Z,Crystal Palace,Real Sociedad,2.0,1.0,False
+uefa.europa,2026-11-26T20:00:00Z,Ferencvaros,NK Celje,0.0,0.0,False
+uefa.europa,2026-11-26T20:00:00Z,Juventus,Omonia Nicosia,4.0,1.0,False
+uefa.europa,2026-11-26T20:00:00Z,Lyon,Lillestrom,0.0,0.0,False
+uefa.europa,2026-11-26T20:00:00Z,NEC Nijmegen,Stade Rennais,3.0,1.0,False
+uefa.europa,2026-11-26T20:00:00Z,OFI Crete,Anderlecht,1.0,3.0,False
+uefa.europa,2026-11-26T20:00:00Z,Sparta Prague,AZ Alkmaar,2.0,4.0,False
+uefa.europa,2026-11-26T20:00:00Z,Sunderland,Jagiellonia Bialystok,1.0,1.0,False
+uefa.europa,2026-11-26T20:00:00Z,TSG Hoffenheim,SK Sturm Graz,3.0,1.0,False
+uefa.europa,2026-11-26T20:00:00Z,Torreense,Celtic,1.0,2.0,False
+uefa.europa.conf,2026-11-26T20:00:00Z,Borac Banja Luka,Atalanta,2.0,3.0,False
+uefa.europa.conf,2026-11-26T20:00:00Z,Braga,KuPS Kuopio,4.0,0.0,False
+uefa.europa.conf,2026-11-26T20:00:00Z,CSKA Sofia,Trabzonspor,1.0,2.0,False
+uefa.europa.conf,2026-11-26T20:00:00Z,FC Nordsjælland,Panathinaikos,3.0,2.0,False
+uefa.europa.conf,2026-11-26T20:00:00Z,Hajduk Split,Sint-Truidense,0.0,2.0,False
+uefa.europa.conf,2026-11-26T20:00:00Z,Inter D'Escaldes,F.C. København,2.0,0.0,False
+uefa.europa.conf,2026-11-26T20:00:00Z,KAA Gent,Red Star Belgrade,1.0,1.0,False
+uefa.europa.conf,2026-11-26T20:00:00Z,SC Freiburg,FC Twente,2.0,1.0,False
+caf.confed,2026-11-27T13:00:00Z,Azam FC,Al Ahli Tripoli,1.0,2.0,False
